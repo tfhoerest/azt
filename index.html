@@ -1,18 +1,306 @@
 ---
 ---
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>{{ site.title }} - Test Page</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ site.title }}</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.5;
+            color: #1a1a1a;
+            background-color: #fff;
+            font-weight: 400;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            border-bottom: 1px solid #e0e0e0;
+            padding: 20px 0;
+            margin-bottom: 40px;
+        }
+        
+        .site-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 15px;
+            letter-spacing: 0.5px;
+            color: #000;
+            text-transform: uppercase;
+        }
+        
+        .site-title a {
+            color: #000;
+            text-decoration: none;
+        }
+        
+        .site-description {
+            text-align: center;
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 25px;
+            font-style: italic;
+        }
+        
+        nav {
+            text-align: center;
+        }
+        
+        nav ul {
+            list-style: none;
+            display: inline-flex;
+            gap: 40px;
+        }
+        
+        nav a {
+            color: #666;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+            transition: color 0.2s ease;
+            padding: 8px 12px;
+            border-radius: 2px;
+        }
+        
+        nav a:hover,
+        nav a.active {
+            color: #000;
+            background-color: #f5f5f5;
+        }
+        
+        .featured-article {
+            margin-bottom: 60px;
+            border-bottom: 1px solid #e0e0e0;
+            padding-bottom: 40px;
+        }
+        
+        .featured-article img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            margin-bottom: 20px;
+        }
+        
+        .featured-article h1 {
+            font-size: 2.4rem;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            font-weight: 700;
+            color: #000;
+        }
+        
+        .featured-article .excerpt {
+            font-size: 1.2rem;
+            color: #555;
+            margin-bottom: 20px;
+            line-height: 1.4;
+            font-weight: 400;
+        }
+        
+        .article-meta {
+            color: #999;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+        
+        .category {
+            background: #f5f5f5;
+            padding: 4px 8px;
+            border-radius: 3px;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-right: 10px;
+        }
+        
+        .category.foreign { background: #e3f2fd; }
+        .category.domestic { background: #f3e5f5; }
+        .category.opinion { background: #fff3e0; }
+        
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+        
+        .article-card {
+            border-bottom: 1px solid #f0f0f0;
+            padding-bottom: 20px;
+        }
+        
+        .article-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            margin-bottom: 15px;
+        }
+        
+        .article-card h2 {
+            font-size: 1.4rem;
+            line-height: 1.3;
+            margin-bottom: 10px;
+        }
+        
+        .article-card h2 a {
+            color: #000;
+            text-decoration: none;
+        }
+        
+        .article-card h2 a:hover {
+            color: #666;
+        }
+        
+        .article-card .excerpt {
+            color: #666;
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+        
+        footer {
+            border-top: 1px solid #e0e0e0;
+            padding: 40px 0;
+            text-align: center;
+            color: #666;
+            margin-top: 60px;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 15px;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .featured-article h1 {
+                font-size: 2rem;
+            }
+            
+            .featured-article .excerpt {
+                font-size: 1.1rem;
+            }
+            
+            .articles-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+    </style>
 </head>
-<body style="font-family: Arial, sans-serif; padding: 40px; line-height: 1.6;">
-    <h1>{{ site.title }}</h1>
-    <p><strong>Description:</strong> {{ site.description }}</p>
-    <p><strong>Site URL:</strong> {{ site.url }}{{ site.baseurl }}</p>
-    <hr>
-    <p>✅ If you can see this content with the title and description filled in, Jekyll is working!</p>
-    <p>🔗 Full URL should be: https://tfhoerest.github.io/azt/</p>
+<body>
+    <header>
+        <div class="container">
+            <h1 class="site-title">
+                <a href="{{ site.baseurl }}/">{{ site.title }}</a>
+            </h1>
+            <p class="site-description">{{ site.description }}</p>
+            <nav>
+                <ul>
+                    <li><a href="{{ site.baseurl }}/" class="active">Home</a></li>
+                    <li><a href="{{ site.baseurl }}/foreign">Foreign</a></li>
+                    <li><a href="{{ site.baseurl }}/domestic">Domestic</a></li>
+                    <li><a href="{{ site.baseurl }}/opinion">Opinion</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <article class="featured-article">
+            <img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=1200&h=400&fit=crop" alt="Featured article image">
+            <div class="article-meta">
+                <span class="category foreign">Foreign</span>
+                <span>June 21, 2025</span>
+            </div>
+            <h1>Global Intelligence Networks Reshape Modern Conflict Monitoring</h1>
+            <p class="excerpt">Advanced tracking systems and open-source intelligence platforms are revolutionizing how conflicts are monitored and analyzed in real-time across multiple theaters.</p>
+        </article>
+
+        <section class="articles-grid">
+            <article class="article-card">
+                <img src="https://images.unsplash.com/photo-1541872705-1f73c6400ec9?w=400&h=200&fit=crop" alt="Article image">
+                <div class="article-meta">
+                    <span class="category domestic">Domestic</span>
+                    <span>June 20, 2025</span>
+                </div>
+                <h2><a href="#">Intelligence Sharing Protocols Updated</a></h2>
+                <p class="excerpt">New frameworks for inter-agency cooperation promise enhanced national security coordination and faster threat response capabilities.</p>
+            </article>
+
+            <article class="article-card">
+                <img src="https://images.unsplash.com/photo-1585776245991-cf89dd7fc73a?w=400&h=200&fit=crop" alt="Article image">
+                <div class="article-meta">
+                    <span class="category opinion">Opinion</span>
+                    <span>June 20, 2025</span>
+                </div>
+                <h2><a href="#">The Ethics of Open-Source Intelligence</a></h2>
+                <p class="excerpt">As citizen journalists and analysts contribute to conflict monitoring, questions arise about verification, privacy, and the democratization of intelligence.</p>
+            </article>
+
+            <article class="article-card">
+                <img src="https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?w=400&h=200&fit=crop" alt="Article image">
+                <div class="article-meta">
+                    <span class="category foreign">Foreign</span>
+                    <span>June 19, 2025</span>
+                </div>
+                <h2><a href="#">Eastern European Security Assessment</a></h2>
+                <p class="excerpt">Comprehensive analysis of regional threats and defensive capabilities reveals shifting geopolitical dynamics.</p>
+            </article>
+
+            <article class="article-card">
+                <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=400&h=200&fit=crop" alt="Article image">
+                <div class="article-meta">
+                    <span class="category domestic">Domestic</span>
+                    <span>June 19, 2025</span>
+                </div>
+                <h2><a href="#">Cybersecurity Infrastructure Modernization</a></h2>
+                <p class="excerpt">Federal agencies implement next-generation security protocols to protect critical information systems from emerging threats.</p>
+            </article>
+
+            <article class="article-card">
+                <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&h=200&fit=crop" alt="Article image">
+                <div class="article-meta">
+                    <span class="category opinion">Opinion</span>
+                    <span>June 18, 2025</span>
+                </div>
+                <h2><a href="#">The Future of Conflict Analysis</a></h2>
+                <p class="excerpt">Machine learning and artificial intelligence are transforming how we predict, monitor, and respond to global conflicts.</p>
+            </article>
+
+            <article class="article-card">
+                <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=400&h=200&fit=crop" alt="Article image">
+                <div class="article-meta">
+                    <span class="category foreign">Foreign</span>
+                    <span>June 18, 2025</span>
+                </div>
+                <h2><a href="#">Pacific Region Strategic Overview</a></h2>
+                <p class="excerpt">Naval movements and diplomatic developments signal changing power dynamics in one of the world's most critical regions.</p>
+            </article>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 {{ site.title }}. All rights reserved.</p>
+        </div>
+    </footer>
 </body>
 </html>
