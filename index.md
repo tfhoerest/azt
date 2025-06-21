@@ -1,4 +1,4 @@
-# AZT – Open Geopolitical Watch
+# azt
 
 **An open-source initiative for tracking global news, conflict, and intelligence.**
 
