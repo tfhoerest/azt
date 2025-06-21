@@ -1,11 +1,9 @@
----
----
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ site.title }}</title>
+    <title>Your News Site</title>
     <style>
         * {
             margin: 0;
@@ -14,7 +12,7 @@
         }
         
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             line-height: 1.5;
             color: #1a1a1a;
             background-color: #fff;
@@ -27,6 +25,7 @@
             padding: 0 20px;
         }
         
+        /* Header */
         header {
             border-bottom: 1px solid #e0e0e0;
             padding: 20px 0;
@@ -40,7 +39,6 @@
             margin-bottom: 15px;
             letter-spacing: 0.5px;
             color: #000;
-            text-transform: uppercase;
         }
         
         .site-title a {
@@ -48,14 +46,7 @@
             text-decoration: none;
         }
         
-        .site-description {
-            text-align: center;
-            color: #666;
-            font-size: 0.9rem;
-            margin-bottom: 25px;
-            font-style: italic;
-        }
-        
+        /* Navigation */
         nav {
             text-align: center;
         }
@@ -71,6 +62,7 @@
             text-decoration: none;
             font-size: 0.95rem;
             font-weight: 500;
+            text-transform: none;
             letter-spacing: 0.3px;
             transition: color 0.2s ease;
             padding: 8px 12px;
@@ -80,58 +72,94 @@
         nav a:hover,
         nav a.active {
             color: #000;
-            background-color: #f5f5f5;
         }
         
+        /* Featured Article */
         .featured-article {
+            position: relative;
+            height: 70vh;
+            min-height: 500px;
+            background-image: url('https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=1600&h=900&fit=crop');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: flex-end;
             margin-bottom: 60px;
-            border-bottom: 1px solid #e0e0e0;
-            padding-bottom: 40px;
+            overflow: hidden;
+        }
+        
+        .featured-article::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.7) 100%);
+            z-index: 1;
+        }
+        
+        .featured-content {
+            position: relative;
+            z-index: 2;
+            color: #fff;
+            padding: 60px 40px;
+            max-width: 800px;
         }
         
         .featured-article img {
-            width: 100%;
-            height: 400px;
-            object-fit: cover;
-            margin-bottom: 20px;
+            display: none;
         }
         
         .featured-article h1 {
-            font-size: 2.4rem;
+            font-family: 'Source Serif Pro', Georgia, serif;
+            font-size: 3rem;
             line-height: 1.1;
             margin-bottom: 20px;
             font-weight: 700;
-            color: #000;
+            color: #fff;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
         }
         
         .featured-article .excerpt {
-            font-size: 1.2rem;
-            color: #555;
+            font-size: 1.3rem;
+            color: #fff;
             margin-bottom: 20px;
             line-height: 1.4;
             font-weight: 400;
+            opacity: 0.95;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.5);
         }
         
         .article-meta {
-            color: #999;
+            color: #ddd;
             font-size: 0.9rem;
             margin-bottom: 20px;
         }
         
         .category {
-            background: #f5f5f5;
+            background: rgba(255,255,255,0.2);
             padding: 4px 8px;
             border-radius: 3px;
             font-size: 0.8rem;
             text-transform: uppercase;
             letter-spacing: 0.5px;
             margin-right: 10px;
+            color: #fff;
+            border: 1px solid rgba(255,255,255,0.3);
         }
         
-        .category.foreign { background: #e3f2fd; }
-        .category.domestic { background: #f3e5f5; }
-        .category.opinion { background: #fff3e0; }
+        .articles-grid .category {
+            background: #f5f5f5;
+            color: #666;
+            border: none;
+        }
         
+        .articles-grid .category.foreign { background: #e3f2fd; color: #1976d2; }
+        .articles-grid .category.domestic { background: #f3e5f5; color: #7b1fa2; }
+        .articles-grid .category.opinion { background: #fff3e0; color: #f57c00; }
+        
+        /* Article Grid */
         .articles-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -152,9 +180,11 @@
         }
         
         .article-card h2 {
+            font-family: 'Source Serif Pro', Georgia, serif;
             font-size: 1.4rem;
             line-height: 1.3;
             margin-bottom: 10px;
+            font-weight: 600;
         }
         
         .article-card h2 a {
@@ -172,14 +202,20 @@
             margin-bottom: 10px;
         }
         
-        footer {
-            border-top: 1px solid #e0e0e0;
-            padding: 40px 0;
+        /* Category Pages */
+        .category-header {
             text-align: center;
-            color: #666;
-            margin-top: 60px;
+            margin-bottom: 40px;
         }
         
+        .category-title {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        /* Responsive */
         @media (max-width: 768px) {
             .container {
                 padding: 0 15px;
@@ -187,11 +223,20 @@
             
             nav ul {
                 flex-direction: column;
-                gap: 20px;
+                gap: 15px;
+            }
+            
+            .featured-article {
+                height: 60vh;
+                min-height: 400px;
+            }
+            
+            .featured-content {
+                padding: 40px 20px;
             }
             
             .featured-article h1 {
-                font-size: 2rem;
+                font-size: 2.2rem;
             }
             
             .featured-article .excerpt {
@@ -203,37 +248,48 @@
                 gap: 30px;
             }
         }
+        
+        /* Footer */
+        footer {
+            border-top: 1px solid #e0e0e0;
+            padding: 40px 0;
+            text-align: center;
+            color: #666;
+            margin-top: 60px;
+        }
     </style>
 </head>
 <body>
     <header>
         <div class="container">
             <h1 class="site-title">
-                <a href="{{ site.baseurl }}/">{{ site.title }}</a>
+                <a href="#home">Your News</a>
             </h1>
-            <p class="site-description">{{ site.description }}</p>
             <nav>
                 <ul>
-                    <li><a href="{{ site.baseurl }}/" class="active">Home</a></li>
-                    <li><a href="{{ site.baseurl }}/foreign">Foreign</a></li>
-                    <li><a href="{{ site.baseurl }}/domestic">Domestic</a></li>
-                    <li><a href="{{ site.baseurl }}/opinion">Opinion</a></li>
+                    <li><a href="#home" class="active">Home</a></li>
+                    <li><a href="#foreign">Foreign</a></li>
+                    <li><a href="#domestic">Domestic</a></li>
+                    <li><a href="#opinion">Opinion</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
     <main class="container">
+        <!-- Featured Article -->
         <article class="featured-article">
             <img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=1200&h=400&fit=crop" alt="Featured article image">
             <div class="article-meta">
                 <span class="category foreign">Foreign</span>
                 <span>June 21, 2025</span>
             </div>
-            <h1>Global Intelligence Networks Reshape Modern Conflict Monitoring</h1>
-            <p class="excerpt">Advanced tracking systems and open-source intelligence platforms are revolutionizing how conflicts are monitored and analyzed in real-time across multiple theaters.</p>
+            <h1>Global Climate Summit Reaches Historic Agreement</h1>
+            <p class="excerpt">World leaders converge on unprecedented climate action plan that promises to reshape international environmental policy for the next decade.</p>
         </article>
 
+        <!-- Articles Grid -->
+    <main class="container">
         <section class="articles-grid">
             <article class="article-card">
                 <img src="https://images.unsplash.com/photo-1541872705-1f73c6400ec9?w=400&h=200&fit=crop" alt="Article image">
@@ -241,8 +297,8 @@
                     <span class="category domestic">Domestic</span>
                     <span>June 20, 2025</span>
                 </div>
-                <h2><a href="#">Intelligence Sharing Protocols Updated</a></h2>
-                <p class="excerpt">New frameworks for inter-agency cooperation promise enhanced national security coordination and faster threat response capabilities.</p>
+                <h2><a href="#">Infrastructure Bill Passes Senate</a></h2>
+                <p class="excerpt">Bipartisan legislation allocates $500 billion for roads, bridges, and digital infrastructure improvements across the nation.</p>
             </article>
 
             <article class="article-card">
@@ -251,8 +307,8 @@
                     <span class="category opinion">Opinion</span>
                     <span>June 20, 2025</span>
                 </div>
-                <h2><a href="#">The Ethics of Open-Source Intelligence</a></h2>
-                <p class="excerpt">As citizen journalists and analysts contribute to conflict monitoring, questions arise about verification, privacy, and the democratization of intelligence.</p>
+                <h2><a href="#">The Future of Remote Work</a></h2>
+                <p class="excerpt">As companies adapt to hybrid models, we must reconsider the fundamental relationship between productivity and workplace flexibility.</p>
             </article>
 
             <article class="article-card">
@@ -261,8 +317,8 @@
                     <span class="category foreign">Foreign</span>
                     <span>June 19, 2025</span>
                 </div>
-                <h2><a href="#">Eastern European Security Assessment</a></h2>
-                <p class="excerpt">Comprehensive analysis of regional threats and defensive capabilities reveals shifting geopolitical dynamics.</p>
+                <h2><a href="#">European Union Announces Digital Currency</a></h2>
+                <p class="excerpt">The digital euro promises to revolutionize payments across member states while maintaining monetary sovereignty.</p>
             </article>
 
             <article class="article-card">
@@ -271,8 +327,8 @@
                     <span class="category domestic">Domestic</span>
                     <span>June 19, 2025</span>
                 </div>
-                <h2><a href="#">Cybersecurity Infrastructure Modernization</a></h2>
-                <p class="excerpt">Federal agencies implement next-generation security protocols to protect critical information systems from emerging threats.</p>
+                <h2><a href="#">Education Reform Shows Promise</a></h2>
+                <p class="excerpt">Early results from pilot programs suggest new teaching methods are improving student outcomes in mathematics and science.</p>
             </article>
 
             <article class="article-card">
@@ -281,8 +337,8 @@
                     <span class="category opinion">Opinion</span>
                     <span>June 18, 2025</span>
                 </div>
-                <h2><a href="#">The Future of Conflict Analysis</a></h2>
-                <p class="excerpt">Machine learning and artificial intelligence are transforming how we predict, monitor, and respond to global conflicts.</p>
+                <h2><a href="#">Why Local Journalism Matters</a></h2>
+                <p class="excerpt">In an age of global media, the importance of community-focused reporting has never been more crucial for democracy.</p>
             </article>
 
             <article class="article-card">
@@ -291,16 +347,40 @@
                     <span class="category foreign">Foreign</span>
                     <span>June 18, 2025</span>
                 </div>
-                <h2><a href="#">Pacific Region Strategic Overview</a></h2>
-                <p class="excerpt">Naval movements and diplomatic developments signal changing power dynamics in one of the world's most critical regions.</p>
+                <h2><a href="#">Technology Trade Agreements</a></h2>
+                <p class="excerpt">New international frameworks aim to balance innovation with privacy protection in cross-border data flows.</p>
             </article>
         </section>
     </main>
 
     <footer>
         <div class="container">
-            <p>&copy; 2025 {{ site.title }}. All rights reserved.</p>
+            <p>&copy; 2025 Your News. All rights reserved.</p>
         </div>
     </footer>
+
+    <script>
+        // Simple navigation for demo
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Remove active class from all links
+                document.querySelectorAll('nav a').forEach(l => l.classList.remove('active'));
+                
+                // Add active class to clicked link
+                this.classList.add('active');
+                
+                // Here you would typically load different content
+                // For now, we'll just update the page title
+                const category = this.textContent;
+                if (category !== 'Home') {
+                    document.title = `${category} - Your News`;
+                } else {
+                    document.title = 'Your News';
+                }
+            });
+        });
+    </script>
 </body>
 </html>
