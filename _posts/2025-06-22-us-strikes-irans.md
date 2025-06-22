@@ -8,10 +8,6 @@ image: "https://tramci.github.io/azt/assets/images/trump-situation.jpg"  # optio
 excerpt: "The United States launched devastating airstrikes against three of Iran's most sensitive nuclear sites on Sunday, marking the most significant American military action on Iranian soil since the 1979 revolution and raising fears of a broader regional war."
 ---
 
-# US strikes Iran's nuclear facilities in dramatic escalation of Middle East crisis
-
-The United States launched devastating airstrikes against three of Iran's most sensitive nuclear sites on Sunday, marking the most significant American military action on Iranian soil since the 1979 revolution and raising fears of a broader regional war.
-
 The strikes, codenamed Operation Midnight Hammer, targeted the Fordow, Natanz and Isfahan facilities using an unprecedented deployment of seven B-2 stealth bombers flying from Missouri, supported by more than 125 aircraft. Pentagon officials said the bombers dropped 14 of the military's most powerful bunker-busting bombs, marking their first combat use.
 
 **Donald Trump**, announcing the operation from the White House, declared it a "spectacular military success" and claimed Iran's nuclear enrichment capabilities had been "completely and totally obliterated". But the strikes have prompted international condemnation and fears that the US may have crossed a line that makes wider conflict inevitable.
