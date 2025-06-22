@@ -8,8 +8,37 @@
     <title>{{ site.title }}</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        /* Zeit.de Design System Variables - Dark Theme */
+        :root {
+            --z-ds-fontsize-14: 0.875rem;    /* 14px */
+            --z-ds-fontsize-16: 1rem;        /* 16px */
+            --z-ds-fontsize-22: 1.375rem;    /* 22px */
+            --z-ds-fontsize-24: 1.5rem;      /* 24px */
+            --z-ds-fontsize-32: 2rem;        /* 32px */
+            --z-ds-fontsize-34: 2.125rem;    /* 34px */
+            
+            --z-ds-space-xxs: 0.5rem;        /* 8px */
+            --z-ds-space-s: 1rem;            /* 16px */
+            --z-ds-space-m: 1.5rem;          /* 24px */
+            --z-ds-space-l: 2rem;            /* 32px */
+            --z-ds-space-xl: 3rem;           /* 48px */
+            --z-ds-space-xxl: 4rem;          /* 64px */
+            
+            /* Dark Theme Colors */
+            --z-ds-color-text-100: #ffffff;
+            --z-ds-color-text-70: #b3b3b3;
+            --z-ds-color-background-0: #0a0a0a;
+            --z-ds-color-background-1: #1a1a1a;
+            --z-ds-color-accent-100: #ff6246;
+            --z-ds-color-border: #333333;
+            --z-ds-color-border-light: #2a2a2a;
+            
+            --z-ds-max-width: 1280px;
+            --z-ds-content-width: 55.75rem;  /* 892px */
+            --z-ds-newsletter-width: 46.25rem; /* 740px */
+        }
         * {
             margin: 0;
             padding: 0;
@@ -17,11 +46,12 @@
         }
         
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            line-height: 1.6;
-            color: #e1e1e1;
-            background-color: #0a0a0a;
+            font-family: 'Inter', 'Helvetica Neue', Helvetica, Arial, FreeSans, sans-serif;
+            line-height: 1.5;
+            color: var(--z-ds-color-text-100);
+            background-color: var(--z-ds-color-background-0);
             font-weight: 400;
+            font-size: var(--z-ds-fontsize-16);
         }
         
         /* Fixed Navigation */
@@ -30,9 +60,9 @@
             top: 0;
             left: 0;
             right: 0;
-            background-color: #1a1a1a;
-            border-bottom: 1px solid #333;
-            padding: 0 20px;
+            background-color: var(--z-ds-color-background-1);
+            border-bottom: 1px solid var(--z-ds-color-border);
+            padding: 0 var(--z-ds-space-s);
             height: 70px;
             display: flex;
             align-items: center;
@@ -41,9 +71,9 @@
         }
         
         .navbar-brand {
-            font-size: 1.5rem;
+            font-size: var(--z-ds-fontsize-24);
             font-weight: 700;
-            color: #fff;
+            color: var(--z-ds-color-text-100);
             text-decoration: none;
             letter-spacing: 1px;
         }
@@ -51,21 +81,21 @@
         .navbar-nav {
             display: flex;
             align-items: center;
-            gap: 30px;
+            gap: var(--z-ds-space-l);
             list-style: none;
         }
         
         .navbar-nav a {
-            color: #ccc;
+            color: var(--z-ds-color-text-70);
             text-decoration: none;
-            font-size: 0.9rem;
+            font-size: var(--z-ds-fontsize-14);
             font-weight: 500;
             transition: color 0.2s ease;
         }
         
         .navbar-nav a:hover,
         .navbar-nav a.active {
-            color: #fff;
+            color: var(--z-ds-color-text-100);
         }
         
         .navbar-actions {
@@ -75,44 +105,47 @@
         }
         
         .subscribe-btn {
-            background-color: #007acc;
-            color: #fff;
-            padding: 8px 16px;
+            background-color: var(--z-ds-color-accent-100);
+            color: var(--z-ds-color-background-0);
+            padding: var(--z-ds-space-xxs) var(--z-ds-space-s);
             border: none;
             border-radius: 4px;
-            font-size: 0.85rem;
+            font-size: var(--z-ds-fontsize-14);
             font-weight: 600;
             cursor: pointer;
             transition: background-color 0.2s ease;
         }
         
         .subscribe-btn:hover {
-            background-color: #005fa3;
+            background-color: #e5532b;
         }
         
         .profile-icon {
             width: 32px;
             height: 32px;
             border-radius: 50%;
-            background-color: #333;
-            border: 2px solid #666;
+            background-color: var(--z-ds-color-border);
+            border: 2px solid var(--z-ds-color-border-light);
             cursor: pointer;
         }
         
         /* Main Content */
         .main-content {
             margin-top: 70px;
-            padding: 40px 20px;
+            padding: var(--z-ds-space-xl) var(--z-ds-space-s);
         }
         
         .container {
-            max-width: 1200px;
+            max-width: var(--z-ds-max-width);
             margin: 0 auto;
         }
         
         /* Hero Section */
         .hero-section {
-            margin-bottom: 60px;
+            margin-bottom: var(--z-ds-space-xxl);
+            max-width: var(--z-ds-content-width);
+            margin-left: auto;
+            margin-right: auto;
         }
         
         .hero-image {
@@ -120,37 +153,37 @@
             height: 500px;
             object-fit: cover;
             border-radius: 8px;
-            margin-bottom: 30px;
+            margin-bottom: var(--z-ds-space-l);
         }
         
         .hero-content {
             text-align: center;
-            max-width: 800px;
+            max-width: var(--z-ds-newsletter-width);
             margin: 0 auto;
         }
         
         .hero-author {
-            color: #888;
-            font-size: 0.9rem;
-            margin-bottom: 15px;
+            color: var(--z-ds-color-text-70);
+            font-size: var(--z-ds-fontsize-14);
+            margin-bottom: var(--z-ds-space-s);
             text-transform: uppercase;
             letter-spacing: 1px;
         }
         
         .hero-headline {
-            font-family: 'Source Serif Pro', Georgia, serif;
-            font-size: 3rem;
+            font-family: 'Inter', 'Helvetica Neue', Helvetica, Arial, FreeSans, sans-serif;
+            font-size: var(--z-ds-fontsize-34);
             font-weight: 700;
-            color: #fff;
+            color: var(--z-ds-color-text-100);
             line-height: 1.2;
-            margin-bottom: 20px;
+            margin-bottom: var(--z-ds-space-s);
         }
         
         .hero-summary {
-            font-size: 1.2rem;
-            color: #ccc;
-            line-height: 1.5;
-            margin-bottom: 20px;
+            font-size: var(--z-ds-fontsize-22);
+            color: var(--z-ds-color-text-70);
+            line-height: 1.4;
+            margin-bottom: var(--z-ds-space-s);
         }
         
         .bookmark-icon {
@@ -189,35 +222,38 @@
         
         /* Articles Grid */
         .articles-section {
-            margin-top: 80px;
+            margin-top: var(--z-ds-space-xxl);
+            max-width: var(--z-ds-content-width);
+            margin-left: auto;
+            margin-right: auto;
         }
         
         .section-title {
-            font-size: 1.5rem;
+            font-size: var(--z-ds-fontsize-24);
             font-weight: 600;
-            color: #fff;
-            margin-bottom: 30px;
+            color: var(--z-ds-color-text-100);
+            margin-bottom: var(--z-ds-space-l);
             text-align: center;
         }
         
         .articles-grid {
             display: grid;
-            gap: 30px;
+            gap: var(--z-ds-space-l);
         }
         
         .article-item {
             display: grid;
             grid-template-columns: 200px 1fr;
-            gap: 20px;
-            padding: 20px;
-            background-color: #1a1a1a;
+            gap: var(--z-ds-space-s);
+            padding: var(--z-ds-space-s);
+            background-color: var(--z-ds-color-background-1);
             border-radius: 8px;
-            border: 1px solid #333;
+            border: 1px solid var(--z-ds-color-border);
             transition: border-color 0.2s ease;
         }
         
         .article-item:hover {
-            border-color: #555;
+            border-color: #555555;
         }
         
         .article-thumbnail {
@@ -228,49 +264,49 @@
         }
         
         .article-content h3 {
-            font-family: 'Source Serif Pro', Georgia, serif;
-            font-size: 1.3rem;
+            font-family: 'Inter', 'Helvetica Neue', Helvetica, Arial, FreeSans, sans-serif;
+            font-size: var(--z-ds-fontsize-22);
             font-weight: 600;
-            color: #fff;
+            color: var(--z-ds-color-text-100);
             line-height: 1.3;
-            margin-bottom: 10px;
+            margin-bottom: var(--z-ds-space-xxs);
         }
         
         .article-content h3 a {
-            color: #fff;
+            color: var(--z-ds-color-text-100);
             text-decoration: none;
         }
         
         .article-content h3 a:hover {
-            color: #007acc;
+            color: var(--z-ds-color-accent-100);
         }
         
         .article-excerpt {
-            color: #bbb;
-            font-size: 0.95rem;
+            color: var(--z-ds-color-text-70);
+            font-size: var(--z-ds-fontsize-16);
             line-height: 1.5;
-            margin-bottom: 10px;
+            margin-bottom: var(--z-ds-space-xxs);
         }
         
         .article-meta-small {
-            color: #666;
-            font-size: 0.8rem;
+            color: var(--z-ds-color-text-70);
+            font-size: var(--z-ds-fontsize-14);
         }
         
         /* Footer */
         footer {
-            border-top: 1px solid #333;
-            padding: 40px 20px;
+            border-top: 1px solid var(--z-ds-color-border);
+            padding: var(--z-ds-space-xl) var(--z-ds-space-s);
             text-align: center;
-            color: #666;
-            margin-top: 80px;
-            background-color: #1a1a1a;
+            color: var(--z-ds-color-text-70);
+            margin-top: var(--z-ds-space-xxl);
+            background-color: var(--z-ds-color-background-1);
         }
         
-        /* Mobile Responsive */
-        @media (max-width: 768px) {
+        /* Zeit.de Responsive Breakpoints */
+        @media (max-width: 48em) { /* 768px - Medium */
             .navbar {
-                padding: 0 15px;
+                padding: 0 var(--z-ds-space-s);
             }
             
             .navbar-nav {
@@ -278,21 +314,21 @@
             }
             
             .navbar-actions {
-                gap: 15px;
+                gap: var(--z-ds-space-s);
             }
             
             .hero-headline {
-                font-size: 2.2rem;
+                font-size: var(--z-ds-fontsize-32);
             }
             
             .hero-summary {
-                font-size: 1.1rem;
+                font-size: var(--z-ds-fontsize-16);
             }
             
             .article-item {
                 grid-template-columns: 120px 1fr;
-                gap: 15px;
-                padding: 15px;
+                gap: var(--z-ds-space-s);
+                padding: var(--z-ds-space-s);
             }
             
             .article-thumbnail {
@@ -300,15 +336,15 @@
             }
             
             .article-content h3 {
-                font-size: 1.1rem;
+                font-size: var(--z-ds-fontsize-16);
             }
             
             .main-content {
-                padding: 20px 15px;
+                padding: var(--z-ds-space-s);
             }
         }
         
-        @media (max-width: 480px) {
+        @media (max-width: 30em) { /* 480px - Small */
             .hero-image {
                 height: 300px;
             }
