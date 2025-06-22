@@ -245,15 +245,20 @@
             display: grid;
             grid-template-columns: 200px 1fr;
             gap: var(--z-ds-space-s);
-            padding: var(--z-ds-space-s);
-            background-color: var(--z-ds-color-background-1);
-            border-radius: 8px;
-            border: 1px solid var(--z-ds-color-border);
-            transition: border-color 0.2s ease;
+            padding: var(--z-ds-space-s) 0;
+            background-color: transparent;
+            border-radius: 0;
+            border: none;
+            border-bottom: 1px solid var(--z-ds-color-border-light);
+            transition: all 0.2s ease;
         }
         
         .article-item:hover {
-            border-color: #555555;
+            background-color: rgba(255, 255, 255, 0.02);
+        }
+        
+        .article-item:last-child {
+            border-bottom: none;
         }
         
         .article-thumbnail {
@@ -309,12 +314,8 @@
                 padding: 0 var(--z-ds-space-s);
             }
             
-            .navbar-nav {
-                display: none;
-            }
-            
-            .navbar-actions {
-                gap: var(--z-ds-space-s);
+            .navbar-brand {
+                font-size: var(--z-ds-fontsize-32);
             }
             
             .hero-headline {
@@ -328,7 +329,7 @@
             .article-item {
                 grid-template-columns: 120px 1fr;
                 gap: var(--z-ds-space-s);
-                padding: var(--z-ds-space-s);
+                padding: var(--z-ds-space-s) 0;
             }
             
             .article-thumbnail {
@@ -365,18 +366,6 @@
     <!-- Fixed Navigation -->
     <nav class="navbar">
         <a href="{{ site.baseurl }}/" class="navbar-brand">{{ site.title }}</a>
-        
-        <ul class="navbar-nav">
-            <li><a href="{{ site.baseurl }}/" class="active">Home</a></li>
-            <li><a href="{{ site.baseurl }}/foreign">World</a></li>
-            <li><a href="{{ site.baseurl }}/domestic">Domestic</a></li>
-            <li><a href="{{ site.baseurl }}/opinion">Opinion</a></li>
-        </ul>
-        
-        <div class="navbar-actions">
-            <button class="subscribe-btn">Subscribe</button>
-            <div class="profile-icon"></div>
-        </div>
     </nav>
 
     <!-- Main Content -->
