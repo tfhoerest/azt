@@ -3,14 +3,17 @@ description: "An open-source initiative for tracking global news, conflict, and 
 url: "https://tramci.github.io"
 baseurl: "/azt"
 
+# Build settings
 markdown: kramdown
 highlighter: rouge
 permalink: /:categories/:year/:month/:day/:title/
 
+# Collections
 collections:
   posts:
     output: true
 
+# Default settings
 defaults:
   - scope:
       path: ""
@@ -18,9 +21,21 @@ defaults:
     values:
       layout: "post"
 
+# Plugins
 plugins:
   - jekyll-feed
   - jekyll-sitemap
+  - jekyll-paginate
 
+# Pagination
+paginate: 10
+paginate_path: "/page:num/"
+
+# Categories
+categories: [foreign, domestic, opinion]
+
+# Build settings
 exclude:
   - README.md
+  - Gemfile
+  - Gemfile.lock
