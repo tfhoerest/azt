@@ -167,24 +167,24 @@ layout: default
         <img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=750&h=425&fit=crop" alt="Featured article" class="hero-image">
     {% endif %}
     
-    <div class="hero-content">
-        <div class="article-meta">
-            <span class="category-tag {{ featured_post.category }}">{{ featured_post.category | upcase }}</span>
-            <span>{{ featured_post.date | date: "%B %d, %Y" }}</span>
-        </div>
-        
-        {% if featured_post.author %}
-            <div class="hero-author">{{ featured_post.author }}</div>
-        {% endif %}
-        
-        <h1 class="hero-headline">
-            <a href="{{ featured_post.url | relative_url }}">{{ featured_post.title }}</a>
-        </h1>
-        
-        {% if featured_post.excerpt %}
-            <p class="hero-summary">{{ featured_post.excerpt | strip_html | truncate: 200 }}</p>
-        {% endif %}
+<div class="hero-content">
+    <div class="article-meta">
+        <span class="category-tag {{ featured_post.category }}">{{ featured_post.category | upcase }}</span>
+        <span>{{ featured_post.date | date: "%d.%m.%Y" }}</span>
     </div>
+    
+    <h1 class="hero-headline">
+        <a href="{{ featured_post.url | relative_url }}">{{ featured_post.title }}</a>
+    </h1>
+    
+    {% if featured_post.excerpt %}
+        <p class="hero-summary">{{ featured_post.excerpt | strip_html | truncate: 200 }}</p>
+    {% endif %}
+    
+    {% if featured_post.author %}
+        <div class="hero-author">{{ featured_post.author }}</div>
+    {% endif %}
+</div>
 </section>
 {% endif %}
 
