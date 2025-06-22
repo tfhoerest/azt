@@ -1,0 +1,215 @@
+---
+layout: default
+---
+
+<style>
+/* HERO SECTION */
+.hero-section {
+    margin-bottom: var(--z-ds-space-xxl);
+    max-width: 750px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.hero-image {
+    width: 100%;
+    height: 425px;
+    object-fit: cover;
+    margin-bottom: var(--z-ds-space-l);
+}
+
+.hero-content {
+    text-align: left;
+    max-width: var(--z-ds-newsletter-width);
+    margin: 0 auto;
+}
+
+.hero-author {
+    color: var(--z-ds-color-text-70);
+    font-size: var(--z-ds-fontsize-14);
+    margin-bottom: var(--z-ds-space-s);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.hero-headline {
+    font-family: 'Inter', 'Helvetica Neue', Helvetica, Arial, FreeSans, sans-serif;
+    font-size: var(--z-ds-fontsize-34);
+    font-weight: 700;
+    color: var(--z-ds-color-text-100);
+    line-height: 1.2;
+    margin-bottom: var(--z-ds-space-s);
+}
+
+.hero-headline a {
+    color: var(--z-ds-color-text-100);
+    text-decoration: none;
+}
+
+.hero-headline a:hover {
+    color: var(--z-ds-color-accent-100);
+}
+
+.hero-summary {
+    font-size: var(--z-ds-fontsize-22);
+    color: var(--z-ds-color-text-70);
+    line-height: 1.4;
+    margin-bottom: var(--z-ds-space-s);
+}
+
+.article-meta {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: var(--z-ds-space-s);
+    margin-bottom: var(--z-ds-space-s);
+    color: var(--z-ds-color-text-70);
+    font-size: var(--z-ds-fontsize-14);
+}
+
+/* ARTICLES */
+.articles-section {
+    margin-top: var(--z-ds-space-xxl);
+    max-width: 750px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.section-title {
+    font-size: var(--z-ds-fontsize-24);
+    font-weight: 600;
+    color: var(--z-ds-color-text-100);
+    margin-bottom: var(--z-ds-space-l);
+    text-align: center;
+}
+
+.articles-grid {
+    display: grid;
+    gap: var(--z-ds-space-l);
+}
+
+.article-item {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: var(--z-ds-space-s);
+    padding: var(--z-ds-space-s) 0;
+    background-color: transparent;
+    border-bottom: 1px solid var(--z-ds-color-border-light);
+    transition: all 0.2s ease;
+}
+
+.article-item:hover {
+    background-color: rgba(255, 255, 255, 0.02);
+}
+
+.article-item:last-child {
+    border-bottom: none;
+}
+
+.article-thumbnail {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+}
+
+.article-content h3 {
+    font-family: 'Inter', 'Helvetica Neue', Helvetica, Arial, FreeSans, sans-serif;
+    font-size: var(--z-ds-fontsize-22);
+    font-weight: 600;
+    color: var(--z-ds-color-text-100);
+    line-height: 1.3;
+    margin-bottom: var(--z-ds-space-xxs);
+}
+
+.article-content h3 a {
+    color: var(--z-ds-color-text-100);
+    text-decoration: none;
+}
+
+.article-content h3 a:hover {
+    color: var(--z-ds-color-accent-100);
+}
+
+.article-excerpt {
+    color: var(--z-ds-color-text-70);
+    font-size: var(--z-ds-fontsize-16);
+    line-height: 1.5;
+    margin-bottom: var(--z-ds-space-xxs);
+}
+
+.article-meta-small {
+    color: var(--z-ds-color-text-70);
+    font-size: var(--z-ds-fontsize-14);
+}
+
+@media (max-width: 48em) {
+    .article-item {
+        grid-template-columns: 140px 1fr;
+    }
+    
+    .article-thumbnail {
+        height: 80px;
+    }
+}
+</style>
+
+{% assign featured_post = site.posts | where: "featured", true | first %}
+{% unless featured_post %}
+  {% assign featured_post = site.posts.first %}
+{% endunless %}
+
+{% if featured_post %}
+<!-- Hero Section -->
+<section class="hero-section">
+    {% if featured_post.image %}
+        <img src="{{ featured_post.image }}" alt="{{ featured_post.title }}" class="hero-image">
+    {% else %}
+        <img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=750&h=425&fit=crop" alt="Featured article" class="hero-image">
+    {% endif %}
+    
+    <div class="hero-content">
+        <div class="article-meta">
+            <span class="category-tag {{ featured_post.category }}">{{ featured_post.category | upcase }}</span>
+            <span>{{ featured_post.date | date: "%B %d, %Y" }}</span>
+        </div>
+        
+        {% if featured_post.author %}
+            <div class="hero-author">{{ featured_post.author }}</div>
+        {% endif %}
+        
+        <h1 class="hero-headline">
+            <a href="{{ featured_post.url | relative_url }}">{{ featured_post.title }}</a>
+        </h1>
+        
+        {% if featured_post.excerpt %}
+            <p class="hero-summary">{{ featured_post.excerpt | strip_html | truncate: 200 }}</p>
+        {% endif %}
+    </div>
+</section>
+{% endif %}
+
+<!-- Articles Section -->
+<section class="articles-section">
+    <h2 class="section-title">Latest Stories</h2>
+    
+    <div class="articles-grid">
+        {% assign recent_posts = site.posts | where_exp: "post", "post.url != featured_post.url" | limit: 6 %}
+        {% for post in recent_posts %}
+        <article class="article-item">
+            {% if post.image %}
+                <img src="{{ post.image }}" alt="{{ post.title }}" class="article-thumbnail">
+            {% else %}
+                <img src="https://images.unsplash.com/photo-{{ forloop.index | plus: 1541872705 }}?w=240&h=120&fit=crop" alt="{{ post.title }}" class="article-thumbnail">
+            {% endif %}
+            
+            <div class="article-content">
+                <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+                <p class="article-excerpt">{{ post.excerpt | strip_html | truncate: 120 }}</p>
+                <div class="article-meta-small">
+                    <span class="category-tag {{ post.category }}">{{ post.category | upcase }}</span> • {{ post.date | date: "%B %d, %Y" }}
+                </div>
+            </div>
+        </article>
+        {% endfor %}
+    </div>
+</section>
