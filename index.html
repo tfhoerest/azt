@@ -56,16 +56,18 @@
 
         /* MASTHEAD HEADER */
         .masthead {
-            background-color: var(--z-ds-color-background-0);
-            border-bottom: 1px solid var(--z-ds-color-border);
-            padding: var(--z-ds-space-l) var(--z-ds-space-s);
-            text-align: center;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-        }
+    background-color: var(--z-ds-color-background-0);
+    padding: var(--z-ds-space-l) var(--z-ds-space-s);
+    text-align: center;
+    position: static;
+}
+
+.masthead-container {
+    max-width: var(--z-ds-content-width);
+    margin: 0 auto;
+    border-bottom: 1px solid var(--z-ds-color-border);
+    padding-bottom: var(--z-ds-space-l);
+}
         
         .site-title {
             font-family: 'Playfair Display', Georgia, serif;
@@ -296,7 +298,8 @@
 </head>
 <body>
     <!-- MASTHEAD -->
-    <header class="masthead">
+<header class="masthead">
+    <div class="masthead-container">
         <a href="{{ site.baseurl }}/" class="site-title">{{ site.title }}</a>
         <nav>
             <ul class="main-nav">
@@ -306,7 +309,8 @@
                 <li><a href="{{ site.baseurl }}/opinion">Opinion</a></li>
             </ul>
         </nav>
-    </header>
+    </div>
+</header>
 
     <!-- MAIN CONTENT -->
     <main class="main-content">
