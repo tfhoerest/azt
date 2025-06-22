@@ -4,8 +4,7 @@ title: "US strikes Iran's nuclear facilities in dramatic escalation of Middle Ea
 date: 2025-06-22
 category: foreign    # or domestic, opinion
 author: "Sloterdik"
-featured: true       # only for hero article (optional)
-image: "{{ site.baseurl }}/assets/images/trump-situation-room.jpg"   # optional
+image: "{{ site.baseurl }}/assets/images/trump-situation.jpg"   # optional
 excerpt: "The United States launched devastating airstrikes against three of Iran's most sensitive nuclear sites on Sunday, marking the most significant American military action on Iranian soil since the 1979 revolution and raising fears of a broader regional war."
 ---
 
