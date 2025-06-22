@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% if page.title %}{{ page.title }} | {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
+    <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Zeit.de Design System Variables - Dark Theme */
+        :root {
+            --z-ds-fontsize-14: 0.875rem;
+            --z-ds-fontsize-16: 1rem;
+            --z-ds-fontsize-22: 1.375rem;
+            --z-ds-fontsize-24: 1.5rem;
+            --z-ds-fontsize-32: 2rem;
+            --z-ds-fontsize-34: 2.125rem;
+            
+            --z-ds-space-xxs: 0.5rem;
+            --z-ds-space-s: 1rem;
+            --z-ds-space-m: 1.5rem;
+            --z-ds-space-l: 2rem;
+            --z-ds-space-xl: 3rem;
+            --z-ds-space-xxl: 4rem;
+            
+            --z-ds-color-text-100: #ffffff;
+            --z-ds-color-text-70: #b3b3b3;
+            --z-ds-color-background-0: #0a0a0a;
+            --z-ds-color-background-1: #1a1a1a;
+            --z-ds-color-accent-100: #ff6246;
+            --z-ds-color-border: #333333;
+            --z-ds-color-border-light: #2a2a2a;
+            
+            --z-ds-max-width: 1280px;
+            --z-ds-content-width: 750px;
+            --z-ds-newsletter-width: 46.25rem;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', 'Helvetica Neue', Helvetica, Arial, FreeSans, sans-serif;
+            line-height: 1.5;
+            color: var(--z-ds-color-text-100);
+            background-color: var(--z-ds-color-background-0);
+            font-weight: 400;
+            font-size: var(--z-ds-fontsize-16);
+        }
+
+        /* MASTHEAD HEADER */
+        .masthead {
+            background-color: var(--z-ds-color-background-0);
+            padding: var(--z-ds-space-l) var(--z-ds-space-s);
+            text-align: center;
+            position: static;
+        }
+
+        .masthead-container {
+            max-width: 750px;
+            margin: 0 auto;
+            border-bottom: 1px solid var(--z-ds-color-border);
+            padding-bottom: var(--z-ds-space-l);
+        }
+        
+        .site-title {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 3rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--z-ds-color-text-100);
+            text-decoration: none;
+            letter-spacing: 3px;
+            text-transform: lowercase;
+            display: block;
+            margin-bottom: var(--z-ds-space-s);
+        }
+        
+        .main-nav {
+            display: flex;
+            justify-content: center;
+            gap: var(--z-ds-space-l);
+            list-style: none;
+        }
+        
+        .main-nav a {
+            color: var(--z-ds-color-text-70);
+            text-decoration: none;
+            font-size: var(--z-ds-fontsize-14);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: color 0.2s ease;
+        }
+        
+        .main-nav a:hover,
+        .main-nav a.active {
+            color: var(--z-ds-color-text-100);
+        }
+
+        /* MAIN CONTENT */
+        .main-content {
+            margin-top: var(--z-ds-space-m);
+            padding: var(--z-ds-space-xl) var(--z-ds-space-s);
+        }
+        
+        .container {
+            max-width: var(--z-ds-max-width);
+            margin: 0 auto;
+        }
+        
+        /* CATEGORY TAGS */
+        .category-tag {
+            background: transparent;
+            color: var(--z-ds-color-text-70);
+            padding: 0;
+            border-radius: 0;
+            font-size: var(--z-ds-fontsize-14);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .category-tag.foreign { color: #60a5fa; }
+        .category-tag.domestic { color: #fb923c; }
+        .category-tag.opinion { color: #c084fc; }
+
+        /* FOOTER */
+        footer {
+            border-top: 1px solid var(--z-ds-color-border);
+            padding: var(--z-ds-space-xl) var(--z-ds-space-s);
+            text-align: center;
+            color: var(--z-ds-color-text-70);
+            margin-top: var(--z-ds-space-xxl);
+            background-color: var(--z-ds-color-background-1);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 48em) {
+            .site-title {
+                font-size: 2.5rem;
+                letter-spacing: 2px;
+            }
+            
+            .main-nav {
+                gap: var(--z-ds-space-s);
+            }
+            
+            .main-content {
+                margin-top: var(--z-ds-space-s);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- MASTHEAD -->
+    <header class="masthead">
+        <div class="masthead-container">
+            <a href="{{ site.baseurl }}/" class="site-title">{{ site.title }}</a>
+            <nav>
+                <ul class="main-nav">
+                    <li><a href="{{ site.baseurl }}/" {% if page.url == "/" %}class="active"{% endif %}>Home</a></li>
+                    <li><a href="{{ site.baseurl }}/foreign" {% if page.url contains "foreign" %}class="active"{% endif %}>Foreign</a></li>
+                    <li><a href="{{ site.baseurl }}/domestic" {% if page.url contains "domestic" %}class="active"{% endif %}>Domestic</a></li>
+                    <li><a href="{{ site.baseurl }}/opinion" {% if page.url contains "opinion" %}class="active"{% endif %}>Opinion</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+        <div class="container">
+            {{ content }}
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 {{ site.title }}. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
