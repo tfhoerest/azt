@@ -1,0 +1,205 @@
+---
+layout: default
+---
+
+<style>
+/* INDIVIDUAL POST PAGE */
+.post-container {
+    max-width: 750px;
+    margin: 0 auto;
+    padding: 0 var(--z-ds-space-s);
+}
+
+.post-header {
+    margin-bottom: var(--z-ds-space-xl);
+    text-align: left;
+}
+
+.post-title {
+    font-family: 'Inter', 'Helvetica Neue', Helvetica, Arial, FreeSans, sans-serif;
+    font-size: var(--z-ds-fontsize-34);
+    font-weight: 700;
+    color: var(--z-ds-color-text-100);
+    line-height: 1.2;
+    margin-bottom: var(--z-ds-space-l);
+}
+
+.post-lede {
+    font-size: var(--z-ds-fontsize-22);
+    color: var(--z-ds-color-text-70);
+    line-height: 1.4;
+    margin-bottom: var(--z-ds-space-l);
+    font-weight: 400;
+}
+
+.post-meta {
+    display: flex;
+    align-items: center;
+    gap: var(--z-ds-space-s);
+    margin-bottom: var(--z-ds-space-xl);
+    color: var(--z-ds-color-text-70);
+    font-size: var(--z-ds-fontsize-14);
+}
+
+.post-author {
+    color: var(--z-ds-color-text-70);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.post-image {
+    width: 100%;
+    height: 425px;
+    object-fit: cover;
+    margin-bottom: var(--z-ds-space-xl);
+}
+
+.post-content {
+    color: var(--z-ds-color-text-100);
+    font-size: var(--z-ds-fontsize-16);
+    line-height: 1.7;
+}
+
+.post-content h1,
+.post-content h2,
+.post-content h3 {
+    color: var(--z-ds-color-text-100);
+    margin: var(--z-ds-space-xl) 0 var(--z-ds-space-l) 0;
+    line-height: 1.3;
+}
+
+.post-content h1 {
+    font-size: var(--z-ds-fontsize-32);
+    font-weight: 700;
+}
+
+.post-content h2 {
+    font-size: var(--z-ds-fontsize-24);
+    font-weight: 600;
+}
+
+.post-content h3 {
+    font-size: var(--z-ds-fontsize-22);
+    font-weight: 600;
+}
+
+.post-content p {
+    margin-bottom: var(--z-ds-space-l);
+}
+
+.post-content ul,
+.post-content ol {
+    margin-bottom: var(--z-ds-space-l);
+    padding-left: var(--z-ds-space-l);
+}
+
+.post-content li {
+    margin-bottom: var(--z-ds-space-xxs);
+}
+
+.post-content blockquote {
+    border-left: 3px solid var(--z-ds-color-accent-100);
+    padding-left: var(--z-ds-space-l);
+    margin: var(--z-ds-space-l) 0;
+    color: var(--z-ds-color-text-70);
+    font-style: italic;
+}
+
+.post-content strong {
+    font-weight: 600;
+    color: var(--z-ds-color-text-100);
+}
+
+.post-content em {
+    font-style: italic;
+}
+
+.post-content a {
+    color: var(--z-ds-color-accent-100);
+    text-decoration: none;
+}
+
+.post-content a:hover {
+    text-decoration: underline;
+}
+
+/* NAVIGATION */
+.post-navigation {
+    border-top: 1px solid var(--z-ds-color-border);
+    margin-top: var(--z-ds-space-xxl);
+    padding-top: var(--z-ds-space-xl);
+    text-align: center;
+}
+
+.back-to-home {
+    color: var(--z-ds-color-text-70);
+    text-decoration: none;
+    font-size: var(--z-ds-fontsize-14);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: color 0.2s ease;
+}
+
+.back-to-home:hover {
+    color: var(--z-ds-color-text-100);
+}
+
+/* RESPONSIVE */
+@media (max-width: 48em) {
+    .post-title {
+        font-size: var(--z-ds-fontsize-32);
+    }
+    
+    .post-lede {
+        font-size: var(--z-ds-fontsize-16);
+    }
+    
+    .post-image {
+        height: 300px;
+    }
+    
+    .post-meta {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--z-ds-space-xxs);
+    }
+}
+</style>
+
+<article class="post-container">
+    <header class="post-header">
+        <!-- 1. TITLE -->
+        <h1 class="post-title">{{ page.title }}</h1>
+        
+        <!-- 2. LEDE (EXCERPT) -->
+        {% if page.excerpt %}
+            <div class="post-lede">{{ page.excerpt | strip_html }}</div>
+        {% endif %}
+        
+        <!-- 3. DATE AND AUTHOR -->
+        <div class="post-meta">
+            <span class="category-tag {{ page.category }}">{{ page.category | upcase }}</span>
+            <span>{{ page.date | date: "%d.%m.%Y" }}</span>
+            {% if page.author %}
+                <span>•</span>
+                <span class="post-author">{{ page.author }}</span>
+            {% endif %}
+        </div>
+    </header>
+    
+    <!-- 4. IMAGE -->
+    {% if page.image %}
+        <img src="{{ page.image }}" alt="{{ page.title }}" class="post-image">
+    {% endif %}
+    
+    <!-- 5. ARTICLE CONTENT -->
+    <div class="post-content">
+        {{ content }}
+    </div>
+    
+    <!-- NAVIGATION -->
+    <nav class="post-navigation">
+        <a href="{{ site.baseurl }}/" class="back-to-home">← Back to Home</a>
+    </nav>
+</article>
