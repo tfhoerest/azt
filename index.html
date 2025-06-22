@@ -131,7 +131,7 @@
         
         /* Main Content */
         .main-content {
-            margin-top: 70px;
+            margin-top: 120px;
             padding: var(--z-ds-space-xl) var(--z-ds-space-s);
         }
         
@@ -311,11 +311,24 @@
         /* Zeit.de Responsive Breakpoints */
         @media (max-width: 48em) { /* 768px - Medium */
             .navbar {
-                padding: 0 var(--z-ds-space-s);
+                padding: var(--z-ds-space-s);
             }
             
             .navbar-brand {
                 font-size: var(--z-ds-fontsize-32);
+            }
+            
+            .navbar-nav {
+                gap: var(--z-ds-space-s);
+            }
+            
+            .navbar-nav a {
+                font-size: var(--z-ds-fontsize-14);
+            }
+            
+            .main-content {
+                margin-top: 110px;
+                padding: var(--z-ds-space-s);
             }
             
             .hero-headline {
@@ -338,10 +351,6 @@
             
             .article-content h3 {
                 font-size: var(--z-ds-fontsize-16);
-            }
-            
-            .main-content {
-                padding: var(--z-ds-space-s);
             }
         }
         
@@ -366,6 +375,13 @@
     <!-- Fixed Navigation -->
     <nav class="navbar">
         <a href="{{ site.baseurl }}/" class="navbar-brand">{{ site.title }}</a>
+        
+        <ul class="navbar-nav">
+            <li><a href="{{ site.baseurl }}/" class="active">Home</a></li>
+            <li><a href="{{ site.baseurl }}/foreign">Foreign</a></li>
+            <li><a href="{{ site.baseurl }}/domestic">Domestic</a></li>
+            <li><a href="{{ site.baseurl }}/opinion">Opinion</a></li>
+        </ul>
     </nav>
 
     <!-- Main Content -->
