@@ -5,7 +5,7 @@ date: 2025-06-22
 category: foreign    # or domestic, opinion
 author: "Sloterdik"
 image: "https://tramci.github.io/azt/assets/images/trump-situation.jpg"  # optional
-excerpt: "The United States launched devastating airstrikes against three of Iran's most sensitive nuclear sites on Sunday, marking the most significant American military action on Iranian soil since the 1979 revolution and raising fears of a broader regional war."
+excerpt: "The United States launched devastating airstrikes against three of Iran's most sensitive nuclear sites on Sunday, marking the most significant American military action on Iranian soil since the 1979 revolution."
 ---
 
 The strikes, codenamed Operation Midnight Hammer, targeted the Fordow, Natanz and Isfahan facilities using an unprecedented deployment of seven B-2 stealth bombers flying from Missouri, supported by more than 125 aircraft. Pentagon officials said the bombers dropped 14 of the military's most powerful bunker-busting bombs, marking their first combat use.
