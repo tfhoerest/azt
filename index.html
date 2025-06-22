@@ -8,24 +8,27 @@
     <title>{{ site.title }}</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap" rel="stylesheet">
     <style>
         /* Zeit.de Design System Variables - Dark Theme */
         :root {
-            --z-ds-fontsize-14: 0.875rem;
-            --z-ds-fontsize-16: 1rem;
-            --z-ds-fontsize-22: 1.375rem;
-            --z-ds-fontsize-24: 1.5rem;
-            --z-ds-fontsize-32: 2rem;
-            --z-ds-fontsize-34: 2.125rem;
+            --z-ds-fontsize-14: 0.875rem;    /* 14px */
+            --z-ds-fontsize-16: 1rem;        /* 16px */
+            --z-ds-fontsize-22: 1.375rem;    /* 22px */
+            --z-ds-fontsize-24: 1.5rem;      /* 24px */
+            --z-ds-fontsize-32: 2rem;        /* 32px */
+            --z-ds-fontsize-34: 2.125rem;    /* 34px */
             
-            --z-ds-space-xxs: 0.5rem;
-            --z-ds-space-s: 1rem;
-            --z-ds-space-m: 1.5rem;
-            --z-ds-space-l: 2rem;
-            --z-ds-space-xl: 3rem;
-            --z-ds-space-xxl: 4rem;
+            --z-ds-space-xxs: 0.5rem;        /* 8px */
+            --z-ds-space-s: 1rem;            /* 16px */
+            --z-ds-space-m: 1.5rem;          /* 24px */
+            --z-ds-space-l: 2rem;            /* 32px */
+            --z-ds-space-xl: 3rem;           /* 48px */
+            --z-ds-space-xxl: 4rem;          /* 64px */
             
+            /* Dark Theme Colors */
             --z-ds-color-text-100: #ffffff;
             --z-ds-color-text-70: #b3b3b3;
             --z-ds-color-background-0: #0a0a0a;
@@ -35,10 +38,9 @@
             --z-ds-color-border-light: #2a2a2a;
             
             --z-ds-max-width: 1280px;
-            --z-ds-content-width: 55.75rem;
-            --z-ds-newsletter-width: 46.25rem;
+            --z-ds-content-width: 55.75rem;  /* 892px */
+            --z-ds-newsletter-width: 46.25rem; /* 740px */
         }
-
         * {
             margin: 0;
             padding: 0;
@@ -53,58 +55,85 @@
             font-weight: 400;
             font-size: var(--z-ds-fontsize-16);
         }
-
-        /* MASTHEAD HEADER */
-        .masthead {
-            background-color: var(--z-ds-color-background-0);
-            border-bottom: 1px solid var(--z-ds-color-border);
-            padding: var(--z-ds-space-l) var(--z-ds-space-s);
-            text-align: center;
+        
+        /* Fixed Navigation */
+        .navbar {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
+            background-color: var(--z-ds-color-background-1);
+            border-bottom: 1px solid var(--z-ds-color-border);
+            padding: 0 var(--z-ds-space-s);
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
             z-index: 1000;
         }
         
-        .site-title {
-            font-family: 'Playfair Display', Georgia, serif;
-            font-size: 3rem;
-            font-weight: 400;
-            font-style: italic;
+        .navbar-brand {
+            font-size: var(--z-ds-fontsize-24);
+            font-weight: 700;
             color: var(--z-ds-color-text-100);
             text-decoration: none;
-            letter-spacing: 3px;
-            text-transform: lowercase;
-            display: block;
-            margin-bottom: var(--z-ds-space-s);
+            letter-spacing: 1px;
         }
         
-        .main-nav {
+        .navbar-nav {
             display: flex;
-            justify-content: center;
+            align-items: center;
             gap: var(--z-ds-space-l);
             list-style: none;
         }
         
-        .main-nav a {
+        .navbar-nav a {
             color: var(--z-ds-color-text-70);
             text-decoration: none;
             font-size: var(--z-ds-fontsize-14);
             font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
             transition: color 0.2s ease;
         }
         
-        .main-nav a:hover,
-        .main-nav a.active {
+        .navbar-nav a:hover,
+        .navbar-nav a.active {
             color: var(--z-ds-color-text-100);
         }
-
-        /* MAIN CONTENT */
+        
+        .navbar-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .subscribe-btn {
+            background-color: var(--z-ds-color-accent-100);
+            color: var(--z-ds-color-background-0);
+            padding: var(--z-ds-space-xxs) var(--z-ds-space-s);
+            border: none;
+            border-radius: 4px;
+            font-size: var(--z-ds-fontsize-14);
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+        
+        .subscribe-btn:hover {
+            background-color: #e5532b;
+        }
+        
+        .profile-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background-color: var(--z-ds-color-border);
+            border: 2px solid var(--z-ds-color-border-light);
+            cursor: pointer;
+        }
+        
+        /* Main Content */
         .main-content {
-            margin-top: 160px;
+            margin-top: 140px;
             padding: var(--z-ds-space-xl) var(--z-ds-space-s);
         }
         
@@ -113,7 +142,7 @@
             margin: 0 auto;
         }
         
-        /* HERO SECTION */
+        /* Hero Section */
         .hero-section {
             margin-bottom: var(--z-ds-space-xxl);
             max-width: var(--z-ds-content-width);
@@ -158,32 +187,41 @@
             margin-bottom: var(--z-ds-space-s);
         }
         
+        .bookmark-icon {
+            width: 24px;
+            height: 24px;
+            border: 2px solid #666;
+            background: transparent;
+            cursor: pointer;
+            margin: 0 auto;
+        }
+        
+        /* Article Meta */
         .article-meta {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: var(--z-ds-space-s);
-            margin-bottom: var(--z-ds-space-s);
-            color: var(--z-ds-color-text-70);
-            font-size: var(--z-ds-fontsize-14);
+            gap: 15px;
+            margin-bottom: 20px;
+            color: #888;
+            font-size: 0.9rem;
         }
         
         .category-tag {
-            background: var(--z-ds-color-border);
-            color: var(--z-ds-color-text-100);
-            padding: var(--z-ds-space-xxs) var(--z-ds-space-s);
+            background: #333;
+            color: #fff;
+            padding: 4px 12px;
             border-radius: 12px;
-            font-size: var(--z-ds-fontsize-14);
+            font-size: 0.8rem;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            text-decoration: none;
         }
         
-        .category-tag.foreign { background: #1e3a8a; color: #60a5fa; }
-        .category-tag.domestic { background: #7c2d12; color: #fb923c; }
-        .category-tag.opinion { background: #581c87; color: #c084fc; }
-
-        /* ARTICLES */
+        .category-tag.foreign { background: #1e3a8a; }
+        .category-tag.domestic { background: #7c2d12; }
+        .category-tag.opinion { background: #365314; }
+        
+        /* Articles Grid */
         .articles-section {
             margin-top: var(--z-ds-space-xxl);
             max-width: var(--z-ds-content-width);
@@ -206,10 +244,12 @@
         
         .article-item {
             display: grid;
-            grid-template-columns: 240px 1fr;
+            grid-template-columns: 200px 1fr;
             gap: var(--z-ds-space-s);
             padding: var(--z-ds-space-s) 0;
             background-color: transparent;
+            border-radius: 0;
+            border: none;
             border-bottom: 1px solid var(--z-ds-color-border-light);
             transition: all 0.2s ease;
         }
@@ -257,8 +297,8 @@
             color: var(--z-ds-color-text-70);
             font-size: var(--z-ds-fontsize-14);
         }
-
-        /* FOOTER */
+        
+        /* Footer */
         footer {
             border-top: 1px solid var(--z-ds-color-border);
             padding: var(--z-ds-space-xl) var(--z-ds-space-s);
@@ -267,47 +307,84 @@
             margin-top: var(--z-ds-space-xxl);
             background-color: var(--z-ds-color-background-1);
         }
-
-        /* RESPONSIVE */
-        @media (max-width: 48em) {
-            .site-title {
-                font-size: 2.5rem;
-                letter-spacing: 2px;
+        
+        /* Zeit.de Responsive Breakpoints */
+        @media (max-width: 48em) { /* 768px - Medium */
+            .navbar {
+                padding: var(--z-ds-space-s);
             }
             
-            .main-nav {
+            .navbar-brand {
+                font-size: var(--z-ds-fontsize-32);
+            }
+            
+            .navbar-nav {
                 gap: var(--z-ds-space-s);
             }
             
+            .navbar-nav a {
+                font-size: var(--z-ds-fontsize-14);
+            }
+            
             .main-content {
-                margin-top: 140px;
+                margin-top: 110px;
+                padding: var(--z-ds-space-s);
+            }
+            
+            .hero-headline {
+                font-size: var(--z-ds-fontsize-32);
+            }
+            
+            .hero-summary {
+                font-size: var(--z-ds-fontsize-16);
             }
             
             .article-item {
-                grid-template-columns: 140px 1fr;
+                grid-template-columns: 120px 1fr;
+                gap: var(--z-ds-space-s);
+                padding: var(--z-ds-space-s) 0;
             }
             
             .article-thumbnail {
                 height: 80px;
             }
+            
+            .article-content h3 {
+                font-size: var(--z-ds-fontsize-16);
+            }
+        }
+        
+        @media (max-width: 30em) { /* 480px - Small */
+            .hero-image {
+                height: 300px;
+            }
+            
+            .article-item {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .article-thumbnail {
+                height: 150px;
+                margin: 0 auto;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- MASTHEAD -->
-    <header class="masthead">
-        <a href="{{ site.baseurl }}/" class="site-title">{{ site.title }}</a>
-        <nav>
-            <ul class="main-nav">
-                <li><a href="{{ site.baseurl }}/" class="active">Home</a></li>
-                <li><a href="{{ site.baseurl }}/foreign">Foreign</a></li>
-                <li><a href="{{ site.baseurl }}/domestic">Domestic</a></li>
-                <li><a href="{{ site.baseurl }}/opinion">Opinion</a></li>
-            </ul>
-        </nav>
-    </header>
+    <!-- Fixed Navigation -->
+    <nav class="navbar">
+        <a href="{{ site.baseurl }}/" class="navbar-brand">{{ site.title }}</a>
+        
+        <ul class="navbar-nav">
+            <li><a href="{{ site.baseurl }}/" class="active">Home</a></li>
+            <li><a href="{{ site.baseurl }}/foreign">Foreign</a></li>
+            <li><a href="{{ site.baseurl }}/domestic">Domestic</a></li>
+            <li><a href="{{ site.baseurl }}/opinion">Opinion</a></li>
+        </ul>
+    </nav>
 
-    <!-- MAIN CONTENT -->
+    <!-- Main Content -->
     <main class="main-content">
         <div class="container">
             <!-- Hero Section -->
@@ -325,6 +402,8 @@
                     <h1 class="hero-headline">Global Intelligence Networks Reshape Modern Conflict Monitoring</h1>
                     
                     <p class="hero-summary">Advanced tracking systems and open-source intelligence platforms are revolutionizing how conflicts are monitored and analyzed in real-time across multiple theaters of operation.</p>
+                    
+                    <div class="bookmark-icon"></div>
                 </div>
             </section>
 
@@ -362,6 +441,28 @@
                             <p class="article-excerpt">Comprehensive analysis of regional threats and defensive capabilities reveals shifting geopolitical dynamics.</p>
                             <div class="article-meta-small">
                                 <span class="category-tag foreign">Foreign</span> • June 19, 2025
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="article-item">
+                        <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=200&h=120&fit=crop" alt="Article thumbnail" class="article-thumbnail">
+                        <div class="article-content">
+                            <h3><a href="#">Cybersecurity Infrastructure Modernization</a></h3>
+                            <p class="article-excerpt">Federal agencies implement next-generation security protocols to protect critical information systems.</p>
+                            <div class="article-meta-small">
+                                <span class="category-tag domestic">Domestic</span> • June 19, 2025
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="article-item">
+                        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=200&h=120&fit=crop" alt="Article thumbnail" class="article-thumbnail">
+                        <div class="article-content">
+                            <h3><a href="#">The Future of Conflict Analysis</a></h3>
+                            <p class="article-excerpt">Machine learning and artificial intelligence are transforming how we predict, monitor, and respond to global conflicts.</p>
+                            <div class="article-meta-small">
+                                <span class="category-tag opinion">Opinion</span> • June 18, 2025
                             </div>
                         </div>
                     </article>
