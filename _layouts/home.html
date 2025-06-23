@@ -204,7 +204,7 @@ layout: default
             
             <div class="article-content">
                 <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
-                <p class="article-excerpt">{{ post.excerpt | strip_html | truncate: 120 }}</p>
+                <p class="article-excerpt">{{ post.excerpt | strip_html | truncatewords: 25 }}</p>
                 <div class="article-meta-small">
                     <span class="category-tag {{ post.category }}">{{ post.category | upcase }}</span> • {{ post.date | date: "%B %d, %Y" }}
                 </div>
