@@ -12,33 +12,152 @@
     
     <style>
         /* Zeit.de Design System Variables - Dark Theme */
-        :root {
-            --z-ds-fontsize-14: 0.875rem;
-            --z-ds-fontsize-16: 1rem;
-            --z-ds-fontsize-22: 1.375rem;
-            --z-ds-fontsize-24: 1.5rem;
-            --z-ds-fontsize-32: 2rem;
-            --z-ds-fontsize-34: 2.125rem;
-            
-            --z-ds-space-xxs: 0.5rem;
-            --z-ds-space-s: 1rem;
-            --z-ds-space-m: 1.5rem;
-            --z-ds-space-l: 2rem;
-            --z-ds-space-xl: 3rem;
-            --z-ds-space-xxl: 4rem;
-            
-            --z-ds-color-text-100: #ffffff;
-            --z-ds-color-text-70: #b3b3b3;
-            --z-ds-color-background-0: #0a0a0a;
-            --z-ds-color-background-1: #1a1a1a;
-            --z-ds-color-accent-100: #ff6246;
-            --z-ds-color-border: #333333;
-            --z-ds-color-border-light: #2a2a2a;
-            
-            --z-ds-max-width: 1280px;
-            --z-ds-content-width: 750px;
-            --z-ds-newsletter-width: 46.25rem;
-        }
+      <style>
+/* THEME VARIABLES */
+:root {
+    /* Font sizes */
+    --z-ds-fontsize-14: 0.875rem;
+    --z-ds-fontsize-16: 1rem;
+    --z-ds-fontsize-22: 1.375rem;
+    --z-ds-fontsize-24: 1.5rem;
+    --z-ds-fontsize-32: 2rem;
+    --z-ds-fontsize-34: 2.125rem;
+    
+    /* Spacing */
+    --z-ds-space-xxs: 0.5rem;
+    --z-ds-space-s: 1rem;
+    --z-ds-space-m: 1.5rem;
+    --z-ds-space-l: 2rem;
+    --z-ds-space-xl: 3rem;
+    --z-ds-space-xxl: 4rem;
+    
+    /* Layout */
+    --z-ds-max-width: 1280px;
+    --z-ds-content-width: 750px;
+    --z-ds-newsletter-width: 46.25rem;
+}
+
+/* LIGHT THEME (default) */
+:root {
+    --z-ds-color-text-100: #1a1a1a;
+    --z-ds-color-text-70: #666666;
+    --z-ds-color-background-0: #ffffff;
+    --z-ds-color-background-1: #f8f9fa;
+    --z-ds-color-accent-100: #ff6246;
+    --z-ds-color-border: #e1e5e9;
+    --z-ds-color-border-light: #f0f0f0;
+}
+
+/* DARK THEME */
+[data-theme="dark"] {
+    --z-ds-color-text-100: #ffffff;
+    --z-ds-color-text-70: #b3b3b3;
+    --z-ds-color-background-0: #0a0a0a;
+    --z-ds-color-background-1: #1a1a1a;
+    --z-ds-color-accent-100: #ff6246;
+    --z-ds-color-border: #333333;
+    --z-ds-color-border-light: #2a2a2a;
+}
+
+/* DARK MODE TOGGLE */
+.theme-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: var(--z-ds-color-background-1);
+    border: 1px solid var(--z-ds-color-border);
+    border-radius: 50px;
+    padding: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 1000;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.theme-toggle:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.toggle-inner {
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 48px;
+    height: 24px;
+    background: var(--z-ds-color-border);
+    border-radius: 50px;
+    transition: background-color 0.3s ease;
+}
+
+.toggle-switch {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 20px;
+    height: 20px;
+    background: var(--z-ds-color-background-0);
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+}
+
+[data-theme="dark"] .toggle-switch {
+    transform: translateX(24px);
+}
+
+.toggle-icon {
+    transition: opacity 0.3s ease;
+}
+
+.sun-icon {
+    opacity: 1;
+}
+
+.moon-icon {
+    opacity: 0;
+    position: absolute;
+}
+
+[data-theme="dark"] .sun-icon {
+    opacity: 0;
+}
+
+[data-theme="dark"] .moon-icon {
+    opacity: 1;
+}
+
+/* Smooth transitions for theme changes */
+* {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+@media (max-width: 48em) {
+    .theme-toggle {
+        top: 10px;
+        right: 10px;
+        padding: 6px;
+    }
+    
+    .toggle-inner {
+        width: 40px;
+        height: 20px;
+    }
+    
+    .toggle-switch {
+        width: 16px;
+        height: 16px;
+        font-size: 10px;
+    }
+    
+    [data-theme="dark"] .toggle-switch {
+        transform: translateX(20px);
+    }
+}
+</style>
 
         * {
             margin: 0;
@@ -162,6 +281,14 @@
     </style>
 </head>
 <body>
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+    <div class="toggle-inner">
+        <div class="toggle-switch">
+            <span class="toggle-icon sun-icon">☀️</span>
+            <span class="toggle-icon moon-icon">🌙</span>
+        </div>
+    </div>
+</button>
     <!-- MASTHEAD -->
     <header class="masthead">
         <div class="masthead-container">
@@ -189,5 +316,23 @@
             <p>&copy; 2025 {{ site.title }}. All rights reserved.</p>
         </div>
     </footer>
+<script>
+(function() {
+    const themeToggle = document.getElementById('theme-toggle');
+    const html = document.documentElement;
+    
+    // Check for saved theme preference or default to 'dark' to match current design
+    const currentTheme = localStorage.getItem('theme') || 'dark';
+    html.setAttribute('data-theme', currentTheme);
+    
+    themeToggle.addEventListener('click', function() {
+        const currentTheme = html.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        
+        html.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+    });
+})();
+</script>
 </body>
 </html>
