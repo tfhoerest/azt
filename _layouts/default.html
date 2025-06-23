@@ -58,7 +58,7 @@
     --z-ds-color-border-light: #2a2a2a;
 }
 
-/* MINIMALIST DARK MODE TOGGLE */
+/* SIMPLE DARK MODE TOGGLE */
 .theme-toggle {
     position: fixed;
     top: 20px;
@@ -104,54 +104,27 @@
     transform: translateX(24px);
 }
 
-/* Minimal Icons */
+/* Simple Icons */
 .toggle-icon {
-    width: 10px;
-    height: 10px;
+    position: absolute;
     transition: opacity 0.3s ease;
 }
 
 .sun-icon {
     opacity: 1;
-    background: var(--z-ds-color-text-100);
+    width: 8px;
+    height: 8px;
+    background: #ffa500;
     border-radius: 50%;
-    position: relative;
-}
-
-.sun-icon::before {
-    content: '';
-    position: absolute;
-    top: -4px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 1px;
-    height: 2px;
-    background: var(--z-ds-color-text-100);
-    box-shadow: 
-        0 12px 0 var(--z-ds-color-text-100),
-        4px 4px 0 var(--z-ds-color-text-100),
-        -4px 4px 0 var(--z-ds-color-text-100),
-        8px 0 0 var(--z-ds-color-text-100),
-        -8px 0 0 var(--z-ds-color-text-100);
 }
 
 .moon-icon {
     opacity: 0;
-    position: absolute;
-    background: var(--z-ds-color-text-100);
-    border-radius: 50%;
-    position: relative;
-}
-
-.moon-icon::before {
-    content: '';
-    position: absolute;
-    top: -2px;
-    right: -2px;
     width: 8px;
     height: 8px;
-    background: var(--z-ds-color-background-0);
-    border-radius: 50%;
+    background: #4a90e2;
+    border-radius: 50% 0;
+    transform: rotate(45deg);
 }
 
 [data-theme="dark"] .sun-icon {
@@ -183,8 +156,8 @@
     }
     
     .toggle-icon {
-        width: 8px;
-        height: 8px;
+        width: 6px;
+        height: 6px;
     }
 }
         * {
