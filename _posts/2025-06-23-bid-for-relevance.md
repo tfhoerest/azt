@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "A bid for relevance"
+title: "A new face, an old dilemma"
 date: 2025-06-23
 category: domestic    # or domestic, opinion
 author: "Sloterdik"
