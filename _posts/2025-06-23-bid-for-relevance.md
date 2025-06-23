@@ -31,8 +31,6 @@ To that end, Prebilič has confirmed cooperation with former MEP Klemen Grošelj
 
 “There’s room for people who want to contribute,” he said. “We don’t want a one-face party.”
 
-That message may resonate in a political system where volatility has become a permanent condition. Since 2020, Slovenia has cycled through technocratic experiments, environmental coalitions, and anti-corruption crusades – all of which flared brightly before dimming under the weight of internal contradictions or external disinterest.
-
 In that context, Prebilič’s initiative offers at least the prospect of novelty. But novelty, as Slovenia has learned, is no guarantee of durability. Unless his October congress yields a substantive programme – and unless he can define a coalition of willing allies without falling into the trap of leftist redundancy – he risks becoming yet another footnote in a long line of political resets.
 
 What is certain, however, is that his candidacy forces a broader reckoning for the centre-left. If Prebilič draws support from disaffected Svoboda voters or those uneasy with Levica’s programme, he may reshape the field. If not, he could simply reinforce the fragmentation he claims to oppose.
