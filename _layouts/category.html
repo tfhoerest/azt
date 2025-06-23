@@ -1,0 +1,164 @@
+---
+layout: default
+---
+
+<style>
+/* CATEGORY PAGE STYLES */
+.category-header {
+    text-align: center;
+    margin-bottom: var(--z-ds-space-xxl);
+    max-width: 750px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 var(--z-ds-space-s);
+}
+
+.category-title {
+    font-family: 'Inter', 'Helvetica Neue', Helvetica, Arial, FreeSans, sans-serif;
+    font-size: var(--z-ds-fontsize-34);
+    font-weight: 700;
+    color: var(--z-ds-color-text-100);
+    margin-bottom: var(--z-ds-space-s);
+    text-transform: capitalize;
+}
+
+.category-description {
+    font-size: var(--z-ds-fontsize-22);
+    color: var(--z-ds-color-text-70);
+    line-height: 1.4;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.category-posts {
+    max-width: 750px;
+    margin: 0 auto;
+    padding: 0 var(--z-ds-space-s);
+}
+
+.posts-grid {
+    display: grid;
+    gap: var(--z-ds-space-xl);
+}
+
+.post-card {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: var(--z-ds-space-l);
+    padding-bottom: var(--z-ds-space-xl);
+    border-bottom: 1px solid var(--z-ds-color-border-light);
+}
+
+.post-card:last-child {
+    border-bottom: none;
+}
+
+.post-card-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.post-card-content h2 {
+    font-family: 'Inter', 'Helvetica Neue', Helvetica, Arial, FreeSans, sans-serif;
+    font-size: var(--z-ds-fontsize-24);
+    font-weight: 600;
+    color: var(--z-ds-color-text-100);
+    line-height: 1.3;
+    margin-bottom: var(--z-ds-space-s);
+}
+
+.post-card-content h2 a {
+    color: var(--z-ds-color-text-100);
+    text-decoration: none;
+}
+
+.post-card-content h2 a:hover {
+    color: var(--z-ds-color-accent-100);
+}
+
+.post-card-excerpt {
+    color: var(--z-ds-color-text-70);
+    font-size: var(--z-ds-fontsize-16);
+    line-height: 1.5;
+    margin-bottom: var(--z-ds-space-s);
+}
+
+.post-card-meta {
+    color: var(--z-ds-color-text-70);
+    font-size: var(--z-ds-fontsize-14);
+    display: flex;
+    align-items: center;
+    gap: var(--z-ds-space-s);
+}
+
+.no-posts {
+    text-align: center;
+    color: var(--z-ds-color-text-70);
+    font-size: var(--z-ds-fontsize-22);
+    margin: var(--z-ds-space-xxl) 0;
+}
+
+@media (max-width: 48em) {
+    .post-card {
+        grid-template-columns: 1fr;
+        gap: var(--z-ds-space-s);
+    }
+    
+    .post-card-image {
+        height: 250px;
+    }
+    
+    .category-title {
+        font-size: var(--z-ds-fontsize-32);
+    }
+    
+    .category-description {
+        font-size: var(--z-ds-fontsize-16);
+    }
+}
+</style>
+
+<!-- Category Header -->
+<header class="category-header">
+    <h1 class="category-title">{{ page.category }} News</h1>
+    {% if page.description %}
+        <p class="category-description">{{ page.description }}</p>
+    {% endif %}
+</header>
+
+<!-- Category Posts -->
+<section class="category-posts">
+    {% assign category_posts = site.posts | where: "category", page.category %}
+    
+    {% if category_posts.size > 0 %}
+        <div class="posts-grid">
+            {% for post in category_posts %}
+            <article class="post-card">
+                {% if post.image %}
+                    <img src="{{ post.image }}" alt="{{ post.title }}" class="post-card-image">
+                {% else %}
+                    <img src="https://images.unsplash.com/photo-{{ forloop.index | plus: 1541872705 }}?w=300&h=200&fit=crop" alt="{{ post.title }}" class="post-card-image">
+                {% endif %}
+                
+                <div class="post-card-content">
+                    <h2><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
+                    <p class="post-card-excerpt">{{ post.excerpt | strip_html | truncate: 180 }}</p>
+                    <div class="post-card-meta">
+                        <span class="category-tag {{ post.category }}">{{ post.category | upcase }}</span>
+                        <span>{{ post.date | date: "%B %d, %Y" }}</span>
+                        {% if post.author %}
+                            <span>•</span>
+                            <span>{{ post.author }}</span>
+                        {% endif %}
+                    </div>
+                </div>
+            </article>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="no-posts">
+            <p>No {{ page.category }} articles published yet.</p>
+        </div>
+    {% endif %}
+</section>
