@@ -12,7 +12,6 @@
     
     <style>
         /* Zeit.de Design System Variables - Dark Theme */
-/* Zeit.de Design System Variables - Dark Theme */
 :root {
     /* Font sizes */
     --z-ds-fontsize-14: 0.875rem;
@@ -135,106 +134,80 @@
     opacity: 1;
 }
 
-@media (max-width: 48em) {
-    .theme-toggle {
-        top: 15px;
-        right: 15px;
-    }
-    
-    .toggle-inner {
-        width: 40px;
-        height: 20px;
-    }
-    
-    .toggle-switch {
-        width: 16px;
-        height: 16px;
-    }
-    
-    [data-theme="dark"] .toggle-switch {
-        transform: translateX(20px);
-    }
-    
-    .toggle-icon {
-        width: 6px;
-        height: 6px;
-    }
-}
+        /* Custom Font - Saj JY */
+        @font-face {
+            font-family: 'Saj JY';
+            src: url('/azt/assets/fonts/Saj-JY-Regular.woff2') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
 
-/* Custom Font - Saj JY */
-@font-face {
-    font-family: 'Saj JY';
-    src: url('/azt/assets/fonts/Saj-JY-Regular.woff2') format('woff2');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-}
+        @font-face {
+            font-family: 'Saj JY';
+            src: url('/azt/assets/fonts/Saj-JY-Bold.woff2') format('woff2');
+            font-weight: bold;
+            font-style: normal;
+            font-display: swap;
+        }
 
-@font-face {
-    font-family: 'Saj JY';
-    src: url('/azt/assets/fonts/Saj-JY-Bold.woff2') format('woff2');
-    font-weight: bold;
-    font-style: normal;
-    font-display: swap;
-}
+        @font-face {
+            font-family: 'Saj JY';
+            src: url('/azt/assets/fonts/Saj-JY-Italic.woff2') format('woff2');
+            font-weight: normal;
+            font-style: italic;
+            font-display: swap;
+        }
 
-@font-face {
-    font-family: 'Saj JY';
-    src: url('/azt/assets/fonts/Saj-JY-Italic.woff2') format('woff2');
-    font-weight: normal;
-    font-style: italic;
-    font-display: swap;
-}
+        @font-face {
+            font-family: 'Saj JY';
+            src: url('/azt/assets/fonts/Saj-JY-Light.woff2') format('woff2');
+            font-weight: 300;
+            font-style: normal;
+            font-display: swap;
+        }
 
-@font-face {
-    font-family: 'Saj JY';
-    src: url('/azt/assets/fonts/Saj-JY-Light.woff2') format('woff2');
-    font-weight: 300;
-    font-style: normal;
-    font-display: swap;
-}
+        /* Custom Font - Adriatic Journal (Masthead) */
+        @font-face {
+            font-family: 'Adriatic Journal';
+            src: url('/azt/assets/fonts/Adriatic-Journal.woff2') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
 
-/* Custom Font - Adriatic Journal (Masthead) */
-@font-face {
-    font-family: 'Adriatic Journal';
-    src: url('/azt/assets/fonts/Adriatic-Journal.woff2') format('woff2');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-}
+        /* Custom Font - Adriatic22 (Article Body) */
+        @font-face {
+            font-family: 'Adriatic22';
+            src: url('/azt/assets/fonts/Adriatic22-Regular.woff2') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
 
-/* Custom Font - Adriatic22 (Article Body) */
-@font-face {
-    font-family: 'Adriatic22';
-    src: url('/azt/assets/fonts/Adriatic22-Regular.woff2') format('woff2');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-}
+        @font-face {
+            font-family: 'Adriatic22';
+            src: url('/azt/assets/fonts/Adriatic22-Bold.woff2') format('woff2');
+            font-weight: bold;
+            font-style: normal;
+            font-display: swap;
+        }
 
-@font-face {
-    font-family: 'Adriatic22';
-    src: url('/azt/assets/fonts/Adriatic22-Bold.woff2') format('woff2');
-    font-weight: bold;
-    font-style: normal;
-    font-display: swap;
-}
+        @font-face {
+            font-family: 'Adriatic22';
+            src: url('/azt/assets/fonts/Adriatic22-Italic.woff2') format('woff2');
+            font-weight: normal;
+            font-style: italic;
+            font-display: swap;
+        }
 
-@font-face {
-    font-family: 'Adriatic22';
-    src: url('/azt/assets/fonts/Adriatic22-Italic.woff2') format('woff2');
-    font-weight: normal;
-    font-style: italic;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Adriatic22';
-    src: url('/azt/assets/fonts/Adriatic22-BoldItalic.woff2') format('woff2');
-    font-weight: bold;
-    font-style: italic;
-    font-display: swap;
-}
+        @font-face {
+            font-family: 'Adriatic22';
+            src: url('/azt/assets/fonts/Adriatic22-BoldItalic.woff2') format('woff2');
+            font-weight: bold;
+            font-style: italic;
+            font-display: swap;
+        }
 
         * {
             margin: 0;
@@ -263,45 +236,45 @@
             max-width: 700px;
             margin: 0 auto;
             border-bottom: 1px solid var(--z-ds-color-border);
-            padding-bottom: var(--z-ds-space-s); /* Changed from var(--z-ds-space-l) */
-}
+            padding-bottom: var(--z-ds-space-s);
+        }
         
-.site-title {
-    font-family: 'Adriatic Journal', 'Playfair Display', Georgia, serif;
-    font-weight: 400;
-    font-style: normal;
-    color: #bd2d2d;
-    text-decoration: none;
-    letter-spacing: 3px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: var(--z-ds-space-xl); /* Changed from var(--z-ds-space-s) */
-    line-height: 0.8;
-    font-size: 0;
-}
-        
-.site-title::before {
-    content: "THE";
-    font-size: 3rem;
-    text-transform: uppercase;
-    color: inherit;
-    display: block;
-}
+        .site-title {
+            font-family: 'Adriatic Journal', 'Playfair Display', Georgia, serif;
+            font-weight: 400;
+            font-style: normal;
+            color: #bd2d2d;  /* Red in light mode */
+            text-decoration: none;
+            letter-spacing: 3px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: var(--z-ds-space-xl);
+            line-height: 0.8;
+            font-size: 0; /* Hide original text */
+        }
 
-.site-title::after {
-    content: "ADRIATIC";
-    font-size: 3rem;
-    text-transform: uppercase;
-    color: inherit;
-    display: block;
-}
+        .site-title::before {
+            content: "THE";
+            font-size: 3rem;
+            text-transform: uppercase;
+            color: inherit;
+            display: block;
+        }
 
-/* Dark mode override */
-[data-theme="dark"] .site-title::before,
-[data-theme="dark"] .site-title::after {
-    color: #ffffff;
-}
+        .site-title::after {
+            content: "ADRIATIC";
+            font-size: 3rem;
+            text-transform: uppercase;
+            color: inherit;
+            display: block;
+        }
+
+        /* Dark mode override */
+        [data-theme="dark"] .site-title::before,
+        [data-theme="dark"] .site-title::after {
+            color: #ffffff;
+        }
         
         .main-nav {
             display: flex;
@@ -326,10 +299,10 @@
         }
 
         /* MAIN CONTENT */
-.main-content {
-    margin-top: 0;
-    padding: 15px var(--z-ds-space-s);
-}
+        .main-content {
+            margin-top: 0;
+            padding: 15px var(--z-ds-space-s);
+        }
         
         .container {
             max-width: var(--z-ds-max-width);
@@ -363,21 +336,61 @@
             background-color: var(--z-ds-color-background-1);
         }
 
-        /* RESPONSIVE */
+        /* MOBILE OPTIMIZATION FOR MASTHEAD */
         @media (max-width: 48em) {
-            .site-title {
-                font-size: 2.5rem;
-                letter-spacing: 2px;
+            .theme-toggle {
+                top: 15px;
+                right: 15px;
+            }
+            
+            .toggle-inner {
+                width: 40px;
+                height: 20px;
+            }
+            
+            .toggle-switch {
+                width: 16px;
+                height: 16px;
+            }
+            
+            [data-theme="dark"] .toggle-switch {
+                transform: translateX(20px);
+            }
+            
+            .toggle-icon {
+                width: 6px;
+                height: 6px;
+            }
+
+            .masthead {
+                padding: var(--z-ds-space-s);
+            }
+            
+            .masthead-container {
+                padding-bottom: var(--z-ds-space-s);
+            }
+            
+            .site-title::before {
+                font-size: 2.25rem;  /* Smaller masthead on mobile */
+            }
+            
+            .site-title::after {
+                font-size: 2.25rem;  /* Smaller masthead on mobile */
             }
             
             .main-nav {
                 gap: var(--z-ds-space-s);
+                flex-wrap: wrap;  /* Allow nav to wrap on very small screens */
             }
             
+            .main-nav a {
+                font-size: 0.8rem;  /* Smaller nav text */
+            }
+
             .main-content {
-    margin-top: 0;
-    padding: 15px var(--z-ds-space-s);
-}
+                margin-top: 0;
+                padding: 15px var(--z-ds-space-s);
+            }
         }
     </style>
 </head>
