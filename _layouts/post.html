@@ -5,7 +5,7 @@ layout: default
 <style>
 /* INDIVIDUAL POST PAGE */
 .post-container {
-    max-width: 1000px;
+    max-width: 1000px;  /* Zeit-style wide container */
     margin: 0 auto;
     padding: 0 var(--z-ds-space-s);
 }
@@ -13,14 +13,14 @@ layout: default
 .post-header {
     margin-bottom: var(--z-ds-space-xl);
     text-align: left;
-    max-width: 680px; /* 2/3rds of image width */
+    max-width: 680px; /* FAZ-style readable width */
     margin-left: auto;
     margin-right: auto;
 }
 
 .post-title {
     font-family: 'Saj JY', 'Inter', 'Helvetica Neue', Helvetica, Arial, FreeSans, sans-serif;
-    font-size: 2.75rem;  /* Slightly larger */
+    font-size: 2.75rem;  /* Zeit-style larger title */
     font-weight: 700;
     color: var(--z-ds-color-text-100);
     line-height: 1.1;  /* Tighter line height for large headlines */
@@ -28,7 +28,7 @@ layout: default
 }
 
 .post-lede {
-    font-size: 1.375rem;  /* Slightly larger */
+    font-size: 1.375rem;  /* Zeit-style larger lede */
     color: var(--z-ds-color-text-70);
     line-height: 1.4;
     margin-bottom: 1.5rem;  /* More space to meta */
@@ -53,7 +53,7 @@ layout: default
 
 .post-image {
     width: 100%;
-    height: 562px;
+    height: 562px;  /* Zeit-style image height */
     object-fit: cover;
     margin-bottom: var(--z-ds-space-xl);
 }
@@ -61,10 +61,10 @@ layout: default
 .post-content {
     color: var(--z-ds-color-text-100);
     font-family: 'Adriatic22', 'Source Serif Pro', 'Georgia', 'Times New Roman', serif;
-    font-size: 1.5rem;  /* 20px */
+    font-size: 1.5rem;
     line-height: 1.5;
-    font-weight: 500;  /* Add this - makes text medium weight */
-    max-width: 680px; /* 2/3rds of image width */
+    font-weight: 500;  /* Medium weight for better readability */
+    max-width: 680px; /* FAZ-style readable width */
     margin-left: auto;
     margin-right: auto;
 }
@@ -139,7 +139,7 @@ layout: default
     margin-top: var(--z-ds-space-xxl);
     padding-top: var(--z-ds-space-xl);
     text-align: center;
-    max-width: 680px; /* 2/3rds of image width */
+    max-width: 680px; /* Consistent with content width */
     margin-left: auto;
     margin-right: auto;
 }
@@ -157,8 +157,31 @@ layout: default
     color: var(--z-ds-color-text-100);
 }
 
-/* RESPONSIVE */
+/* TABLET OPTIMIZATION */
+@media (min-width: 48em) and (max-width: 64em) {
+    .post-container {
+        max-width: 800px;
+        padding: 0 var(--z-ds-space-m);
+    }
+    
+    .post-image {
+        height: 450px;  /* Medium height for tablets */
+    }
+    
+    .post-header,
+    .post-content,
+    .post-navigation {
+        max-width: 600px;  /* Slightly narrower text on tablets */
+    }
+}
+
+/* MOBILE OPTIMIZATION */
 @media (max-width: 48em) {
+    .post-container {
+        max-width: 100%;
+        padding: 0 var(--z-ds-space-s);
+    }
+    
     .post-header,
     .post-content,
     .post-navigation {
@@ -167,21 +190,48 @@ layout: default
     }
     
     .post-title {
-        font-size: 2.25rem;  /* Slightly larger on mobile too */
+        font-size: 2rem;  /* Smaller on mobile */
+        line-height: 1.2;
+        margin-bottom: 1rem;
     }
     
     .post-lede {
-        font-size: 1.25rem;  /* Slightly larger on mobile */
-    }
-    
-    .post-image {
-        height: 300px;
+        font-size: 1.125rem;  /* Smaller on mobile */
+        margin-bottom: 1rem;
     }
     
     .post-meta {
         flex-direction: column;
         align-items: flex-start;
         gap: var(--z-ds-space-xxs);
+        margin-bottom: 1.5rem;
+        font-size: 0.8rem;  /* Smaller meta text */
+    }
+    
+    .post-image {
+        height: 250px;  /* Much shorter for mobile */
+        margin-bottom: var(--z-ds-space-l);
+    }
+    
+    .post-content {
+        font-size: 1.25rem;  /* Slightly smaller body text */
+        line-height: 1.6;  /* More breathing room on mobile */
+    }
+    
+    .post-content h1 {
+        font-size: 1.75rem;
+    }
+    
+    .post-content h2 {
+        font-size: 1.5rem;
+    }
+    
+    .post-content h3 {
+        font-size: 1.25rem;
+    }
+    
+    .post-content p {
+        margin-bottom: 1.25rem;  /* Slightly more space between paragraphs */
     }
 }
 </style>
