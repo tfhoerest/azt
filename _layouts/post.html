@@ -38,10 +38,15 @@ layout: default
 .post-meta {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     gap: var(--z-ds-space-s);
     margin-bottom: 2rem;  /* More space to image */
     color: var(--z-ds-color-text-70);
     font-size: 0.875rem;  /* Smaller meta text like Zeit */
+}
+
+.meta-separator {
+    margin: 0 4px;  /* Small spacing around bullets */
 }
 
 .post-author {
@@ -201,11 +206,22 @@ layout: default
     }
     
     .post-meta {
-        flex-direction: column;
+        flex-direction: row;
+        flex-wrap: wrap;
         align-items: flex-start;
-        gap: var(--z-ds-space-xxs);
+        gap: 2px;
         margin-bottom: 1.5rem;
         font-size: 0.8rem;  /* Smaller meta text */
+    }
+    
+    /* Force author to new line on mobile */
+    .post-author {
+        flex-basis: 100%;  /* Forces author to new line */
+    }
+    
+    /* Hide bullet before author on mobile */
+    .post-meta .meta-separator:last-of-type {
+        display: none;
     }
     
     .post-image {
@@ -249,9 +265,10 @@ layout: default
         <!-- 3. DATE AND AUTHOR -->
         <div class="post-meta">
             <span class="category-tag {{ page.category }}">{{ page.category | upcase }}</span>
-            <span>{{ page.date | date: "%d.%m.%Y" }}</span>
+            <span class="meta-separator"> • </span>
+            <span class="post-date">{{ page.date | date: "%d.%m.%Y" }}</span>
             {% if page.author %}
-                <span>•</span>
+                <span class="meta-separator"> • </span>
                 <span class="post-author">{{ page.author }}</span>
             {% endif %}
         </div>
