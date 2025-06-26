@@ -232,9 +232,10 @@ layout: default
     }
     
     .post-image {
-        height: 250px;  /* Much shorter for mobile */
-        margin-bottom: var(--z-ds-space-l);
-    }
+    width: 100vw;  /* Full viewport width */
+    margin-left: calc(-50vw + 50%);  /* Center and extend to edges */
+    height: 250px;
+}
     
     .post-content {
         font-size: 1.25rem;  /* Slightly smaller body text */
