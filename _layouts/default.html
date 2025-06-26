@@ -266,18 +266,23 @@
             padding-bottom: var(--z-ds-space-l);
         }
         
-        .site-title {
-            font-family: 'Adriatic Journal', 'Playfair Display', Georgia, serif;
-            font-size: 3rem;
-            font-weight: 400;
-            font-style: normal;
-            color: var(--z-ds-color-text-100);
-            text-decoration: none;
-            letter-spacing: 3px;
-            text-transform: lowercase;
-            display: block;
-            margin-bottom: var(--z-ds-space-s);
-        }
+.site-title {
+    font-family: 'Adriatic Journal', 'Playfair Display', Georgia, serif;
+    font-size: 3rem;
+    font-weight: 400;
+    font-style: normal;
+    color: #bd2d2d;  /* Red in light mode */
+    text-decoration: none;
+    letter-spacing: 3px;
+    text-transform: uppercase;  /* Changed from lowercase */
+    display: block;
+    margin-bottom: var(--z-ds-space-s);
+}
+
+/* Dark mode override */
+[data-theme="dark"] .site-title {
+    color: #ffffff;  /* White in dark mode */
+}
         
         .main-nav {
             display: flex;
