@@ -184,17 +184,19 @@ layout: default
     .hero-section {
         margin-bottom: var(--z-ds-space-l);
         max-width: 100%;
-        padding: 0 var(--z-ds-space-s);
+        padding: 0;  /* Remove padding so hero image can be full width */
     }
     
     .hero-image {
+        width: 100vw;  /* Full viewport width */
+        margin-left: calc(-50vw + 50%);  /* Center and extend to edges */
         height: 250px;  /* Shorter hero image on mobile */
         margin-bottom: var(--z-ds-space-s);
     }
     
     .hero-content {
         max-width: 100%;
-        padding: 0 var(--z-ds-space-s);
+        padding: 0 12px;  /* Much smaller padding like Zeit */
     }
     
     .hero-headline {
@@ -209,9 +211,9 @@ layout: default
     }
     
     .article-meta {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: var(--z-ds-space-xxs);
+        flex-direction: row;  /* Keep category and date on same line */
+        align-items: center;
+        gap: var(--z-ds-space-s);
         margin-bottom: var(--z-ds-space-s);
         font-size: 0.8rem;
     }
@@ -220,7 +222,7 @@ layout: default
     .articles-section {
         margin-top: var(--z-ds-space-l);
         max-width: 100%;
-        padding: 0 var(--z-ds-space-s);
+        padding: 0 12px;  /* Much smaller padding like Zeit */
     }
     
     .section-title {
@@ -257,7 +259,20 @@ layout: default
     }
     
     .article-meta-small {
-        font-size: 0.8rem;  /* Smaller meta text */
+        font-size: 0.8rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2px;
+    }
+    
+    /* Force author to new line on mobile */
+    .article-author {
+        flex-basis: 100%;  /* Forces author to new line */
+    }
+    
+    /* Hide bullet before author on mobile */
+    .article-meta-small .meta-separator:nth-of-type(2) {
+        display: none;
     }
 }
 </style>
