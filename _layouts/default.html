@@ -268,32 +268,38 @@
         
 .site-title {
     font-family: 'Adriatic Journal', 'Playfair Display', Georgia, serif;
-    font-size: 3rem;
     font-weight: 400;
     font-style: normal;
     color: #bd2d2d;  /* Red in light mode */
     text-decoration: none;
     letter-spacing: 3px;
-    display: block;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     margin-bottom: var(--z-ds-space-s);
-    line-height: 0.9;  /* Tighter line spacing */
-    text-align: center;
-}
-
-/* Hide the original title and replace with custom layout */
-.site-title {
+    line-height: 0.8;
     font-size: 0; /* Hide original text */
 }
 
 .site-title::before {
-    content: "THE\A ADRIATIC\A journal";  /* \A creates line breaks */
-    font-size: 3rem;  /* Show replacement text */
-    white-space: pre;  /* Preserves line breaks */
+    content: "the";
+    font-size: 2rem;
+    text-transform: lowercase;
+    display: block;
+}
+
+.site-title::after {
+    content: "ADRIATIC\A journal";
+    font-size: 3rem;
+    white-space: pre;
+    text-align: center;
+    line-height: 0.8;
     display: block;
 }
 
 /* Dark mode override */
-[data-theme="dark"] .site-title::before {
+[data-theme="dark"] .site-title::before,
+[data-theme="dark"] .site-title::after {
     color: #ffffff;  /* White in dark mode */
 }
         
