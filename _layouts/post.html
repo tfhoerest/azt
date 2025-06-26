@@ -185,25 +185,18 @@ layout: default
 @media (max-width: 48em) {
     .post-container {
         max-width: 100%;
-        padding: 0 var(--z-ds-space-s);
+        padding: 0;  /* Remove padding so image can be full width */
     }
     
-    .post-header,
+    .post-header {
+        max-width: 100%;
+        padding: 0 12px;  /* Much smaller padding like Zeit */
+    }
+    
     .post-content,
     .post-navigation {
         max-width: 100%;
-        padding: 0 var(--z-ds-space-s);
-    }
-    
-    .post-title {
-        font-size: 2rem;  /* Smaller on mobile */
-        line-height: 1.2;
-        margin-bottom: 1rem;
-    }
-    
-    .post-lede {
-        font-size: 1.125rem;  /* Smaller on mobile */
-        margin-bottom: 1rem;
+        padding: 0 12px;  /* Much smaller padding like Zeit */
     }
     
     .post-category {
@@ -232,10 +225,11 @@ layout: default
     }
     
     .post-image {
-    width: 100vw;  /* Full viewport width */
-    margin-left: calc(-50vw + 50%);  /* Center and extend to edges */
-    height: 250px;
-}
+        width: 100vw;  /* Full viewport width */
+        margin-left: calc(-50vw + 50%);  /* Center and extend to edges */
+        height: 250px;  /* Shorter height for mobile */
+        margin-bottom: var(--z-ds-space-l);
+    }
     
     .post-content {
         font-size: 1.25rem;  /* Slightly smaller body text */
@@ -282,12 +276,12 @@ layout: default
         <div class="post-date">{{ page.date | date: "%d %B %Y" }}</div>
     </header>
     
-    <!-- 4. IMAGE -->
+    <!-- 5. IMAGE -->
     {% if page.image %}
         <img src="{{ page.image }}" alt="{{ page.title }}" class="post-image">
     {% endif %}
     
-    <!-- 5. ARTICLE CONTENT -->
+    <!-- 6. ARTICLE CONTENT -->
     <div class="post-content">
         {{ content }}
     </div>
