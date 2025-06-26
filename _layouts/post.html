@@ -18,6 +18,11 @@ layout: default
     margin-right: auto;
 }
 
+.post-category {
+    margin-bottom: 1rem;
+    text-align: left;
+}
+
 .post-title {
     font-family: 'Saj JY', 'Inter', 'Helvetica Neue', Helvetica, Arial, FreeSans, sans-serif;
     font-size: 2.75rem;  /* Zeit-style larger title */
@@ -31,29 +36,25 @@ layout: default
     font-size: 1.375rem;  /* Zeit-style larger lede */
     color: var(--z-ds-color-text-70);
     line-height: 1.4;
-    margin-bottom: 1.5rem;  /* More space to meta */
+    margin-bottom: 1.5rem;  /* More space to author */
     font-weight: 400;
 }
 
-.post-meta {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: var(--z-ds-space-s);
-    margin-bottom: 2rem;  /* More space to image */
-    color: var(--z-ds-color-text-70);
-    font-size: 0.875rem;  /* Smaller meta text like Zeit */
-}
-
-.meta-separator {
-    margin: 0 4px;  /* Small spacing around bullets */
-}
-
-.post-author {
+.post-author-name {
+    font-size: 0.875rem;
     color: var(--z-ds-color-text-70);
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+    margin-bottom: 0.5rem;
+    text-align: left;
+}
+
+.post-date {
+    font-size: 0.875rem;
+    color: var(--z-ds-color-text-70);
+    margin-bottom: 2rem;  /* Space to image */
+    text-align: left;
 }
 
 .post-image {
@@ -205,23 +206,29 @@ layout: default
         margin-bottom: 1rem;
     }
     
-    .post-meta {
-        flex-direction: row;
-        flex-wrap: wrap;
-        align-items: flex-start;
-        gap: 2px;
+    .post-category {
+        margin-bottom: 0.75rem;
+    }
+    
+    .post-title {
+        font-size: 2rem;  /* Smaller on mobile */
+        line-height: 1.2;
+        margin-bottom: 1rem;
+    }
+    
+    .post-lede {
+        font-size: 1.125rem;  /* Smaller on mobile */
+        margin-bottom: 1rem;
+    }
+    
+    .post-author-name {
+        font-size: 0.8rem;
+        margin-bottom: 0.25rem;
+    }
+    
+    .post-date {
+        font-size: 0.8rem;
         margin-bottom: 1.5rem;
-        font-size: 0.8rem;  /* Smaller meta text */
-    }
-    
-    /* Force author to new line on mobile */
-    .post-author {
-        flex-basis: 100%;  /* Forces author to new line */
-    }
-    
-    /* Hide bullet before author on mobile */
-    .post-meta .meta-separator:nth-of-type(2) {
-        display: none;
     }
     
     .post-image {
@@ -254,24 +261,24 @@ layout: default
 
 <article class="post-container">
     <header class="post-header">
-        <!-- 1. TITLE -->
+        <!-- 1. CATEGORY (above title) -->
+        <div class="post-category">
+            <span class="category-tag {{ page.category }}">{{ page.category | upcase }}</span>
+        </div>
+        
+        <!-- 2. TITLE -->
         <h1 class="post-title">{{ page.title }}</h1>
         
-        <!-- 2. LEDE (EXCERPT) -->
+        <!-- 3. LEDE (EXCERPT) -->
         {% if page.excerpt %}
             <div class="post-lede">{{ page.excerpt | strip_html }}</div>
         {% endif %}
         
-        <!-- 3. DATE AND AUTHOR -->
-        <div class="post-meta">
-            <span class="category-tag {{ page.category }}">{{ page.category | upcase }}</span>
-            <span class="meta-separator"> • </span>
-            <span class="post-date">{{ page.date | date: "%d.%m.%Y" }}</span>
-            {% if page.author %}
-                <span class="meta-separator"> • </span>
-                <span class="post-author">{{ page.author }}</span>
-            {% endif %}
-        </div>
+        <!-- 4. AUTHOR AND DATE (below lede) -->
+        {% if page.author %}
+            <div class="post-author-name">{{ page.author }}</div>
+        {% endif %}
+        <div class="post-date">{{ page.date | date: "%d %B %Y" }}</div>
     </header>
     
     <!-- 4. IMAGE -->
