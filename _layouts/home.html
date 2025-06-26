@@ -227,13 +227,14 @@ layout: default
     }
     
     .article-item {
-        grid-template-columns: 120px 1fr;  /* Narrower thumbnails */
-        gap: var(--z-ds-space-s);
+        display: block;  /* Change from grid to block for vertical stacking */
         padding: var(--z-ds-space-s) 0;
     }
     
     .article-thumbnail {
-        height: 80px;  /* Smaller thumbnails */
+        width: 100%;  /* Full width image like FAZ */
+        height: 200px;  /* Taller for better proportion */
+        margin-bottom: var(--z-ds-space-s);  /* Space between image and text */
     }
     
     .article-content h3 {
