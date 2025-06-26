@@ -274,15 +274,26 @@
     color: #bd2d2d;  /* Red in light mode */
     text-decoration: none;
     letter-spacing: 3px;
-    text-transform: uppercase;
     display: block;
     margin-bottom: var(--z-ds-space-s);
     line-height: 0.9;  /* Tighter line spacing */
-    white-space: pre-line;  /* Allows line breaks */
+    text-align: center;
+}
+
+/* Hide the original title and replace with custom layout */
+.site-title {
+    font-size: 0; /* Hide original text */
+}
+
+.site-title::before {
+    content: "THE\A ADRIATIC\A journal";  /* \A creates line breaks */
+    font-size: 3rem;  /* Show replacement text */
+    white-space: pre;  /* Preserves line breaks */
+    display: block;
 }
 
 /* Dark mode override */
-[data-theme="dark"] .site-title {
+[data-theme="dark"] .site-title::before {
     color: #ffffff;  /* White in dark mode */
 }
         
