@@ -143,6 +143,13 @@ layout: default
 .article-meta-small {
     color: var(--z-ds-color-text-70);
     font-size: var(--z-ds-fontsize-14);
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.meta-separator {
+    margin: 0 4px;  /* Small spacing around bullets */
 }
 
 /* TABLET OPTIMIZATION */
@@ -308,7 +315,13 @@ layout: default
                 <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
                 <p class="article-excerpt">{{ post.excerpt | strip_html }}</p>
                 <div class="article-meta-small">
-                    <span class="category-tag {{ post.category }}">{{ post.category | upcase }}</span> • {{ post.date | date: "%B %d, %Y" }}
+                    <span class="category-tag {{ post.category }}">{{ post.category | upcase }}</span>
+                    <span class="meta-separator"> • </span>
+                    <span class="article-date">{{ post.date | date: "%B %d, %Y" }}</span>
+                    {% if post.author %}
+                        <span class="meta-separator"> • </span>
+                        <span class="article-author">{{ post.author }}</span>
+                    {% endif %}
                 </div>
             </div>
         </article>
