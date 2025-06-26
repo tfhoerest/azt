@@ -6,21 +6,21 @@ layout: default
 /* HERO SECTION */
 .hero-section {
     margin-bottom: var(--z-ds-space-xxl);
-    max-width: 750px;
+    max-width: 1000px;  /* Match post page width */
     margin-left: auto;
     margin-right: auto;
 }
 
 .hero-image {
     width: 100%;
-    height: 425px;
+    height: 562px;  /* Match Zeit's image proportions */
     object-fit: cover;
     margin-bottom: var(--z-ds-space-l);
 }
 
 .hero-content {
     text-align: left;
-    max-width: 700px;
+    max-width: 680px;  /* Match post content width */
     margin: 0 auto;
 }
 
@@ -33,7 +33,7 @@ layout: default
 }
 
 .hero-headline {
-    font-family: 'Saj JY', 'Inter', 'Helvetica Neue', Helvetica, Arial, FreeSans, sans-serif;  /* Updated to Saj JY */
+    font-family: 'Saj JY', 'Inter', 'Helvetica Neue', Helvetica, Arial, FreeSans, sans-serif;  /* Saj JY font */
     font-size: var(--z-ds-fontsize-34);
     font-weight: 700;
     color: var(--z-ds-color-text-100);
@@ -70,13 +70,13 @@ layout: default
 /* ARTICLES */
 .articles-section {
     margin-top: var(--z-ds-space-xxl);
-    max-width: 750px;
+    max-width: 1000px;  /* Match hero section width */
     margin-left: auto;
     margin-right: auto;
 }
 
 .section-title {
-    font-family: 'Saj JY', 'Inter', 'Helvetica Neue', Helvetica, Arial, FreeSans, sans-serif;  /* Updated to Saj JY */
+    font-family: 'Saj JY', 'Inter', 'Helvetica Neue', Helvetica, Arial, FreeSans, sans-serif;  /* Saj JY font */
     font-size: var(--z-ds-fontsize-24);
     font-weight: 600;
     color: var(--z-ds-color-text-100);
@@ -87,6 +87,8 @@ layout: default
 .articles-grid {
     display: grid;
     gap: var(--z-ds-space-l);
+    max-width: 680px;  /* Center articles in narrower column */
+    margin: 0 auto;
 }
 
 .article-item {
@@ -114,7 +116,7 @@ layout: default
 }
 
 .article-content h3 {
-    font-family: 'Saj JY', 'Inter', 'Helvetica Neue', Helvetica, Arial, FreeSans, sans-serif;  /* Updated to Saj JY */
+    font-family: 'Saj JY', 'Inter', 'Helvetica Neue', Helvetica, Arial, FreeSans, sans-serif;  /* Saj JY font */
     font-size: var(--z-ds-fontsize-22);
     font-weight: 600;
     color: var(--z-ds-color-text-100);
@@ -143,13 +145,111 @@ layout: default
     font-size: var(--z-ds-fontsize-14);
 }
 
-@media (max-width: 48em) {
+/* TABLET OPTIMIZATION */
+@media (min-width: 48em) and (max-width: 64em) {
+    .hero-section,
+    .articles-section {
+        max-width: 800px;
+        padding: 0 var(--z-ds-space-m);
+    }
+    
+    .hero-image {
+        height: 450px;  /* Shorter on tablets */
+    }
+    
+    .hero-content,
+    .articles-grid {
+        max-width: 600px;
+    }
+    
     .article-item {
-        grid-template-columns: 140px 1fr;
+        grid-template-columns: 200px 1fr;
     }
     
     .article-thumbnail {
-        height: 80px;
+        height: 100px;
+    }
+}
+
+/* MOBILE OPTIMIZATION */
+@media (max-width: 48em) {
+    /* Hero Section Mobile */
+    .hero-section {
+        margin-bottom: var(--z-ds-space-l);
+        max-width: 100%;
+        padding: 0 var(--z-ds-space-s);
+    }
+    
+    .hero-image {
+        height: 250px;  /* Shorter hero image on mobile */
+        margin-bottom: var(--z-ds-space-s);
+    }
+    
+    .hero-content {
+        max-width: 100%;
+        padding: 0 var(--z-ds-space-s);
+    }
+    
+    .hero-headline {
+        font-size: 1.75rem;  /* Smaller hero headline */
+        line-height: 1.2;
+        margin-bottom: var(--z-ds-space-s);
+    }
+    
+    .hero-summary {
+        font-size: 1.125rem;  /* Smaller hero summary */
+        margin-bottom: var(--z-ds-space-s);
+    }
+    
+    .article-meta {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--z-ds-space-xxs);
+        margin-bottom: var(--z-ds-space-s);
+        font-size: 0.8rem;
+    }
+    
+    /* Articles Section Mobile */
+    .articles-section {
+        margin-top: var(--z-ds-space-l);
+        max-width: 100%;
+        padding: 0 var(--z-ds-space-s);
+    }
+    
+    .section-title {
+        font-size: 1.5rem;  /* Smaller section title */
+        margin-bottom: var(--z-ds-space-s);
+    }
+    
+    .articles-grid {
+        gap: var(--z-ds-space-s);
+        max-width: 100%;
+    }
+    
+    .article-item {
+        grid-template-columns: 120px 1fr;  /* Narrower thumbnails */
+        gap: var(--z-ds-space-s);
+        padding: var(--z-ds-space-s) 0;
+    }
+    
+    .article-thumbnail {
+        height: 80px;  /* Smaller thumbnails */
+    }
+    
+    .article-content h3 {
+        font-size: 1.125rem;  /* Smaller article titles */
+        line-height: 1.3;
+        margin-bottom: var(--z-ds-space-xxs);
+    }
+    
+    .article-excerpt {
+        font-size: 0.9rem;  /* Smaller excerpts */
+        line-height: 1.4;
+        margin-bottom: var(--z-ds-space-xxs);
+    }
+    
+    .article-meta-small {
+        font-size: 0.8rem;  /* Smaller meta text */
     }
 }
 </style>
@@ -165,7 +265,7 @@ layout: default
     {% if featured_post.image %}
         <img src="{{ featured_post.image }}" alt="{{ featured_post.title }}" class="hero-image">
     {% else %}
-        <img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=750&h=425&fit=crop" alt="Featured article" class="hero-image">
+        <img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=1000&h=562&fit=crop" alt="Featured article" class="hero-image">
     {% endif %}
     
 <div class="hero-content">
