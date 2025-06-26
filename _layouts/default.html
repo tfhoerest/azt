@@ -273,25 +273,33 @@
     color: #bd2d2d;
     text-decoration: none;
     letter-spacing: 3px;
-    display: block;
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     margin-bottom: var(--z-ds-space-s);
+    line-height: 0.8;
     font-size: 0; /* Hide original text */
 }
 
 .site-title::before {
-    content: "THE\AADRIATIC";
-    white-space: pre;
-    text-align: center;
-    line-height: 0.8;
-    display: block;
+    content: "THE";
     font-size: 3rem;
     text-transform: uppercase;
     color: inherit;
+    display: block;
+}
+
+.site-title::after {
+    content: "ADRIATIC";
+    font-size: 3rem;
+    text-transform: uppercase;
+    color: inherit;
+    display: block;
 }
 
 /* Dark mode override */
-[data-theme="dark"] .site-title::before {
+[data-theme="dark"] .site-title::before,
+[data-theme="dark"] .site-title::after {
     color: #ffffff;
 }
         
