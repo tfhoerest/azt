@@ -79,12 +79,14 @@ layout: default
     display: grid;
     grid-template-columns: 1fr;  /* Single column - stacked like Zeit */
     gap: var(--z-ds-space-xl);
-    max-width: 680px;  /* Match hero content width */
+    max-width: 1000px;  /* Match full hero container width */
     margin: 0 auto;
 }
 
 .article-item {
-    display: block;  /* Stack image above content like Zeit */
+    display: grid;
+    grid-template-columns: 400px 1fr;  /* Larger image, more space like Zeit */
+    gap: var(--z-ds-space-xl);
     padding: 0;
     background-color: transparent;
     border-bottom: none;
@@ -97,9 +99,8 @@ layout: default
 
 .article-thumbnail {
     width: 100%;
-    height: 218px;  /* Scaled proportionally: 680px * (282/878) = 218px */
+    height: 257px;  /* Maintain Zeit proportions: 400px * (282/438) */
     object-fit: cover;
-    margin-bottom: var(--z-ds-space-s);
 }
 
 .article-content h3 {
@@ -108,7 +109,7 @@ layout: default
     font-weight: 600;
     color: var(--z-ds-color-text-100);
     line-height: 1.3;
-    margin-bottom: var(--z-ds-space-s);  /* More space before excerpt */
+    margin-bottom: var(--z-ds-space-s);  /* Space before excerpt */
 }
 
 .article-content h3 a {
@@ -124,7 +125,7 @@ layout: default
     color: var(--z-ds-color-text-70);
     font-size: var(--z-ds-fontsize-16);
     line-height: 1.5;
-    margin-bottom: var(--z-ds-space-s);  /* More space before meta */
+    margin-bottom: var(--z-ds-space-s);  /* Space before meta */
 }
 
 .article-meta-small {
@@ -156,12 +157,17 @@ layout: default
     }
     
     .articles-grid {
-        max-width: 600px;  /* Match hero content width on tablet */
+        max-width: 800px;  /* Full tablet width */
+        gap: var(--z-ds-space-l);
+    }
+    
+    .article-item {
+        grid-template-columns: 320px 1fr;  /* Proportional image on tablet */
         gap: var(--z-ds-space-l);
     }
     
     .article-thumbnail {
-        height: 193px;  /* Scaled proportionally: 600px * (282/878) = 193px */
+        height: 206px;  /* Proportional to 320px width */
     }
 }
 
@@ -227,7 +233,7 @@ layout: default
     
     .article-thumbnail {
         width: 100%;  /* Full width image */
-        height: 218px;  /* Keep Zeit's proportions on mobile too */
+        height: 200px;  /* Good mobile height */
         margin-bottom: var(--z-ds-space-s);  /* Space between image and text */
     }
     
