@@ -2,7 +2,8 @@
 layout: post
 title: "US strikes Iran's nuclear facilities in dramatic escalation of Middle East crisis"
 date: 2025-06-22
-category: foreign    # or domestic, opinion
+category: foreign # or domestic, opinion
+category_display: "Crisis in Persia"
 author: "Sloterdik"
 image: "https://tramci.github.io/azt/assets/images/trump-situation.jpg"  # optional
 excerpt: "The United States launched devastating airstrikes against three of Iran's most sensitive nuclear sites on Sunday, marking the most significant American military action on Iranian soil since the 1979 revolution."
