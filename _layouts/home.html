@@ -21,6 +21,18 @@ layout: default
     opacity: 0.7;
 }
 
+.category-tag + h1,
+.category-tag + h3 {
+    margin-top: var(--z-ds-space-s);  /* Space between category and headline */
+}
+
+.article-author {
+    color: var(--z-ds-color-text-70);
+    font-size: var(--z-ds-fontsize-14);
+    margin-top: var(--z-ds-space-s);
+    font-weight: 400;
+}
+
 /* HERO SECTION */
 .hero-section {
     margin-bottom: var(--z-ds-space-xxl);
@@ -46,9 +58,8 @@ layout: default
 .hero-author {
     color: var(--z-ds-color-text-70);
     font-size: var(--z-ds-fontsize-14);
-    margin-bottom: var(--z-ds-space-s);
-    text-transform: uppercase;
-    letter-spacing: 1px;
+    margin-top: var(--z-ds-space-s);
+    font-weight: 400;
 }
 
 .hero-headline {
@@ -74,16 +85,6 @@ layout: default
     color: var(--z-ds-color-text-70);
     line-height: 1.4;
     margin-bottom: var(--z-ds-space-s);
-}
-
-.article-meta {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    gap: var(--z-ds-space-s);
-    margin-bottom: var(--z-ds-space-s);
-    color: var(--z-ds-color-text-70);
-    font-size: var(--z-ds-fontsize-14);
 }
 
 /* ARTICLES */
@@ -140,16 +141,7 @@ layout: default
     color: var(--z-ds-color-text-70);
     font-size: var(--z-ds-fontsize-16);
     line-height: 1.5;
-    margin-bottom: var(--z-ds-space-s);  /* Space before meta */
-}
-
-.article-meta-small {
-    color: var(--z-ds-color-text-70);
-    font-size: var(--z-ds-fontsize-14);
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: var(--z-ds-space-s);  /* Add spacing between category and date */
+    margin-bottom: var(--z-ds-space-s);  /* Space before author */
 }
 
 /* TABLET OPTIMIZATION */
@@ -221,14 +213,6 @@ layout: default
         margin-bottom: var(--z-ds-space-s);
     }
     
-    .article-meta {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: var(--z-ds-space-xxs);
-        margin-bottom: var(--z-ds-space-s);
-        font-size: 0.8rem;
-    }
-    
     /* Articles Section Mobile */
     .articles-section {
         margin-top: var(--z-ds-space-l);
@@ -266,11 +250,7 @@ layout: default
     .article-excerpt {
         font-size: 0.9rem;  /* Smaller excerpts */
         line-height: 1.4;
-        margin-bottom: var(--z-ds-space-s);  /* More space before meta */
-    }
-    
-    .article-meta-small {
-        font-size: 0.8rem;  /* Smaller meta text */
+        margin-bottom: var(--z-ds-space-s);  /* More space before author */
     }
 }
 </style>
@@ -290,12 +270,9 @@ layout: default
     {% endif %}
     
 <div class="hero-content">
-    <div class="article-meta">
-        <a href="{{ site.baseurl }}/{{ featured_post.category }}" class="category-tag {{ featured_post.category }}">
-            {% if featured_post.category_display %}{{ featured_post.category_display }}{% else %}{{ featured_post.category }}{% endif %}
-        </a>
-        <span>{{ featured_post.date | date: "%d %B %Y" }}</span>
-    </div>
+    <a href="{{ site.baseurl }}/{{ featured_post.category }}" class="category-tag {{ featured_post.category }}">
+        {% if featured_post.category_display %}{{ featured_post.category_display }}{% else %}{{ featured_post.category }}{% endif %}
+    </a>
     
     <h1 class="hero-headline">
         <a href="{{ featured_post.url | relative_url }}">{{ featured_post.title }}</a>
@@ -325,14 +302,14 @@ layout: default
             {% endif %}
             
             <div class="article-content">
+                <a href="{{ site.baseurl }}/{{ post.category }}" class="category-tag {{ post.category }}">
+                    {% if post.category_display %}{{ post.category_display }}{% else %}{{ post.category }}{% endif %}
+                </a>
                 <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
                 <p class="article-excerpt">{{ post.excerpt | strip_html }}</p>
-                <div class="article-meta-small">
-                    <a href="{{ site.baseurl }}/{{ post.category }}" class="category-tag {{ post.category }}">
-                        {% if post.category_display %}{{ post.category_display }}{% else %}{{ post.category }}{% endif %}
-                    </a>
-                    <span class="article-date">{{ post.date | date: "%d %B %Y" }}</span>
-                </div>
+                {% if post.author %}
+                    <div class="article-author">{{ post.author }}</div>
+                {% endif %}
             </div>
         </article>
         {% endfor %}
