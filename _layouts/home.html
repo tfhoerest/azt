@@ -183,18 +183,20 @@ layout: default
     .hero-section {
         margin-bottom: var(--z-ds-space-l);
         max-width: 100%;
-        padding: 0 var(--z-ds-space-s);
+        padding: 0;  /* Remove padding so image can be full width */
     }
     
     .hero-image {
         height: 250px;  /* Shorter hero image on mobile */
         margin-bottom: var(--z-ds-space-s);
+        width: 100vw;  /* Full viewport width */
+        margin-left: calc(-50vw + 50%);  /* Break out of container */
     }
     
     .hero-content {
         max-width: 100%;
-        padding: 0 var(--z-ds-space-s);
-        padding-right: var(--z-ds-space-s);  /* Remove the 100px padding on mobile */
+        padding: 0 var(--z-ds-space-s);  /* Match article text padding */
+        padding-right: var(--z-ds-space-s);
     }
     
     .hero-headline {
