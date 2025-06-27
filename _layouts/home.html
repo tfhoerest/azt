@@ -15,8 +15,9 @@ layout: default
     text-transform: none;  /* Remove all caps */
     letter-spacing: 0;     /* Remove letter spacing since no caps */
     transition: opacity 0.2s ease;
-    margin-bottom: 0.1rem !important;  /* Ultra tight bottom margin */
+    margin-bottom: 0px !important;  /* Zero margin */
     display: block;        /* Make it block to control spacing better */
+    line-height: 1.0 !important;  /* Tight line height */
 }
 
 .category-tag:hover {
@@ -60,8 +61,9 @@ layout: default
 .hero-author {
     color: var(--z-ds-color-text-70);
     font-size: var(--z-ds-fontsize-14);
-    margin-top: 0.1rem !important;  /* Ultra tight spacing after lede */
+    margin-top: 0px !important;  /* Zero spacing after lede */
     font-weight: 400;
+    line-height: 1.0 !important;  /* Tight line height */
 }
 
 .hero-headline {
@@ -85,9 +87,9 @@ layout: default
 .hero-summary {
     font-size: var(--z-ds-fontsize-22);
     color: var(--z-ds-color-text-70);
-    line-height: 1.4;
-    margin-top: 0 !important;  /* Remove any top margin */
-    margin-bottom: 0.1rem !important;  /* Ultra tight spacing before author */
+    line-height: 1.2 !important;  /* Tighter line height */
+    margin-top: 0px !important;  /* Remove any top margin */
+    margin-bottom: 0px !important;  /* Zero spacing before author */
 }
 
 /* ARTICLES */
@@ -208,15 +210,16 @@ layout: default
     
     .hero-headline {
         font-size: 1.75rem;  /* Smaller hero headline */
-        line-height: 1.2;
-        margin-top: 0.1rem !important;  /* Ultra tight spacing after category */
-        margin-bottom: 0.1rem !important;  /* Ultra tight spacing */
+        line-height: 1.0 !important;  /* Tight line height */
+        margin-top: 0px !important;  /* Zero spacing after category */
+        margin-bottom: 0px !important;  /* Zero spacing */
     }
     
     .hero-summary {
         font-size: 1.125rem;  /* Smaller hero summary */
-        margin-top: 0 !important;  /* Remove any top margin */
-        margin-bottom: 0.1rem !important;  /* Ultra tight spacing */
+        line-height: 1.2 !important;  /* Tight line height */
+        margin-top: 0px !important;  /* Remove any top margin */
+        margin-bottom: 0px !important;  /* Zero spacing */
     }
     
     /* Articles Section Mobile */
