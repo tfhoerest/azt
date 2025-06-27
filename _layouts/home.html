@@ -75,43 +75,31 @@ layout: default
     margin-right: auto;
 }
 
-.section-title {
-    font-family: 'Saj JY', 'Inter', 'Helvetica Neue', Helvetica, Arial, FreeSans, sans-serif;  /* Saj JY font */
-    font-size: var(--z-ds-fontsize-24);
-    font-weight: 600;
-    color: var(--z-ds-color-text-100);
-    margin-bottom: var(--z-ds-space-l);
-    text-align: center;
-}
-
 .articles-grid {
     display: grid;
-    gap: var(--z-ds-space-l);
-    max-width: 680px;  /* Center articles in narrower column */
+    grid-template-columns: 1fr;  /* Single column - stacked like Zeit */
+    gap: var(--z-ds-space-xl);
+    max-width: 1000px;  /* Match hero width */
     margin: 0 auto;
 }
 
 .article-item {
     display: grid;
-    grid-template-columns: 240px 1fr;
-    gap: var(--z-ds-space-s);
-    padding: var(--z-ds-space-s) 0;
+    grid-template-columns: 300px 1fr;  /* Image left, content right like Zeit */
+    gap: var(--z-ds-space-l);
+    padding: 0;
     background-color: transparent;
-    border-bottom: 1px solid var(--z-ds-color-border-light);
+    border-bottom: none;
     transition: all 0.2s ease;
 }
 
 .article-item:hover {
-    background-color: rgba(255, 255, 255, 0.02);
-}
-
-.article-item:last-child {
-    border-bottom: none;
+    transform: translateY(-2px);  /* Subtle lift effect like Zeit */
 }
 
 .article-thumbnail {
     width: 100%;
-    height: 120px;
+    height: 200px;  /* Taller images for better proportion */
     object-fit: cover;
 }
 
@@ -121,7 +109,7 @@ layout: default
     font-weight: 600;
     color: var(--z-ds-color-text-100);
     line-height: 1.3;
-    margin-bottom: var(--z-ds-space-xxs);
+    margin-bottom: var(--z-ds-space-s);  /* More space before excerpt */
 }
 
 .article-content h3 a {
@@ -137,7 +125,7 @@ layout: default
     color: var(--z-ds-color-text-70);
     font-size: var(--z-ds-fontsize-16);
     line-height: 1.5;
-    margin-bottom: var(--z-ds-space-xxs);
+    margin-bottom: var(--z-ds-space-s);  /* More space before meta */
 }
 
 .article-meta-small {
@@ -164,17 +152,17 @@ layout: default
         height: 450px;  /* Shorter on tablets */
     }
     
-    .hero-content,
-    .articles-grid {
+    .hero-content {
         max-width: 600px;
     }
     
-    .article-item {
-        grid-template-columns: 200px 1fr;
+    .articles-grid {
+        max-width: 700px;
+        gap: var(--z-ds-space-l);
     }
     
     .article-thumbnail {
-        height: 100px;
+        height: 160px;
     }
 }
 
@@ -184,19 +172,17 @@ layout: default
     .hero-section {
         margin-bottom: var(--z-ds-space-l);
         max-width: 100%;
-        padding: 0;  /* Remove padding so hero image can be full width */
+        padding: 0 var(--z-ds-space-s);
     }
     
     .hero-image {
-        width: 100vw;  /* Full viewport width */
-        margin-left: calc(-50vw + 50%);  /* Center and extend to edges */
         height: 250px;  /* Shorter hero image on mobile */
         margin-bottom: var(--z-ds-space-s);
     }
     
     .hero-content {
         max-width: 100%;
-        padding: 0 12px;  /* Much smaller padding like Zeit */
+        padding: 0 var(--z-ds-space-s);
     }
     
     .hero-headline {
@@ -211,9 +197,9 @@ layout: default
     }
     
     .article-meta {
-        flex-direction: row;  /* Keep category and date on same line */
-        align-items: center;
-        gap: var(--z-ds-space-s);
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--z-ds-space-xxs);
         margin-bottom: var(--z-ds-space-s);
         font-size: 0.8rem;
     }
@@ -222,7 +208,7 @@ layout: default
     .articles-section {
         margin-top: var(--z-ds-space-l);
         max-width: 100%;
-        padding: 0 12px;  /* Much smaller padding like Zeit */
+        padding: 0 var(--z-ds-space-s);
     }
     
     .section-title {
@@ -236,43 +222,30 @@ layout: default
     }
     
     .article-item {
-        display: block;  /* Change from grid to block for vertical stacking */
-        padding: var(--z-ds-space-s) 0;
+        display: block;  /* Vertical stacking on mobile */
+        padding: 0 0 var(--z-ds-space-l) 0;  /* Space between articles */
     }
     
     .article-thumbnail {
         width: 100%;  /* Full width image like FAZ */
-        height: 200px;  /* Taller for better proportion */
+        height: 200px;  /* Consistent height */
         margin-bottom: var(--z-ds-space-s);  /* Space between image and text */
     }
     
     .article-content h3 {
         font-size: 1.125rem;  /* Smaller article titles */
         line-height: 1.3;
-        margin-bottom: var(--z-ds-space-xxs);
+        margin-bottom: var(--z-ds-space-s);  /* Consistent spacing */
     }
     
     .article-excerpt {
         font-size: 0.9rem;  /* Smaller excerpts */
         line-height: 1.4;
-        margin-bottom: var(--z-ds-space-xxs);
+        margin-bottom: var(--z-ds-space-s);  /* More space before meta */
     }
     
     .article-meta-small {
-        font-size: 0.8rem;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 2px;
-    }
-    
-    /* Force author to new line on mobile */
-    .article-author {
-        flex-basis: 100%;  /* Forces author to new line */
-    }
-    
-    /* Hide bullet before author on mobile */
-    .article-meta-small .meta-separator:nth-of-type(2) {
-        display: none;
+        font-size: 0.8rem;  /* Smaller meta text */
     }
 }
 </style>
@@ -314,8 +287,6 @@ layout: default
 
 <!-- Articles Section -->
 <section class="articles-section">
-    <h2 class="section-title">Latest Stories</h2>
-    
     <div class="articles-grid">
         {% assign recent_posts = site.posts | where_exp: "post", "post.url != featured_post.url" | limit: 6 %}
         {% for post in recent_posts %}
