@@ -79,13 +79,13 @@ layout: default
     display: grid;
     grid-template-columns: 1fr;  /* Single column - stacked like Zeit */
     gap: var(--z-ds-space-xl);
-    max-width: 1000px;  /* Match hero width */
+    max-width: 680px;  /* Match hero content width, not image width */
     margin: 0 auto;
 }
 
 .article-item {
     display: grid;
-    grid-template-columns: 300px 1fr;  /* Image left, content right like Zeit */
+    grid-template-columns: 240px 1fr;  /* Smaller image, more text space */
     gap: var(--z-ds-space-l);
     padding: 0;
     background-color: transparent;
@@ -99,7 +99,7 @@ layout: default
 
 .article-thumbnail {
     width: 100%;
-    height: 200px;  /* Taller images for better proportion */
+    height: 160px;  /* Proportional to the smaller width */
     object-fit: cover;
 }
 
@@ -157,12 +157,16 @@ layout: default
     }
     
     .articles-grid {
-        max-width: 700px;
+        max-width: 600px;  /* Match hero content width on tablet */
         gap: var(--z-ds-space-l);
     }
     
+    .article-item {
+        grid-template-columns: 200px 1fr;  /* Smaller image on tablet */
+    }
+    
     .article-thumbnail {
-        height: 160px;
+        height: 140px;
     }
 }
 
