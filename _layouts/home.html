@@ -3,6 +3,24 @@ layout: default
 ---
 
 <style>
+/* CATEGORY TAGS - UNIFIED STYLING */
+.category-tag {
+    background: transparent;
+    color: #bd2d2d;  /* Match adriatic masthead color */
+    padding: 0;
+    border-radius: 0;
+    font-size: var(--z-ds-fontsize-14);
+    text-decoration: none;
+    font-weight: 600;
+    text-transform: none;  /* Remove all caps */
+    letter-spacing: 0;     /* Remove letter spacing since no caps */
+    transition: opacity 0.2s ease;
+}
+
+.category-tag:hover {
+    opacity: 0.7;
+}
+
 /* HERO SECTION */
 .hero-section {
     margin-bottom: var(--z-ds-space-xxl);
@@ -273,7 +291,9 @@ layout: default
     
 <div class="hero-content">
     <div class="article-meta">
-        <span class="category-tag {{ featured_post.category }}">{{ featured_post.category | upcase }}</span>
+        <a href="{{ site.baseurl }}/{{ featured_post.category }}" class="category-tag {{ featured_post.category }}">
+            {% if featured_post.category_display %}{{ featured_post.category_display }}{% else %}{{ featured_post.category }}{% endif %}
+        </a>
         <span>{{ featured_post.date | date: "%d %B %Y" }}</span>
     </div>
     
@@ -308,7 +328,9 @@ layout: default
                 <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
                 <p class="article-excerpt">{{ post.excerpt | strip_html }}</p>
                 <div class="article-meta-small">
-                    <span class="category-tag {{ post.category }}">{{ post.category | upcase }}</span>
+                    <a href="{{ site.baseurl }}/{{ post.category }}" class="category-tag {{ post.category }}">
+                        {% if post.category_display %}{{ post.category_display }}{% else %}{{ post.category }}{% endif %}
+                    </a>
                     <span class="article-date">{{ post.date | date: "%d %B %Y" }}</span>
                 </div>
             </div>
