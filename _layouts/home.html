@@ -135,10 +135,7 @@ layout: default
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-}
-
-.meta-separator {
-    margin: 0 4px;  /* Small spacing around bullets */
+    gap: var(--z-ds-space-s);  /* Add spacing between category and date */
 }
 
 /* TABLET OPTIMIZATION */
@@ -316,12 +313,7 @@ layout: default
                 <p class="article-excerpt">{{ post.excerpt | strip_html }}</p>
                 <div class="article-meta-small">
                     <span class="category-tag {{ post.category }}">{{ post.category | upcase }}</span>
-                    <span class="meta-separator"> • </span>
                     <span class="article-date">{{ post.date | date: "%d %B %Y" }}</span>
-                    {% if post.author %}
-                        <span class="meta-separator"> • </span>
-                        <span class="article-author">{{ post.author }}</span>
-                    {% endif %}
                 </div>
             </div>
         </article>
