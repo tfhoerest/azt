@@ -3,6 +3,7 @@ layout: post
 title: "A new face, an old dilemma"
 date: 2025-06-23
 category: domestic    # or domestic, opinion
+category_display: "Another start-up party"
 author: "Sloterdik"
 image: "https://tramci.github.io/azt/assets/images/messiah.jpg"   # optional
 excerpt: "In Slovenia’s increasingly atomised political landscape, Vladimir Prebilič’s decision to launch a new party ahead of the 2026 parliamentary elections may appear a bold personal gamble."
