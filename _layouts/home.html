@@ -6,7 +6,7 @@ layout: default
 /* HERO SECTION */
 .hero-section {
     margin-bottom: var(--z-ds-space-xxl);
-    max-width: 1200px;  /* Increased from 1000px */
+    max-width: 1000px;  /* Back to original size */
     margin-left: auto;
     margin-right: auto;
 }
@@ -20,7 +20,7 @@ layout: default
 
 .hero-content {
     text-align: left;
-    max-width: 680px;  /* Match post content width */
+    max-width: 800px;  /* Wider lede text */
     margin: 0 auto;
 }
 
@@ -70,7 +70,7 @@ layout: default
 /* ARTICLES */
 .articles-section {
     margin-top: var(--z-ds-space-xxl);
-    max-width: 1200px;  /* Increased from 1000px */
+    max-width: 930px;  /* 93% of hero width (Zeit ratio) */
     margin-left: auto;
     margin-right: auto;
 }
@@ -79,7 +79,7 @@ layout: default
     display: grid;
     grid-template-columns: 1fr;  /* Single column - stacked like Zeit */
     gap: var(--z-ds-space-xl);
-    max-width: 1200px;  /* Increased from 1000px */
+    max-width: 930px;  /* Match articles section */
     margin: 0 auto;
 }
 
@@ -142,9 +142,13 @@ layout: default
 
 /* TABLET OPTIMIZATION */
 @media (min-width: 48em) and (max-width: 64em) {
-    .hero-section,
+    .hero-section {
+        max-width: 800px;
+        padding: 0 var(--z-ds-space-m);
+    }
+    
     .articles-section {
-        max-width: 1000px;  /* Slightly wider for tablets too */
+        max-width: 744px;  /* 93% of 800px (maintaining Zeit ratio) */
         padding: 0 var(--z-ds-space-m);
     }
     
@@ -157,7 +161,7 @@ layout: default
     }
     
     .articles-grid {
-        max-width: 1000px;  /* Full tablet width */
+        max-width: 744px;  /* Match articles section (Zeit ratio) */
         gap: var(--z-ds-space-l);
     }
     
