@@ -309,22 +309,23 @@
             margin: 0 auto;
         }
         
-        /* CATEGORY TAGS */
-        .category-tag {
-            background: transparent;
-            color: var(--z-ds-color-text-70);
-            padding: 0;
-            border-radius: 0;
-            font-size: var(--z-ds-fontsize-14);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            text-decoration: none;
-            font-weight: 600;
-        }
-        
-        .category-tag.foreign { color: #60a5fa; }
-        .category-tag.domestic { color: #fb923c; }
-        .category-tag.opinion { color: #c084fc; }
+/* CATEGORY TAGS */
+.category-tag {
+    background: transparent;
+    color: #bd2d2d;  /* Unified adriatic masthead color */
+    padding: 0;
+    border-radius: 0;
+    font-size: var(--z-ds-fontsize-14);
+    text-transform: none;  /* Remove all caps */
+    letter-spacing: 0;     /* Remove letter spacing */
+    text-decoration: none;
+    font-weight: 600;
+    transition: opacity 0.2s ease;
+}
+
+.category-tag:hover {
+    opacity: 0.7;
+}
 
         /* FOOTER */
         footer {
