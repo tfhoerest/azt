@@ -455,14 +455,15 @@
     <header class="masthead">
         <div class="masthead-container">
             <a href="{{ site.baseurl }}/" class="site-title">{{ site.title }}</a>
-            <nav>
-                <ul class="main-nav">
-                    <li><a href="{{ site.baseurl }}/" {% if page.url == "/" %}class="active"{% endif %}>Home</a></li>
-                    <li><a href="{{ site.baseurl }}/foreign" {% if page.url contains "foreign" %}class="active"{% endif %}>Foreign</a></li>
-                    <li><a href="{{ site.baseurl }}/domestic" {% if page.url contains "domestic" %}class="active"{% endif %}>Domestic</a></li>
-                    <li><a href="{{ site.baseurl }}/opinion" {% if page.url contains "opinion" %}class="active"{% endif %}>Opinion</a></li>
-                </ul>
-            </nav>
+<nav>
+    <ul class="main-nav">
+        <li><a href="{{ site.baseurl }}/" {% if page.url == "/" %}class="active"{% endif %}>Home</a></li>
+        <li><a href="{{ site.baseurl }}/business" {% if page.url contains "business" %}class="active"{% endif %}>Business</a></li>
+        <li><a href="{{ site.baseurl }}/politics" {% if page.url contains "politics" %}class="active"{% endif %}>Politics</a></li>
+        <li><a href="{{ site.baseurl }}/culture" {% if page.url contains "culture" %}class="active"{% endif %}>Culture</a></li>
+        <li><a href="{{ site.baseurl }}/opinion" {% if page.url contains "opinion" %}class="active"{% endif %}>Opinion</a></li>
+    </ul>
+</nav>
         </div>
     </header>
 
