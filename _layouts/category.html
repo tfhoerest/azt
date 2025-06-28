@@ -14,9 +14,9 @@ layout: default
 }
 
 .category-title {
-    font-family: 'Inter', 'Helvetica Neue', Helvetica, Arial, FreeSans, sans-serif;
+    font-family: 'Saj JY', 'Inter', 'Helvetica Neue', Helvetica, Arial, FreeSans, sans-serif;
     font-size: var(--z-ds-fontsize-34);
-    font-weight: 700;
+    font-weight: 700; /* This will use Saj-JY-Bold.woff2 */
     color: var(--z-ds-color-text-100);
     margin-bottom: var(--z-ds-space-s);
     text-transform: capitalize;
@@ -121,7 +121,7 @@ layout: default
 
 <!-- Category Header -->
 <header class="category-header">
-    <h1 class="category-title">{{ page.category }} News</h1>
+    <h1 class="category-title">{{ page.category }}</h1>
     {% if page.description %}
         <p class="category-description">{{ page.description }}</p>
     {% endif %}
