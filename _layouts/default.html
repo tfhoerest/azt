@@ -137,7 +137,7 @@
 /* HAMBURGER MENU */
 .hamburger-menu {
     position: absolute;
-    bottom: calc(var(--z-ds-space-s) + 29px);
+    bottom: calc(var(--z-ds-space-s) + 8px);
     left: calc(50% - 350px);
     z-index: 1001;
 }
@@ -188,13 +188,13 @@
 /* Dropdown Menu */
 .hamburger-dropdown {
     position: absolute;
-    top: 40px;
+    top: 100%;
     left: 0;
-    background-color: var(--z-ds-color-background-0);
-    border: 1px solid var(--z-ds-color-border);
+    background-color: #bd2d2d;  /* Same red as masthead */
+    border: 1px solid #bd2d2d;
     border-radius: 8px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    min-width: 180px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    min-width: 220px;  /* Wider for more "chunk" */
     opacity: 0;
     visibility: hidden;
     transform: translateY(-10px);
@@ -203,7 +203,9 @@
 }
 
 [data-theme="dark"] .hamburger-dropdown {
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    background-color: #bd2d2d;  /* Keep red in dark mode */
+    border: 1px solid #bd2d2d;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
 }
 
 .hamburger-dropdown.active {
@@ -215,26 +217,34 @@
 .hamburger-nav {
     list-style: none;
     margin: 0;
-    padding: 8px 0;
+    padding: 12px 0;  /* More padding for chunk */
 }
 
 .hamburger-nav li {
     margin: 0;
+    border-bottom: 1px solid var(--z-ds-color-border);  /* Same as masthead divider */
+}
+
+.hamburger-nav li:last-child {
+    border-bottom: none;  /* No border on last item */
 }
 
 .hamburger-nav a {
     display: block;
-    padding: 12px 20px;
-    color: var(--z-ds-color-text-100);
+    padding: 16px 24px;  /* Bigger padding for chunk */
+    color: #ffffff;  /* White text */
     text-decoration: none;
-    font-size: var(--z-ds-fontsize-14);
-    font-weight: 400;
+    font-size: var(--z-ds-fontsize-16);  /* Larger text */
+    font-weight: 600;  /* Bold */
+    text-align: left;  /* Left aligned */
     transition: background-color 0.2s ease;
+    text-transform: uppercase;  /* Make them stand out */
+    letter-spacing: 0.5px;
 }
 
 .hamburger-nav a:hover {
-    background-color: var(--z-ds-color-background-1);
-    color: var(--z-ds-color-accent-100);
+    background-color: rgba(255, 255, 255, 0.1);  /* Subtle white overlay on hover */
+    color: #ffffff;
 }
 
         /* Custom Font - Saj JY */
@@ -513,10 +523,16 @@
                 height: 6px;
             }
 
-    .hamburger-menu {
-        top: 15px;  /* <-- Same as theme toggle */
-        left: var(--z-ds-space-s);
-    }
+            .hamburger-menu {
+                top: 15px;
+                left: var(--z-ds-space-s);
+            }
+            
+            /* Adjust dropdown for mobile */
+            .hamburger-dropdown {
+                top: 40px;  /* Position it below the hamburger button */
+                left: 0;
+            }
             
             .hamburger-toggle {
                 padding: 6px;
