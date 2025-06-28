@@ -57,28 +57,16 @@
     --z-ds-color-border-light: #2a2a2a;
 }
 
-/* IMPROVED MOBILE-FIRST DARK MODE TOGGLE */
+/* SIMPLE DARK MODE TOGGLE */
 .theme-toggle {
-    position: fixed; /* Changed from absolute to fixed for better mobile */
-    top: 15px;
-    right: 15px;
-    background: rgba(255, 255, 255, 0.9);
-    backdrop-filter: blur(10px);
-    border: 1px solid var(--z-ds-color-border);
-    border-radius: 24px;
-    padding: 4px;
+    position: absolute;
+    top: 20px;
+    right: 20px; /* Back to original right position */
+    background: none;
+    border: none;
+    padding: 0;
     cursor: pointer;
-    z-index: 1001;
-    min-width: 44px; /* Better touch target */
-    min-height: 44px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s ease;
-}
-
-[data-theme="dark"] .theme-toggle {
-    background: rgba(0, 0, 0, 0.9);
+    z-index: 1000;
 }
 
 .toggle-inner {
@@ -146,39 +134,28 @@
     opacity: 1;
 }
 
-/* IMPROVED MOBILE-FIRST HAMBURGER MENU BUTTON */
+/* HAMBURGER MENU BUTTON */
 .menu-toggle {
-    position: fixed; /* Changed from absolute to fixed for better mobile */
-    top: 15px;
-    left: 15px; /* Simple fixed position instead of complex calc */
-    background: rgba(255, 255, 255, 0.9);
-    backdrop-filter: blur(10px);
-    border: 1px solid var(--z-ds-color-border);
-    border-radius: 8px;
-    padding: 12px; /* Larger touch target */
+    position: absolute;
+    top: 20px;
+    left: calc(50% - 350px); /* Aligns with left edge of masthead container */
+    background: none;
+    border: none;
+    padding: 8px;
     cursor: pointer;
     z-index: 1001;
-    transition: all 0.3s ease;
-    min-width: 44px; /* Minimum touch target size */
-    min-height: 44px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-[data-theme="dark"] .menu-toggle {
-    background: rgba(0, 0, 0, 0.9);
+    transition: transform 0.3s ease;
 }
 
 .menu-toggle:hover {
-    transform: scale(1.05);
+    transform: scale(1.1);
 }
 
 .hamburger {
     display: flex;
     flex-direction: column;
-    width: 20px;
-    height: 15px;
+    width: 24px;
+    height: 18px;
     justify-content: space-between;
 }
 
@@ -194,7 +171,7 @@
 
 /* Hamburger animation when menu is open */
 .menu-open .hamburger span:nth-child(1) {
-    transform: rotate(45deg) translate(5px, 5px);
+    transform: rotate(45deg) translate(6px, 6px);
 }
 
 .menu-open .hamburger span:nth-child(2) {
@@ -202,15 +179,15 @@
 }
 
 .menu-open .hamburger span:nth-child(3) {
-    transform: rotate(-45deg) translate(5px, -5px);
+    transform: rotate(-45deg) translate(6px, -6px);
 }
 
-/* IMPROVED RESPONSIVE SIDE PANEL */
+/* SIDE PANEL */
 .side-panel {
     position: fixed;
     top: 0;
-    left: -100vw; /* Use viewport width instead of fixed pixels */
-    width: min(350px, 85vw); /* Responsive width with max */
+    left: -350px;
+    width: 350px;
     height: 100vh;
     background: var(--z-ds-color-background-0);
     border-right: 1px solid var(--z-ds-color-border);
@@ -221,7 +198,7 @@
 }
 
 .side-panel.open {
-    transform: translateX(100vw); /* Move by viewport width */
+    transform: translateX(350px);
 }
 
 .panel-header {
@@ -244,7 +221,6 @@
     font-size: var(--z-ds-fontsize-16);
     font-family: inherit;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
-    min-height: 48px; /* Better touch target */
 }
 
 .search-input:focus {
@@ -290,9 +266,7 @@
 }
 
 .panel-nav a {
-    display: flex;
-    align-items: center;
-    min-height: 48px; /* Ensure good touch target */
+    display: block;
     padding: var(--z-ds-space-s) var(--z-ds-space-l);
     color: var(--z-ds-color-text-100);
     text-decoration: none;
@@ -447,15 +421,9 @@
             font-display: swap;
         }
 
-        /* PREVENT HORIZONTAL SCROLL */
-        html, body {
-            overflow-x: hidden;
+        * {
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-        }
-        
-        *, *::before, *::after {
             box-sizing: border-box;
         }
         
@@ -473,13 +441,12 @@
             overflow: hidden;
         }
 
-        /* IMPROVED MASTHEAD HEADER */
+        /* MASTHEAD HEADER */
         .masthead {
             background-color: var(--z-ds-color-background-0);
             padding: var(--z-ds-space-l) var(--z-ds-space-s);
             text-align: center;
             position: static;
-            margin-top: 60px; /* Account for fixed buttons on mobile */
         }
 
         .masthead-container {
@@ -487,7 +454,6 @@
             margin: 0 auto;
             border-bottom: 1px solid var(--z-ds-color-border);
             padding-bottom: var(--z-ds-space-s);
-            overflow-x: hidden; /* Prevent overflow */
         }
         
         .site-title {
@@ -507,7 +473,7 @@
 
         .site-title::before {
             content: "THE";
-            font-size: clamp(2rem, 6vw, 3rem); /* Responsive sizing */
+            font-size: 3rem;
             text-transform: uppercase;
             color: inherit;
             display: block;
@@ -515,7 +481,7 @@
 
         .site-title::after {
             content: "ADRIATIC";
-            font-size: clamp(2rem, 6vw, 3rem); /* Responsive sizing */
+            font-size: 3rem;
             text-transform: uppercase;
             color: inherit;
             display: block;
@@ -559,7 +525,6 @@
         .container {
             max-width: var(--z-ds-max-width);
             margin: 0 auto;
-            overflow-x: hidden; /* Prevent overflow */
         }
         
 /* CATEGORY TAGS */
@@ -637,13 +602,8 @@
             background-color: var(--z-ds-color-background-1);
         }
 
-        /* IMPROVED MOBILE OPTIMIZATION */
+        /* MOBILE OPTIMIZATION */
         @media (max-width: 48em) {
-            /* Hide main nav on mobile to prevent clutter */
-            .main-nav {
-                display: none;
-            }
-            
             /* Make masthead container full width with full-width border */
             .masthead-container {
                 max-width: none; /* Remove width constraint */
@@ -653,83 +613,14 @@
                 border-bottom: 1px solid var(--z-ds-color-border); /* Keep border here */
             }
             
-            .masthead {
-                padding: var(--z-ds-space-s);
-                margin-top: 60px; /* Account for fixed buttons */
-            }
-            
-            .masthead-container {
-                padding-bottom: var(--z-ds-space-s);
-            }
-
-            .main-content {
-                margin-top: 0;
-                padding: 15px var(--z-ds-space-s);
-            }
-            
-            /* Better hero image breakout */
-            .hero-image {
-                width: calc(100vw - 0px); /* Prevent any overflow */
-                max-width: none;
-                margin-left: calc(-50vw + 50%);
-                margin-right: calc(-50vw + 50%);
-                overflow: hidden; /* Prevent horizontal scroll */
-            }
-            
-            /* Ensure parent containers don't cause overflow */
-            .hero-section {
-                overflow: hidden;
-            }
-        }
-
-        /* EXTRA SMALL MOBILE OPTIMIZATION */
-        @media (max-width: 24em) {
-            .main-nav {
-                gap: 0.25rem;
-                padding: 0 var(--z-ds-space-xl); /* Consistent generous padding - 3rem (48px) */
-            }
-            
-            .main-nav a {
-                font-size: 0.7rem;
-                letter-spacing: 0;
-                padding: 0; /* No individual padding */
-            }
-        }
-
-        /* VERY SMALL SCREEN OPTIMIZATIONS */
-        @media (max-width: 320px) {
-            .side-panel {
-                width: 90vw; /* Larger panel on very small screens */
-            }
-            
-            .menu-toggle,
             .theme-toggle {
-                top: 10px;
-                min-width: 40px;
-                min-height: 40px;
+                top: 15px;
+                right: 15px;
             }
             
             .menu-toggle {
-                left: 10px;
-            }
-            
-            .theme-toggle {
-                right: 10px;
-            }
-            
-            .masthead {
-                margin-top: 50px;
-            }
-            
-            .hero-image {
-                width: 100%;
-                margin-left: 0;
-                margin-right: 0;
-            }
-            
-            .hamburger {
-                width: 18px;
-                height: 13px;
+                top: 15px;
+                left: 15px;
             }
             
             .toggle-inner {
@@ -750,41 +641,55 @@
                 width: 6px;
                 height: 6px;
             }
-        }
 
-        /* LANDSCAPE MOBILE OPTIMIZATION */
-        @media (max-width: 48em) and (orientation: landscape) {
-            .hero-image {
-                height: 200px; /* Shorter on landscape mobile */
+            .hamburger {
+                width: 20px;
+                height: 15px;
+            }
+
+            .side-panel {
+                width: 300px;
+                left: -300px;
+            }
+
+            .side-panel.open {
+                transform: translateX(300px);
+            }
+
+            .masthead {
+                padding: var(--z-ds-space-s);
             }
             
-            .masthead {
-                margin-top: 50px; /* Less space needed in landscape */
+            .masthead-container {
+                padding-bottom: var(--z-ds-space-s);
+            }
+            
+            .site-title::before {
+                font-size: 2.25rem;  /* Smaller masthead on mobile */
+            }
+            
+            .site-title::after {
+                font-size: 2.25rem;  /* Smaller masthead on mobile */
+            }
+
+            .main-content {
+                margin-top: 0;
+                padding: 15px var(--z-ds-space-s);
             }
         }
 
-        /* ACCESSIBILITY IMPROVEMENTS */
-        @media (prefers-reduced-motion: reduce) {
-            .side-panel,
-            .toggle-switch,
-            .hamburger span,
-            .menu-toggle,
-            .theme-toggle {
-                transition: none;
+        /* EXTRA SMALL MOBILE OPTIMIZATION */
+        @media (max-width: 24em) {
+            .main-nav {
+                gap: 0.25rem;
+                padding: 0 var(--z-ds-space-xl); /* Consistent generous padding - 3rem (48px) */
             }
-        }
-
-        /* Focus indicators for better accessibility */
-        .menu-toggle:focus,
-        .theme-toggle:focus {
-            outline: 2px solid var(--z-ds-color-accent-100);
-            outline-offset: 2px;
-        }
-
-        .menu-toggle:focus-visible,
-        .theme-toggle:focus-visible {
-            outline: 2px solid var(--z-ds-color-accent-100);
-            outline-offset: 2px;
+            
+            .main-nav a {
+                font-size: 0.7rem;
+                letter-spacing: 0;
+                padding: 0; /* No individual padding */
+            }
         }
     </style>
 </head>
@@ -834,7 +739,7 @@
     <header class="masthead">
         <div class="masthead-container">
             <a href="{{ site.baseurl }}/" class="site-title">{{ site.title }}</a>
-            <!-- Original navigation is now hidden on mobile and moved to side panel -->
+            <!-- Original navigation is now hidden and moved to side panel -->
             <nav>
                 <ul class="main-nav">
                     <li><a href="{{ site.baseurl }}/" {% if page.url == "/" %}class="active"{% endif %}>Home</a></li>
