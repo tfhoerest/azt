@@ -3,843 +3,257 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% if page.title %}{{ page.title }} | {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
-    <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap" rel="stylesheet">
-    
+    <title>Mobile Fixes for The Adriatic</title>
     <style>
-        /* Zeit.de Design System Variables - Dark Theme */
-:root {
-    /* Font sizes */
-    --z-ds-fontsize-14: 0.875rem;
-    --z-ds-fontsize-16: 1rem;
-    --z-ds-fontsize-22: 1.375rem;
-    --z-ds-fontsize-24: 1.5rem;
-    --z-ds-fontsize-32: 2rem;
-    --z-ds-fontsize-34: 2.125rem;
-    
-    /* Spacing */
-    --z-ds-space-xxs: 0.5rem;
-    --z-ds-space-s: 1rem;
-    --z-ds-space-m: 1.5rem;
-    --z-ds-space-l: 2rem;
-    --z-ds-space-xl: 3rem;
-    --z-ds-space-xxl: 4rem;
-    
-    /* Layout */
-    --z-ds-max-width: 1280px;
-    --z-ds-content-width: 750px;
-    --z-ds-newsletter-width: 46.25rem;
-}
-
-/* LIGHT THEME (default) */
-:root {
-    --z-ds-color-text-100: #1a1a1a;
-    --z-ds-color-text-70: #666666;
-    --z-ds-color-background-0: #ffffff;
-    --z-ds-color-background-1: #f8f9fa;
-    --z-ds-color-accent-100: #ff6246;
-    --z-ds-color-border: #e1e5e9;
-    --z-ds-color-border-light: #f0f0f0;
-}
-
-/* DARK THEME */
-[data-theme="dark"] {
-    --z-ds-color-text-100: #ffffff;
-    --z-ds-color-text-70: #b3b3b3;
-    --z-ds-color-background-0: #0a0a0a;
-    --z-ds-color-background-1: #1a1a1a;
-    --z-ds-color-accent-100: #ff6246;
-    --z-ds-color-border: #333333;
-    --z-ds-color-border-light: #2a2a2a;
-}
-
-/* SIMPLE DARK MODE TOGGLE */
-.theme-toggle {
-    position: absolute;
-    top: 20px;
-    right: 20px; /* Back to original right position */
-    background: none;
-    border: none;
-    padding: 0;
-    cursor: pointer;
-    z-index: 1000;
-}
-
-.toggle-inner {
-    display: flex;
-    align-items: center;
-    position: relative;
-    width: 48px;
-    height: 24px;
-    background: var(--z-ds-color-border);
-    border-radius: 50px;
-    transition: all 0.3s ease;
-}
-
-.toggle-inner:hover {
-    background: var(--z-ds-color-accent-100);
-}
-
-.toggle-switch {
-    position: absolute;
-    top: 2px;
-    left: 2px;
-    width: 20px;
-    height: 20px;
-    background: var(--z-ds-color-background-0);
-    border-radius: 50%;
-    transition: transform 0.3s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-}
-
-[data-theme="dark"] .toggle-switch {
-    transform: translateX(24px);
-}
-
-/* Simple Icons */
-.toggle-icon {
-    position: absolute;
-    transition: opacity 0.3s ease;
-}
-
-.sun-icon {
-    opacity: 1;
-    width: 8px;
-    height: 8px;
-    background: #ffa500;
-    border-radius: 50%;
-}
-
-.moon-icon {
-    opacity: 0;
-    width: 8px;
-    height: 8px;
-    background: #4a90e2;
-    border-radius: 50% 0;
-    transform: rotate(45deg);
-}
-
-[data-theme="dark"] .sun-icon {
-    opacity: 0;
-}
-
-[data-theme="dark"] .moon-icon {
-    opacity: 1;
-}
-
-/* HAMBURGER MENU BUTTON */
-.menu-toggle {
-    position: absolute;
-    top: 20px;
-    left: calc(50% - 350px); /* Aligns with left edge of masthead container */
-    background: none;
-    border: none;
-    padding: 8px;
-    cursor: pointer;
-    z-index: 1001;
-    transition: transform 0.3s ease;
-}
-
-.menu-toggle:hover {
-    transform: scale(1.1);
-}
-
-.hamburger {
-    display: flex;
-    flex-direction: column;
-    width: 24px;
-    height: 18px;
-    justify-content: space-between;
-}
-
-.hamburger span {
-    display: block;
-    height: 2px;
-    width: 100%;
-    background: var(--z-ds-color-text-100);
-    border-radius: 1px;
-    transition: all 0.3s ease;
-    transform-origin: center;
-}
-
-/* Hamburger animation when menu is open */
-.menu-open .hamburger span:nth-child(1) {
-    transform: rotate(45deg) translate(6px, 6px);
-}
-
-.menu-open .hamburger span:nth-child(2) {
-    opacity: 0;
-}
-
-.menu-open .hamburger span:nth-child(3) {
-    transform: rotate(-45deg) translate(6px, -6px);
-}
-
-/* SIDE PANEL */
-.side-panel {
-    position: fixed;
-    top: 0;
-    left: -350px;
-    width: 350px;
-    height: 100vh;
-    background: var(--z-ds-color-background-0);
-    border-right: 1px solid var(--z-ds-color-border);
-    z-index: 1000;
-    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    box-shadow: 5px 0 20px rgba(0, 0, 0, 0.1);
-    overflow-y: auto;
-}
-
-.side-panel.open {
-    transform: translateX(350px);
-}
-
-.panel-header {
-    padding: var(--z-ds-space-l);
-    border-bottom: 1px solid var(--z-ds-color-border);
-    background: var(--z-ds-color-background-1);
-}
-
-.search-container {
-    position: relative;
-}
-
-.search-input {
-    width: 100%;
-    padding: 12px 16px;
-    border: 1px solid var(--z-ds-color-border);
-    border-radius: 4px;
-    background: var(--z-ds-color-background-0);
-    color: var(--z-ds-color-text-100);
-    font-size: var(--z-ds-fontsize-16);
-    font-family: inherit;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-.search-input:focus {
-    outline: none;
-    border-color: #bd2d2d;
-    box-shadow: 0 0 0 2px rgba(189, 45, 45, 0.1);
-}
-
-.search-input::placeholder {
-    color: var(--z-ds-color-text-70);
-}
-
-[data-theme="dark"] .search-input:focus {
-    border-color: #ffffff;
-    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.1);
-}
-
-.panel-title {
-    font-family: 'Adriatic Journal', 'Playfair Display', Georgia, serif;
-    font-size: var(--z-ds-fontsize-24);
-    color: #bd2d2d;
-    margin: 0;
-    text-align: center;
-    display: none; /* Hidden since we're using search bar */
-}
-
-[data-theme="dark"] .panel-title {
-    color: #ffffff;
-}
-
-.panel-nav {
-    padding: var(--z-ds-space-l) 0;
-}
-
-.panel-nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-.panel-nav li {
-    margin: 0;
-}
-
-.panel-nav a {
-    display: block;
-    padding: var(--z-ds-space-s) var(--z-ds-space-l);
-    color: var(--z-ds-color-text-100);
-    text-decoration: none;
-    font-size: var(--z-ds-fontsize-16);
-    font-weight: 500;
-    border-left: 3px solid transparent;
-    transition: all 0.3s ease;
-    position: relative;
-}
-
-.panel-nav a:hover,
-.panel-nav a.active {
-    color: #bd2d2d;
-    border-left-color: #bd2d2d;
-    background: var(--z-ds-color-background-1);
-}
-
-[data-theme="dark"] .panel-nav a:hover,
-[data-theme="dark"] .panel-nav a.active {
-    color: #ffffff;
-    border-left-color: #ffffff;
-}
-
-.panel-nav a::after {
-    content: '';
-    position: absolute;
-    right: var(--z-ds-space-l);
-    top: 50%;
-    transform: translateY(-50%);
-    width: 6px;
-    height: 6px;
-    border-right: 2px solid currentColor;
-    border-bottom: 2px solid currentColor;
-    transform: translateY(-50%) rotate(-45deg);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.panel-nav a:hover::after {
-    opacity: 1;
-}
-
-/* OVERLAY */
-.overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 999;
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s ease;
-}
-
-.overlay.show {
-    opacity: 1;
-    visibility: visible;
-}
-
-/* PANEL FOOTER */
-.panel-footer {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: var(--z-ds-space-l);
-    border-top: 1px solid var(--z-ds-color-border);
-    background: var(--z-ds-color-background-1);
-    text-align: center;
-}
-
-.panel-footer p {
-    margin: 0;
-    color: var(--z-ds-color-text-70);
-    font-size: var(--z-ds-fontsize-14);
-}
-
-        /* Custom Font - Saj JY */
-        @font-face {
-            font-family: 'Saj JY';
-            src: url('/azt/assets/fonts/Saj-JY-Regular.woff2') format('woff2');
-            font-weight: normal;
-            font-style: normal;
-            font-display: swap;
-        }
-
-        @font-face {
-            font-family: 'Saj JY';
-            src: url('/azt/assets/fonts/Saj-JY-Bold.woff2') format('woff2');
-            font-weight: bold;
-            font-style: normal;
-            font-display: swap;
-        }
-
-        @font-face {
-            font-family: 'Saj JY';
-            src: url('/azt/assets/fonts/Saj-JY-Italic.woff2') format('woff2');
-            font-weight: normal;
-            font-style: italic;
-            font-display: swap;
-        }
-
-        @font-face {
-            font-family: 'Saj JY';
-            src: url('/azt/assets/fonts/Saj-JY-Light.woff2') format('woff2');
-            font-weight: 300;
-            font-style: normal;
-            font-display: swap;
-        }
-
-        /* Custom Font - Adriatic Journal (Masthead) */
-        @font-face {
-            font-family: 'Adriatic Journal';
-            src: url('/azt/assets/fonts/Adriatic-Journal.woff2') format('woff2');
-            font-weight: normal;
-            font-style: normal;
-            font-display: swap;
-        }
-
-        /* Custom Font - Adriatic22 (Article Body) */
-        @font-face {
-            font-family: 'Adriatic22';
-            src: url('/azt/assets/fonts/Adriatic22-Regular.woff2') format('woff2');
-            font-weight: normal;
-            font-style: normal;
-            font-display: swap;
-        }
-
-        @font-face {
-            font-family: 'Adriatic22';
-            src: url('/azt/assets/fonts/Adriatic22-Bold.woff2') format('woff2');
-            font-weight: bold;
-            font-style: normal;
-            font-display: swap;
-        }
-
-        @font-face {
-            font-family: 'Adriatic22';
-            src: url('/azt/assets/fonts/Adriatic22-Italic.woff2') format('woff2');
-            font-weight: normal;
-            font-style: italic;
-            font-display: swap;
-        }
-
-        @font-face {
-            font-family: 'Adriatic22';
-            src: url('/azt/assets/fonts/Adriatic22-BoldItalic.woff2') format('woff2');
-            font-weight: bold;
-            font-style: italic;
-            font-display: swap;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        /* IMPROVED MOBILE FIXES FOR THE ADRIATIC */
         
-        body {
-            font-family: 'Saj JY', 'Inter', 'Helvetica Neue', Helvetica, Arial, FreeSans, sans-serif;
-            line-height: 1.5;
-            color: var(--z-ds-color-text-100);
-            background-color: var(--z-ds-color-background-0);
-            font-weight: 400;
-            font-size: var(--z-ds-fontsize-16);
-        }
-
-        /* Prevent body scroll when menu is open */
-        body.menu-open {
-            overflow: hidden;
-        }
-
-        /* MASTHEAD HEADER */
-        .masthead {
-            background-color: var(--z-ds-color-background-0);
-            padding: var(--z-ds-space-l) var(--z-ds-space-s);
-            text-align: center;
-            position: static;
-        }
-
-        .masthead-container {
-            max-width: 700px;
-            margin: 0 auto;
-            border-bottom: 1px solid var(--z-ds-color-border);
-            padding-bottom: var(--z-ds-space-s);
-        }
-        
-        .site-title {
-            font-family: 'Adriatic Journal', 'Playfair Display', Georgia, serif;
-            font-weight: 400;
-            font-style: normal;
-            color: #bd2d2d;  /* Red in light mode */
-            text-decoration: none;
-            letter-spacing: 3px;
+        /* 1. BETTER MENU TOGGLE POSITIONING */
+        .menu-toggle {
+            position: fixed; /* Changed from absolute to fixed */
+            top: 15px;
+            left: 15px; /* Simple fixed position instead of calc */
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--z-ds-color-border);
+            border-radius: 8px;
+            padding: 12px; /* Larger touch target */
+            cursor: pointer;
+            z-index: 1001;
+            transition: all 0.3s ease;
+            min-width: 44px; /* Minimum touch target size */
+            min-height: 44px;
             display: flex;
-            flex-direction: column;
             align-items: center;
-            margin-bottom: var(--z-ds-space-xl);
-            line-height: 0.8;
-            font-size: 0; /* Hide original text */
-        }
-
-        .site-title::before {
-            content: "THE";
-            font-size: 3rem;
-            text-transform: uppercase;
-            color: inherit;
-            display: block;
-        }
-
-        .site-title::after {
-            content: "ADRIATIC";
-            font-size: 3rem;
-            text-transform: uppercase;
-            color: inherit;
-            display: block;
-        }
-
-        /* Dark mode override */
-        [data-theme="dark"] .site-title::before,
-        [data-theme="dark"] .site-title::after {
-            color: #ffffff;
-        }
-        
-        /* Show the original main navigation in masthead */
-        .main-nav {
-            display: flex;
             justify-content: center;
-            gap: var(--z-ds-space-l);
-            list-style: none;
-        }
-        
-        .main-nav a {
-            color: var(--z-ds-color-text-70);
-            text-decoration: none;
-            font-size: var(--z-ds-fontsize-14);
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            transition: color 0.2s ease;
-        }
-        
-        .main-nav a:hover,
-        .main-nav a.active {
-            color: var(--z-ds-color-text-100);
         }
 
-        /* MAIN CONTENT */
-        .main-content {
-            margin-top: 0;
-            padding: 15px var(--z-ds-space-s);
-        }
-        
-        .container {
-            max-width: var(--z-ds-max-width);
-            margin: 0 auto;
-        }
-        
-/* CATEGORY TAGS */
-.category-tag {
-    background: transparent;
-    color: #bd2d2d;  /* Unified adriatic masthead color */
-    padding: 0;
-    border-radius: 0;
-    font-size: var(--z-ds-fontsize-14);
-    text-transform: none;  /* Remove all caps */
-    letter-spacing: 0;     /* Remove letter spacing */
-    text-decoration: none;
-    font-weight: 600;
-    transition: opacity 0.2s ease;
-}
-
-.category-tag:hover {
-    opacity: 0.7;
-}
-
-/* HERO SECTION TIGHT SPACING */
-.hero-content .hero-headline {
-    margin-top: 0.4rem !important;
-    margin-bottom: 0.4rem !important;
-    line-height: 1.2 !important;
-}
-
-.hero-content .hero-summary {
-    margin-top: 0 !important;
-    margin-bottom: 0.4rem !important;
-    line-height: 1.4 !important;
-}
-
-.hero-content .hero-author {
-    margin-top: 0.4rem !important;
-    margin-bottom: 0 !important;
-    line-height: 1.2 !important;
-    color: var(--z-ds-color-text-70);
-    font-size: var(--z-ds-fontsize-14);
-    font-weight: 400;
-}
-
-.hero-content .category-tag {
-    margin-bottom: 0.4rem !important;
-    line-height: 1.2 !important;
-    display: block;
-}
-
-/* ARTICLE SECTION TIGHT SPACING */
-.article-content h3 {
-    margin-top: 0.4rem !important;
-    margin-bottom: 0.4rem !important;
-    line-height: 1.2 !important;
-}
-
-.article-excerpt {
-    margin-top: 0 !important;
-    margin-bottom: 0.4rem !important;
-    line-height: 1.4 !important;
-}
-
-.article-author {
-    margin-top: 0.4rem !important;
-    margin-bottom: 0 !important;
-    line-height: 1.2 !important;
-}
-
-        /* FOOTER */
-        footer {
-            border-top: 1px solid var(--z-ds-color-border);
-            padding: var(--z-ds-space-xl) var(--z-ds-space-s);
-            text-align: center;
-            color: var(--z-ds-color-text-70);
-            margin-top: var(--z-ds-space-xxl);
-            background-color: var(--z-ds-color-background-1);
+        /* Dark mode menu toggle */
+        [data-theme="dark"] .menu-toggle {
+            background: rgba(0, 0, 0, 0.9);
         }
 
-        /* MOBILE OPTIMIZATION */
+        /* 2. IMPROVED THEME TOGGLE */
+        .theme-toggle {
+            position: fixed; /* Changed from absolute to fixed */
+            top: 15px;
+            right: 15px;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--z-ds-color-border);
+            border-radius: 24px;
+            padding: 4px;
+            cursor: pointer;
+            z-index: 1001;
+            min-width: 44px; /* Better touch target */
+            min-height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        [data-theme="dark"] .theme-toggle {
+            background: rgba(0, 0, 0, 0.9);
+        }
+
+        /* 3. RESPONSIVE SIDE PANEL */
+        .side-panel {
+            position: fixed;
+            top: 0;
+            left: -100vw; /* Use viewport width instead of fixed pixels */
+            width: min(350px, 85vw); /* Responsive width with max */
+            height: 100vh;
+            background: var(--z-ds-color-background-0);
+            border-right: 1px solid var(--z-ds-color-border);
+            z-index: 1000;
+            transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            box-shadow: 5px 0 20px rgba(0, 0, 0, 0.1);
+            overflow-y: auto;
+        }
+
+        .side-panel.open {
+            transform: translateX(100vw); /* Move by viewport width */
+        }
+
+        /* 4. BETTER HERO IMAGE BREAKOUT */
         @media (max-width: 48em) {
-            /* Make masthead container full width with full-width border */
-            .masthead-container {
-                max-width: none; /* Remove width constraint */
-                margin: 0; /* Remove auto margins */
-                padding-left: 0;
-                padding-right: 0;
-                border-bottom: 1px solid var(--z-ds-color-border); /* Keep border here */
+            .hero-image {
+                width: calc(100vw - 0px); /* Prevent any overflow */
+                max-width: none;
+                margin-left: calc(-50vw + 50%);
+                margin-right: calc(-50vw + 50%);
+                overflow: hidden; /* Prevent horizontal scroll */
             }
             
+            /* Ensure parent containers don't cause overflow */
+            .hero-section {
+                overflow: hidden;
+            }
+            
+            /* Fix for very small screens */
+            @media (max-width: 320px) {
+                .hero-image {
+                    width: 100%;
+                    margin-left: 0;
+                    margin-right: 0;
+                }
+            }
+        }
+
+        /* 5. IMPROVED MOBILE NAVIGATION */
+        @media (max-width: 48em) {
+            /* Hide main nav on mobile to prevent clutter */
+            .main-nav {
+                display: none;
+            }
+            
+            /* Adjust masthead spacing */
+            .masthead {
+                padding: var(--z-ds-space-s) var(--z-ds-space-s) var(--z-ds-space-s);
+                margin-top: 60px; /* Account for fixed buttons */
+            }
+            
+            /* Better mobile typography */
+            .site-title::before,
+            .site-title::after {
+                font-size: clamp(1.8rem, 5vw, 2.25rem); /* Responsive sizing */
+            }
+        }
+
+        /* 6. IMPROVED TOUCH TARGETS */
+        .panel-nav a {
+            min-height: 48px; /* Ensure good touch target */
+            display: flex;
+            align-items: center;
+            padding: var(--z-ds-space-s) var(--z-ds-space-l);
+        }
+
+        .search-input {
+            min-height: 48px; /* Better touch target */
+            padding: 12px 16px;
+        }
+
+        /* 7. PREVENT HORIZONTAL SCROLL */
+        html, body {
+            overflow-x: hidden;
+        }
+
+        .container,
+        .masthead-container,
+        .hero-section,
+        .articles-section {
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+
+        /* 8. BETTER MOBILE ARTICLES */
+        @media (max-width: 48em) {
+            .articles-grid {
+                gap: var(--z-ds-space-l);
+                padding: 0;
+            }
+            
+            .article-item {
+                padding: 0 0 var(--z-ds-space-l) 0;
+                border-bottom: 1px solid var(--z-ds-color-border-light);
+            }
+            
+            .article-thumbnail {
+                width: 100%;
+                height: clamp(180px, 40vw, 220px); /* Responsive height */
+                margin-bottom: var(--z-ds-space-s);
+            }
+            
+            /* Better mobile typography */
+            .hero-headline {
+                font-size: clamp(1.5rem, 5vw, 1.75rem);
+                line-height: 1.1;
+            }
+            
+            .hero-summary {
+                font-size: clamp(1rem, 3.5vw, 1.125rem);
+                line-height: 1.3;
+            }
+            
+            .article-content h3 {
+                font-size: clamp(1rem, 3.5vw, 1.125rem);
+                line-height: 1.3;
+            }
+        }
+
+        /* 9. VERY SMALL SCREEN OPTIMIZATIONS */
+        @media (max-width: 320px) {
+            .side-panel {
+                width: 90vw; /* Larger panel on very small screens */
+            }
+            
+            .menu-toggle,
             .theme-toggle {
-                top: 15px;
-                right: 15px;
+                top: 10px;
+                min-width: 40px;
+                min-height: 40px;
             }
             
             .menu-toggle {
-                top: 15px;
-                left: 15px;
+                left: 10px;
             }
             
-            .toggle-inner {
-                width: 40px;
-                height: 20px;
+            .theme-toggle {
+                right: 10px;
             }
             
-            .toggle-switch {
-                width: 16px;
-                height: 16px;
-            }
-            
-            [data-theme="dark"] .toggle-switch {
-                transform: translateX(20px);
-            }
-            
-            .toggle-icon {
-                width: 6px;
-                height: 6px;
-            }
-
-            .hamburger {
-                width: 20px;
-                height: 15px;
-            }
-
-            .side-panel {
-                width: 300px;
-                left: -300px;
-            }
-
-            .side-panel.open {
-                transform: translateX(300px);
-            }
-
             .masthead {
-                padding: var(--z-ds-space-s);
-            }
-            
-            .masthead-container {
-                padding-bottom: var(--z-ds-space-s);
-            }
-            
-            .site-title::before {
-                font-size: 2.25rem;  /* Smaller masthead on mobile */
-            }
-            
-            .site-title::after {
-                font-size: 2.25rem;  /* Smaller masthead on mobile */
-            }
-
-            .main-content {
-                margin-top: 0;
-                padding: 15px var(--z-ds-space-s);
+                margin-top: 50px;
             }
         }
 
-        /* EXTRA SMALL MOBILE OPTIMIZATION */
-        @media (max-width: 24em) {
-            .main-nav {
-                gap: 0.25rem;
-                padding: 0 var(--z-ds-space-xl); /* Consistent generous padding - 3rem (48px) */
+        /* 10. ACCESSIBILITY IMPROVEMENTS */
+        @media (prefers-reduced-motion: reduce) {
+            .side-panel,
+            .toggle-switch,
+            .hamburger span {
+                transition: none;
+            }
+        }
+
+        /* Focus indicators for better accessibility */
+        .menu-toggle:focus,
+        .theme-toggle:focus {
+            outline: 2px solid var(--z-ds-color-accent-100);
+            outline-offset: 2px;
+        }
+
+        /* 11. LANDSCAPE MOBILE OPTIMIZATION */
+        @media (max-width: 48em) and (orientation: landscape) {
+            .hero-image {
+                height: 200px; /* Shorter on landscape mobile */
             }
             
-            .main-nav a {
-                font-size: 0.7rem;
-                letter-spacing: 0;
-                padding: 0; /* No individual padding */
+            .masthead {
+                margin-top: 50px; /* Less space needed in landscape */
             }
         }
     </style>
 </head>
-<body> 
-    <!-- Theme Toggle -->
-    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
-        <div class="toggle-inner">
-            <div class="toggle-switch">
-                <span class="toggle-icon sun-icon"></span>
-                <span class="toggle-icon moon-icon"></span>
-            </div>
-        </div>
-    </button>
-
-    <!-- Menu Toggle Button -->
-    <button class="menu-toggle" id="menu-toggle" aria-label="Toggle menu">
-        <div class="hamburger">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-    </button>
-
-    <!-- Overlay -->
-    <div class="overlay" id="overlay"></div>
-
-    <!-- Side Panel -->
-    <div class="side-panel" id="side-panel">
-        <div class="panel-header">
-            <div class="search-container">
-                <input type="text" class="search-input" placeholder="Search articles..." id="search-input">
-            </div>
-        </div>
-        <nav class="panel-nav">
-            <ul>
-                <li><a href="{{ site.baseurl }}/about" {% if page.url contains "about" %}class="active"{% endif %}>About</a></li>
-                <li><a href="{{ site.baseurl }}/contact" {% if page.url contains "contact" %}class="active"{% endif %}>Contact</a></li>
-                <li><a href="{{ site.baseurl }}/newsletter" {% if page.url contains "newsletter" %}class="active"{% endif %}>Newsletter</a></li>
-            </ul>
-        </nav>
-        <div class="panel-footer">
-            <p>&copy; 2025 The Adriatic</p>
-        </div>
-    </div>
-
-    <!-- MASTHEAD -->
-    <header class="masthead">
-        <div class="masthead-container">
-            <a href="{{ site.baseurl }}/" class="site-title">{{ site.title }}</a>
-            <!-- Original navigation is now hidden and moved to side panel -->
-            <nav>
-                <ul class="main-nav">
-                    <li><a href="{{ site.baseurl }}/" {% if page.url == "/" %}class="active"{% endif %}>Home</a></li>
-                    <li><a href="{{ site.baseurl }}/business" {% if page.url contains "business" %}class="active"{% endif %}>Business</a></li>
-                    <li><a href="{{ site.baseurl }}/power" {% if page.url contains "power" %}class="active"{% endif %}>Power</a></li>
-                    <li><a href="{{ site.baseurl }}/culture" {% if page.url contains "culture" %}class="active"{% endif %}>Culture</a></li>
-                    <li><a href="{{ site.baseurl }}/opinion" {% if page.url contains "opinion" %}class="active"{% endif %}>Opinion</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-
-    <!-- MAIN CONTENT -->
-    <main class="main-content">
-        <div class="container">
-            {{ content }}
-        </div>
-    </main>
-
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 {{ site.title }}. All rights reserved.</p>
-        </div>
-    </footer>
-
-    <script>
-(function() {
-    // Theme toggle functionality
-    const themeToggle = document.getElementById('theme-toggle');
-    const html = document.documentElement;
+<body>
+    <h1>Mobile Optimization Fixes</h1>
+    <p>Apply these CSS fixes to your default.html layout file to resolve mobile issues:</p>
     
-    // Check for saved theme preference or default to 'dark' to match current design
-    const currentTheme = localStorage.getItem('theme') || 'dark';
-    html.setAttribute('data-theme', currentTheme);
+    <h2>Key Improvements:</h2>
+    <ul>
+        <li><strong>Fixed positioning:</strong> Menu and theme toggles now use fixed positioning for better mobile behavior</li>
+        <li><strong>Responsive side panel:</strong> Uses viewport units for better adaptation to different screen sizes</li>
+        <li><strong>Improved hero image:</strong> Better breakout technique that prevents horizontal scrolling</li>
+        <li><strong>Better touch targets:</strong> All interactive elements meet minimum 44px touch target guidelines</li>
+        <li><strong>Responsive typography:</strong> Uses clamp() for better text scaling across devices</li>
+        <li><strong>Overflow prevention:</strong> Ensures no horizontal scrolling on any screen size</li>
+        <li><strong>Accessibility:</strong> Added focus indicators and reduced motion support</li>
+    </ul>
     
-    themeToggle.addEventListener('click', function() {
-        const currentTheme = html.getAttribute('data-theme');
-        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-        
-        html.setAttribute('data-theme', newTheme);
-        localStorage.setItem('theme', newTheme);
-    });
-
-    // Side panel menu functionality
-    const menuToggle = document.getElementById('menu-toggle');
-    const sidePanel = document.getElementById('side-panel');
-    const overlay = document.getElementById('overlay');
-    const body = document.body;
-
-    function openMenu() {
-        sidePanel.classList.add('open');
-        overlay.classList.add('show');
-        body.classList.add('menu-open');
-        menuToggle.classList.add('menu-open');
-    }
-
-    function closeMenu() {
-        sidePanel.classList.remove('open');
-        overlay.classList.remove('show');
-        body.classList.remove('menu-open');
-        menuToggle.classList.remove('menu-open');
-    }
-
-    // Toggle menu when button is clicked
-    menuToggle.addEventListener('click', function() {
-        if (sidePanel.classList.contains('open')) {
-            closeMenu();
-        } else {
-            openMenu();
-        }
-    });
-
-    // Close menu when overlay is clicked
-    overlay.addEventListener('click', closeMenu);
-
-    // Close menu when pressing Escape key
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && sidePanel.classList.contains('open')) {
-            closeMenu();
-        }
-    });
-
-    // Close menu when clicking a navigation link (for better UX)
-    const panelNavLinks = document.querySelectorAll('.panel-nav a');
-    panelNavLinks.forEach(link => {
-        link.addEventListener('click', closeMenu);
-    });
-
-    // Basic search functionality (you can enhance this further)
-    const searchInput = document.getElementById('search-input');
-    searchInput.addEventListener('keypress', function(e) {
-        if (e.key === 'Enter') {
-            const query = searchInput.value.trim();
-            if (query) {
-                // You can customize this search URL to match your site's search functionality
-                window.location.href = `{{ site.baseurl }}/search?q=${encodeURIComponent(query)}`;
-            }
-        }
-    });
-})();
-</script>
+    <h2>Instructions:</h2>
+    <ol>
+        <li>Replace the mobile CSS sections in your default.html file with the improved versions above</li>
+        <li>Test on various mobile devices and screen sizes</li>
+        <li>Pay special attention to very small screens (320px) and landscape orientation</li>
+    </ol>
 </body>
 </html>
