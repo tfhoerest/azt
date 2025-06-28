@@ -31,8 +31,8 @@ plugins:
 paginate: 10
 paginate_path: "/page:num/"
 
-# Categories
-categories: [foreign, domestic, opinion]
+# Categories - UPDATED
+categories: [business, politics, culture, opinion]
 
 # Build settings
 exclude:
