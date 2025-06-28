@@ -605,39 +605,28 @@
         /* MOBILE OPTIMIZATION */
         @media (max-width: 48em) {
             /* Make masthead container full width with full-width border */
-  .masthead-container {
-    max-width: none;
-    margin: 0;
-    padding-left: 0;
-    padding-right: 0;
-    padding-bottom: var(--z-ds-space-s);
-    border-bottom: none;
-    position: relative;
-  }
-
-              .masthead-container::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    width: auto;
-    height: 1px;
-    background: var(--z-ds-color-border);
-  }
-
   .masthead {
     padding: var(--z-ds-space-s);
     border-bottom: none;
   }
 
-            .main-nav {
-  padding-left: 0.5rem; /* instead of var(--z-ds-space-s) */
-  padding-right: 0.5rem;
-  flex-wrap: nowrap;
-  justify-content: space-between;
-  gap: 0.5rem;
-}
+  .masthead-container {
+    max-width: none;
+    margin: 0;
+    padding-left: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+  }
+
+  .main-nav {
+    margin-bottom: 0.5rem;
+  }
+
+  .main-content {
+    margin-top: 0;
+    padding: 15px var(--z-ds-space-s);
+  }
             
             .theme-toggle {
                 top: 15px;
