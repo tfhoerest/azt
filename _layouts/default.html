@@ -61,7 +61,7 @@
 .theme-toggle {
     position: absolute;
     top: 20px;
-    right: 20px;
+    right: 20px; /* Back to original right position */
     background: none;
     border: none;
     padding: 0;
@@ -132,6 +132,218 @@
 
 [data-theme="dark"] .moon-icon {
     opacity: 1;
+}
+
+/* HAMBURGER MENU BUTTON */
+.menu-toggle {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: none;
+    border: none;
+    padding: 8px;
+    cursor: pointer;
+    z-index: 1001;
+    transition: transform 0.3s ease;
+}
+
+.menu-toggle:hover {
+    transform: scale(1.1);
+}
+
+.hamburger {
+    display: flex;
+    flex-direction: column;
+    width: 24px;
+    height: 18px;
+    justify-content: space-between;
+}
+
+.hamburger span {
+    display: block;
+    height: 2px;
+    width: 100%;
+    background: var(--z-ds-color-text-100);
+    border-radius: 1px;
+    transition: all 0.3s ease;
+    transform-origin: center;
+}
+
+/* Hamburger animation when menu is open */
+.menu-open .hamburger span:nth-child(1) {
+    transform: rotate(45deg) translate(6px, 6px);
+}
+
+.menu-open .hamburger span:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-open .hamburger span:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* SIDE PANEL */
+.side-panel {
+    position: fixed;
+    top: 0;
+    left: -350px;
+    width: 350px;
+    height: 100vh;
+    background: var(--z-ds-color-background-0);
+    border-right: 1px solid var(--z-ds-color-border);
+    z-index: 1000;
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    box-shadow: 5px 0 20px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+}
+
+.side-panel.open {
+    transform: translateX(350px);
+}
+
+.panel-header {
+    padding: var(--z-ds-space-l);
+    border-bottom: 1px solid var(--z-ds-color-border);
+    background: var(--z-ds-color-background-1);
+}
+
+.search-container {
+    position: relative;
+}
+
+.search-input {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid var(--z-ds-color-border);
+    border-radius: 4px;
+    background: var(--z-ds-color-background-0);
+    color: var(--z-ds-color-text-100);
+    font-size: var(--z-ds-fontsize-16);
+    font-family: inherit;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: #bd2d2d;
+    box-shadow: 0 0 0 2px rgba(189, 45, 45, 0.1);
+}
+
+.search-input::placeholder {
+    color: var(--z-ds-color-text-70);
+}
+
+[data-theme="dark"] .search-input:focus {
+    border-color: #ffffff;
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.1);
+}
+
+.panel-title {
+    font-family: 'Adriatic Journal', 'Playfair Display', Georgia, serif;
+    font-size: var(--z-ds-fontsize-24);
+    color: #bd2d2d;
+    margin: 0;
+    text-align: center;
+    display: none; /* Hidden since we're using search bar */
+}
+
+[data-theme="dark"] .panel-title {
+    color: #ffffff;
+}
+
+.panel-nav {
+    padding: var(--z-ds-space-l) 0;
+}
+
+.panel-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.panel-nav li {
+    margin: 0;
+}
+
+.panel-nav a {
+    display: block;
+    padding: var(--z-ds-space-s) var(--z-ds-space-l);
+    color: var(--z-ds-color-text-100);
+    text-decoration: none;
+    font-size: var(--z-ds-fontsize-16);
+    font-weight: 500;
+    border-left: 3px solid transparent;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.panel-nav a:hover,
+.panel-nav a.active {
+    color: #bd2d2d;
+    border-left-color: #bd2d2d;
+    background: var(--z-ds-color-background-1);
+}
+
+[data-theme="dark"] .panel-nav a:hover,
+[data-theme="dark"] .panel-nav a.active {
+    color: #ffffff;
+    border-left-color: #ffffff;
+}
+
+.panel-nav a::after {
+    content: '';
+    position: absolute;
+    right: var(--z-ds-space-l);
+    top: 50%;
+    transform: translateY(-50%);
+    width: 6px;
+    height: 6px;
+    border-right: 2px solid currentColor;
+    border-bottom: 2px solid currentColor;
+    transform: translateY(-50%) rotate(-45deg);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.panel-nav a:hover::after {
+    opacity: 1;
+}
+
+/* OVERLAY */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* PANEL FOOTER */
+.panel-footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: var(--z-ds-space-l);
+    border-top: 1px solid var(--z-ds-color-border);
+    background: var(--z-ds-color-background-1);
+    text-align: center;
+}
+
+.panel-footer p {
+    margin: 0;
+    color: var(--z-ds-color-text-70);
+    font-size: var(--z-ds-fontsize-14);
 }
 
         /* Custom Font - Saj JY */
@@ -224,6 +436,11 @@
             font-size: var(--z-ds-fontsize-16);
         }
 
+        /* Prevent body scroll when menu is open */
+        body.menu-open {
+            overflow: hidden;
+        }
+
         /* MASTHEAD HEADER */
         .masthead {
             background-color: var(--z-ds-color-background-0);
@@ -276,6 +493,7 @@
             color: #ffffff;
         }
         
+        /* Show the original main navigation in masthead */
         .main-nav {
             display: flex;
             justify-content: center;
@@ -384,11 +602,16 @@
             background-color: var(--z-ds-color-background-1);
         }
 
-        /* MOBILE OPTIMIZATION FOR MASTHEAD */
+        /* MOBILE OPTIMIZATION */
         @media (max-width: 48em) {
             .theme-toggle {
                 top: 15px;
-                right: 15px;
+                right: 15px; /* Back to right side on mobile */
+            }
+            
+            .menu-toggle {
+                top: 15px;
+                left: 15px;
             }
             
             .toggle-inner {
@@ -410,6 +633,20 @@
                 height: 6px;
             }
 
+            .hamburger {
+                width: 20px;
+                height: 15px;
+            }
+
+            .side-panel {
+                width: 300px;
+                left: -300px;
+            }
+
+            .side-panel.open {
+                transform: translateX(300px);
+            }
+
             .masthead {
                 padding: var(--z-ds-space-s);
             }
@@ -425,15 +662,6 @@
             .site-title::after {
                 font-size: 2.25rem;  /* Smaller masthead on mobile */
             }
-            
-            .main-nav {
-                gap: var(--z-ds-space-s);
-                flex-wrap: wrap;  /* Allow nav to wrap on very small screens */
-            }
-            
-            .main-nav a {
-                font-size: 0.8rem;  /* Smaller nav text */
-            }
 
             .main-content {
                 margin-top: 0;
@@ -443,18 +671,52 @@
     </style>
 </head>
 <body> 
+    <!-- Theme Toggle -->
     <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
-    <div class="toggle-inner">
-        <div class="toggle-switch">
-            <span class="toggle-icon sun-icon"></span>
-            <span class="toggle-icon moon-icon"></span>
+        <div class="toggle-inner">
+            <div class="toggle-switch">
+                <span class="toggle-icon sun-icon"></span>
+                <span class="toggle-icon moon-icon"></span>
+            </div>
+        </div>
+    </button>
+
+    <!-- Menu Toggle Button -->
+    <button class="menu-toggle" id="menu-toggle" aria-label="Toggle menu">
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </button>
+
+    <!-- Overlay -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Side Panel -->
+    <div class="side-panel" id="side-panel">
+        <div class="panel-header">
+            <div class="search-container">
+                <input type="text" class="search-input" placeholder="Search articles..." id="search-input">
+            </div>
+        </div>
+        <nav class="panel-nav">
+            <ul>
+                <li><a href="{{ site.baseurl }}/about" {% if page.url contains "about" %}class="active"{% endif %}>About</a></li>
+                <li><a href="{{ site.baseurl }}/contact" {% if page.url contains "contact" %}class="active"{% endif %}>Contact</a></li>
+                <li><a href="{{ site.baseurl }}/newsletter" {% if page.url contains "newsletter" %}class="active"{% endif %}>Newsletter</a></li>
+            </ul>
+        </nav>
+        <div class="panel-footer">
+            <p>&copy; 2025 The Adriatic</p>
         </div>
     </div>
-</button>
+
     <!-- MASTHEAD -->
     <header class="masthead">
         <div class="masthead-container">
             <a href="{{ site.baseurl }}/" class="site-title">{{ site.title }}</a>
+            <!-- Original navigation is now hidden and moved to side panel -->
             <nav>
                 <ul class="main-nav">
                     <li><a href="{{ site.baseurl }}/" {% if page.url == "/" %}class="active"{% endif %}>Home</a></li>
@@ -479,8 +741,10 @@
             <p>&copy; 2025 {{ site.title }}. All rights reserved.</p>
         </div>
     </footer>
+
     <script>
 (function() {
+    // Theme toggle functionality
     const themeToggle = document.getElementById('theme-toggle');
     const html = document.documentElement;
     
@@ -494,6 +758,63 @@
         
         html.setAttribute('data-theme', newTheme);
         localStorage.setItem('theme', newTheme);
+    });
+
+    // Side panel menu functionality
+    const menuToggle = document.getElementById('menu-toggle');
+    const sidePanel = document.getElementById('side-panel');
+    const overlay = document.getElementById('overlay');
+    const body = document.body;
+
+    function openMenu() {
+        sidePanel.classList.add('open');
+        overlay.classList.add('show');
+        body.classList.add('menu-open');
+        menuToggle.classList.add('menu-open');
+    }
+
+    function closeMenu() {
+        sidePanel.classList.remove('open');
+        overlay.classList.remove('show');
+        body.classList.remove('menu-open');
+        menuToggle.classList.remove('menu-open');
+    }
+
+    // Toggle menu when button is clicked
+    menuToggle.addEventListener('click', function() {
+        if (sidePanel.classList.contains('open')) {
+            closeMenu();
+        } else {
+            openMenu();
+        }
+    });
+
+    // Close menu when overlay is clicked
+    overlay.addEventListener('click', closeMenu);
+
+    // Close menu when pressing Escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && sidePanel.classList.contains('open')) {
+            closeMenu();
+        }
+    });
+
+    // Close menu when clicking a navigation link (for better UX)
+    const panelNavLinks = document.querySelectorAll('.panel-nav a');
+    panelNavLinks.forEach(link => {
+        link.addEventListener('click', closeMenu);
+    });
+
+    // Basic search functionality (you can enhance this further)
+    const searchInput = document.getElementById('search-input');
+    searchInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            const query = searchInput.value.trim();
+            if (query) {
+                // You can customize this search URL to match your site's search functionality
+                window.location.href = `{{ site.baseurl }}/search?q=${encodeURIComponent(query)}`;
+            }
+        }
     });
 })();
 </script>
