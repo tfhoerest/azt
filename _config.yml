@@ -32,7 +32,7 @@ paginate: 10
 paginate_path: "/page:num/"
 
 # Categories - UPDATED
-categories: [business, politics, culture, opinion]
+categories: [business, power, culture, opinion]
 
 # Build settings
 exclude:
