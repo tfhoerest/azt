@@ -520,12 +520,12 @@
             
             /* Mobile sidepanel - full width */
             .hamburger-sidepanel {
-                width: 100vw;  /* Full width on mobile */
                 left: -100vw;  /* Hide completely off-screen */
+                width: 100vw;  /* Full width on mobile */
             }
             
             .hamburger-sidepanel.active {
-                left: 0;
+                transform: translateX(100vw);  /* Slide full width into view */
             }
             
             .hamburger-toggle {
@@ -578,9 +578,22 @@
         </div>
     </div>
 </button>
+
+    <!-- SLIDING SIDEPANEL (outside masthead to not affect layout) -->
+    <div class="hamburger-overlay" id="hamburger-overlay"></div>
+    <div class="hamburger-sidepanel" id="hamburger-sidepanel">
+        <ul class="hamburger-nav">
+            <li><a href="{{ site.baseurl }}/about">About</a></li>
+            <li><a href="{{ site.baseurl }}/newsletter">Newsletter</a></li>
+            <li><a href="{{ site.baseurl }}/contact">Contact</a></li>
+            <li><a href="{{ site.baseurl }}/archive">Archive</a></li>
+            <li><a href="{{ site.baseurl }}/team">Team</a></li>
+        </ul>
+    </div>
+
     <!-- MASTHEAD -->
     <header class="masthead">
-        <!-- HAMBURGER MENU -->
+        <!-- HAMBURGER MENU BUTTON -->
         <div class="hamburger-menu">
             <button class="hamburger-toggle" id="hamburger-toggle" aria-label="Open menu">
                 <div class="hamburger-icon">
@@ -589,18 +602,6 @@
                     <span class="hamburger-line"></span>
                 </div>
             </button>
-        </div>
-
-        <!-- SLIDING SIDEPANEL -->
-        <div class="hamburger-overlay" id="hamburger-overlay"></div>
-        <div class="hamburger-sidepanel" id="hamburger-sidepanel">
-            <ul class="hamburger-nav">
-                <li><a href="{{ site.baseurl }}/about">About</a></li>
-                <li><a href="{{ site.baseurl }}/newsletter">Newsletter</a></li>
-                <li><a href="{{ site.baseurl }}/contact">Contact</a></li>
-                <li><a href="{{ site.baseurl }}/archive">Archive</a></li>
-                <li><a href="{{ site.baseurl }}/team">Team</a></li>
-            </ul>
         </div>
 
         <div class="masthead-container">
