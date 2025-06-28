@@ -604,23 +604,23 @@
 
         /* MOBILE OPTIMIZATION */
         @media (max-width: 48em) {
-            /* Make dividing line extend full width on mobile */
-            .masthead {
-                border-bottom: 1px solid var(--z-ds-color-border);
-            }
-            
+            /* Make masthead container full width with full-width border */
             .masthead-container {
-                border-bottom: none; /* Remove container border on mobile */
+                max-width: none; /* Remove width constraint */
+                margin: 0; /* Remove auto margins */
+                padding-left: 0;
+                padding-right: 0;
+                border-bottom: 1px solid var(--z-ds-color-border); /* Keep border here */
             }
             
             .theme-toggle {
                 top: 15px;
-                right: 15px; /* Back to right side on mobile */
+                right: 15px;
             }
             
             .menu-toggle {
                 top: 15px;
-                left: 15px; /* Back to simple left positioning on mobile */
+                left: 15px;
             }
             
             .toggle-inner {
@@ -681,14 +681,14 @@
         /* EXTRA SMALL MOBILE OPTIMIZATION */
         @media (max-width: 24em) {
             .main-nav {
-                gap: 0.25rem; /* Even tighter on very small screens */
-                padding: 0 0.75rem; /* More breathing room from edges */
+                gap: 0.25rem;
+                padding: 0 var(--z-ds-space-l); /* Consistent generous padding */
             }
             
             .main-nav a {
                 font-size: 0.7rem;
                 letter-spacing: 0;
-                padding: 0 3px; /* More padding per link */
+                padding: 0; /* No individual padding */
             }
         }
     </style>
