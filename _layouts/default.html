@@ -141,7 +141,7 @@
     left: calc(50% - 350px); /* Aligns with left edge of masthead container */
     background: none;
     border: none;
-    padding: 8px;
+    padding: 0px;
     cursor: pointer;
     z-index: 1001;
     transition: transform 0.3s ease;
@@ -697,7 +697,8 @@
         @media (max-width: 24em) {
             .main-nav {
                 gap: 0.25rem;
-                padding: 0 var(--z-ds-space-xl); /* Consistent generous padding - 3rem (48px) */
+                width: fit-content; /* This will shrink it to content width */
+        margin: 0 auto; /* This will center the now-compact nav */
             }
             
             .main-nav a {
