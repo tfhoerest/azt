@@ -185,65 +185,55 @@
     transform: rotate(-45deg) translate(7px, -6px);
 }
 
-/* Dropdown Menu */
+/* Dropdown Menu - Zeit Style */
 .hamburger-dropdown {
     position: absolute;
     top: 100%;
     left: 0;
-    background-color: #bd2d2d;  /* Same red as masthead */
-    border: 1px solid #bd2d2d;
-    border-radius: 8px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-    min-width: 220px;  /* Wider for more "chunk" */
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(-10px);
-    transition: all 0.3s ease;
+    background-color: #2a2a2a;  /* Dark grey background like Zeit */
+    border: none;  /* No borders */
+    border-radius: 0;  /* No rounded corners */
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    min-width: 280px;  /* Wider like Zeit */
+    display: none;
     margin-top: 8px;
 }
 
 [data-theme="dark"] .hamburger-dropdown {
-    background-color: #bd2d2d;  /* Keep red in dark mode */
-    border: 1px solid #bd2d2d;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    background-color: #2a2a2a;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
 }
 
 .hamburger-dropdown.active {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
+    display: block;
 }
 
 .hamburger-nav {
     list-style: none;
     margin: 0;
-    padding: 12px 0;  /* More padding for chunk */
+    padding: 24px 0;  /* More generous padding like Zeit */
 }
 
 .hamburger-nav li {
     margin: 0;
-    border-bottom: 1px solid var(--z-ds-color-border);  /* Same as masthead divider */
-}
-
-.hamburger-nav li:last-child {
-    border-bottom: none;  /* No border on last item */
+    border-bottom: none;  /* No dividing lines like Zeit */
 }
 
 .hamburger-nav a {
     display: block;
-    padding: 16px 24px;  /* Bigger padding for chunk */
-    color: #ffffff;  /* White text */
+    padding: 12px 24px;  /* Clean spacing */
+    color: #ffffff;  /* Clean white text */
     text-decoration: none;
-    font-size: var(--z-ds-fontsize-16);  /* Larger text */
-    font-weight: 600;  /* Bold */
-    text-align: left;  /* Left aligned */
-    transition: background-color 0.2s ease;
-    text-transform: uppercase;  /* Make them stand out */
-    letter-spacing: 0.5px;
+    font-size: var(--z-ds-fontsize-16);
+    font-weight: 400;  /* Normal weight like Zeit */
+    text-align: left;
+    transition: background-color 0.1s ease;
+    text-transform: none;  /* No uppercase */
+    letter-spacing: 0;  /* No letter spacing */
 }
 
 .hamburger-nav a:hover {
-    background-color: rgba(255, 255, 255, 0.1);  /* Subtle white overlay on hover */
+    background-color: rgba(255, 255, 255, 0.08);  /* Very subtle hover like Zeit */
     color: #ffffff;
 }
 
@@ -528,9 +518,13 @@
                 left: var(--z-ds-space-s);
             }
             
-            /* Adjust dropdown for mobile */
-            .hamburger-dropdown {
-                top: 40px;  /* Position it below the hamburger button */
+            /* Mobile sidepanel - full width */
+            .hamburger-sidepanel {
+                width: 100vw;  /* Full width on mobile */
+                left: -100vw;  /* Hide completely off-screen */
+            }
+            
+            .hamburger-sidepanel.active {
                 left: 0;
             }
             
@@ -595,16 +589,18 @@
                     <span class="hamburger-line"></span>
                 </div>
             </button>
-            
-            <div class="hamburger-dropdown" id="hamburger-dropdown">
-                <ul class="hamburger-nav">
-                    <li><a href="{{ site.baseurl }}/about">About</a></li>
-                    <li><a href="{{ site.baseurl }}/newsletter">Newsletter</a></li>
-                    <li><a href="{{ site.baseurl }}/contact">Contact</a></li>
-                    <li><a href="{{ site.baseurl }}/archive">Archive</a></li>
-                    <li><a href="{{ site.baseurl }}/team">Team</a></li>
-                </ul>
-            </div>
+        </div>
+
+        <!-- SLIDING SIDEPANEL -->
+        <div class="hamburger-overlay" id="hamburger-overlay"></div>
+        <div class="hamburger-sidepanel" id="hamburger-sidepanel">
+            <ul class="hamburger-nav">
+                <li><a href="{{ site.baseurl }}/about">About</a></li>
+                <li><a href="{{ site.baseurl }}/newsletter">Newsletter</a></li>
+                <li><a href="{{ site.baseurl }}/contact">Contact</a></li>
+                <li><a href="{{ site.baseurl }}/archive">Archive</a></li>
+                <li><a href="{{ site.baseurl }}/team">Team</a></li>
+            </ul>
         </div>
 
         <div class="masthead-container">
@@ -651,30 +647,42 @@
     });
 })();
 
-// Hamburger Menu Toggle
+// Hamburger Sidepanel Toggle
 (function() {
     const hamburgerToggle = document.getElementById('hamburger-toggle');
-    const hamburgerDropdown = document.getElementById('hamburger-dropdown');
+    const hamburgerSidepanel = document.getElementById('hamburger-sidepanel');
+    const hamburgerOverlay = document.getElementById('hamburger-overlay');
+    
+    function openSidepanel() {
+        hamburgerToggle.classList.add('active');
+        hamburgerSidepanel.classList.add('active');
+        hamburgerOverlay.classList.add('active');
+        document.body.style.overflow = 'hidden';  // Prevent scrolling when panel is open
+    }
+    
+    function closeSidepanel() {
+        hamburgerToggle.classList.remove('active');
+        hamburgerSidepanel.classList.remove('active');
+        hamburgerOverlay.classList.remove('active');
+        document.body.style.overflow = '';  // Re-enable scrolling
+    }
     
     hamburgerToggle.addEventListener('click', function(e) {
         e.stopPropagation();
-        hamburgerToggle.classList.toggle('active');
-        hamburgerDropdown.classList.toggle('active');
-    });
-    
-    // Close menu when clicking outside
-    document.addEventListener('click', function(e) {
-        if (!hamburgerToggle.contains(e.target) && !hamburgerDropdown.contains(e.target)) {
-            hamburgerToggle.classList.remove('active');
-            hamburgerDropdown.classList.remove('active');
+        if (hamburgerSidepanel.classList.contains('active')) {
+            closeSidepanel();
+        } else {
+            openSidepanel();
         }
     });
     
-    // Close menu when pressing Escape
+    // Close sidepanel when clicking overlay
+    hamburgerOverlay.addEventListener('click', closeSidepanel);
+    
+    // Close sidepanel when pressing Escape
     document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape') {
-            hamburgerToggle.classList.remove('active');
-            hamburgerDropdown.classList.remove('active');
+        if (e.key === 'Escape' && hamburgerSidepanel.classList.contains('active')) {
+            closeSidepanel();
         }
     });
 })();
