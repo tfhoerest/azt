@@ -138,10 +138,10 @@
 .menu-toggle {
     position: absolute;
     top: 20px;
-    left: calc(50% - 350px);
+    left: calc(50% - 350px); /* Aligns with left edge of masthead container */
     background: none;
     border: none;
-    padding: 0px;
+    padding: 8px;
     cursor: pointer;
     z-index: 1001;
     transition: transform 0.3s ease;
@@ -611,7 +611,7 @@
             
             .menu-toggle {
                 top: 15px;
-                left: 15px;
+                left: 15px; /* Back to simple left positioning on mobile */
             }
             
             .toggle-inner {
@@ -666,6 +666,20 @@
             .main-content {
                 margin-top: 0;
                 padding: 15px var(--z-ds-space-s);
+            }
+        }
+
+        /* EXTRA SMALL MOBILE OPTIMIZATION */
+        @media (max-width: 24em) {
+            .main-nav {
+                gap: 0.25rem; /* Even tighter on very small screens */
+                padding: 0 0.25rem;
+            }
+            
+            .main-nav a {
+                font-size: 0.7rem;
+                letter-spacing: 0;
+                padding: 0 1px;
             }
         }
     </style>
