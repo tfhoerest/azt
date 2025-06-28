@@ -605,17 +605,29 @@
         /* MOBILE OPTIMIZATION */
         @media (max-width: 48em) {
             /* Make masthead container full width with full-width border */
-            .masthead-container {
-                max-width: none; /* Remove width constraint */
-                margin: 0; /* Remove auto margins */
-                padding-left: 0;
-                padding-right: 0;
-                border-bottom: none;
-            }
+  .masthead-container {
+    max-width: none;
+    margin: 0;
+    padding-left: 0;
+    padding-right: 0;
+    padding-bottom: var(--z-ds-space-s);
+    border-bottom: none;
+    position: relative;
+  }
+
+              .masthead-container::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100vw; /* Full screen width */
+    height: 1px;
+    background: var(--z-ds-color-border);
+  }
 
   .masthead {
     padding: var(--z-ds-space-s);
-    border-bottom: 1px solid var(--z-ds-color-border);
+    border-bottom: none;
   }
 
             .main-nav {
