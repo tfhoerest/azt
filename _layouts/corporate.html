@@ -168,6 +168,7 @@
         /* Navigation specific - no margins */
         #header .inside {
             padding: 0;
+            max-width: 100%;
         }
 
         /* NAVIGATION - F.A.Z. Style */
@@ -176,15 +177,27 @@
             align-items: center;
             justify-content: space-between;
             padding: 1rem 0;
+            position: relative;
+            width: 100%;
         }
 
         .nav-left {
+            position: absolute;
+            left: 1rem;
             display: flex;
             align-items: center;
-            gap: 3rem;
+        }
+
+        .nav-center {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex: 1;
         }
 
         .nav-right {
+            position: absolute;
+            right: 1rem;
             display: flex;
             align-items: center;
         }
@@ -399,6 +412,9 @@
             border: none;
             cursor: pointer;
             padding: 0.5rem;
+            position: absolute;
+            right: 4rem;
+            z-index: 1001;
         }
 
         .btn--menu svg rect {
@@ -431,7 +447,7 @@
 
         /* MOBILE RESPONSIVENESS */
         @media (max-width: 1024px) {
-            .level_1 {
+            .nav-center {
                 display: none;
             }
 
@@ -570,7 +586,9 @@
                     
                     <div class="nav-left">
                         <a href="{{ site.baseurl }}/" class="logo" alt="The Adriatic Logo">THE ADRIATIC</a>
-                        
+                    </div>
+                    
+                    <div class="nav-center">
                         <ul class="level_1">
                             <li class="sibling first"><a href="{{ site.baseurl }}/about" {% if page.url contains "about" %}class="active"{% endif %}>About</a></li>
                             <li class="sibling"><a href="{{ site.baseurl }}/contact" {% if page.url contains "contact" %}class="active"{% endif %}>Contact</a></li>
