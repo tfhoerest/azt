@@ -1,351 +1,186 @@
 ---
-layout: default
+layout: corporate
 title: "About"
 permalink: /about/
 ---
 
-<style>
-/* ABOUT PAGE - F.A.Z. INSPIRED LAYOUT */
-.about-container {
-    margin: 0;
-    padding: 0;
-}
+<!-- Hero Section -->
+<section class="intro">
+    <div class="intro__inner" style="background-position: center center; background-image: url('https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=1200&h=400&fit=crop');"></div>
+</section>
 
-.about-section {
-    padding: var(--z-ds-space-xxl) 0;
-    margin: 0;
-}
+<!-- Main Title Section -->
+<section class="fazFCE fazFCE__text fazFCE--noSpaceTop">
+    <div class="grid-container">
+        <div class="col-c10 col-push-1">
+            <h1 class="h2">The Adriatic</h1>
+        </div>
+        
+        <div class="col-c6 col-push-3">
+            <p>An independent publication dedicated to providing comprehensive coverage of global affairs, with a focus on the Adriatic region and its broader geopolitical context. We deliver quality journalism for readers with the highest standards.</p>
+            <p><a class="btn btn--primary" href="{{ site.baseurl }}/contact">Contact Us</a></p>
+        </div>
+    </div>
+</section>
 
-.about-section--no-space-top {
-    padding-top: 0;
-}
-
-.about-section--no-space-bottom {
-    padding-bottom: 0;
-}
-
-.about-section--blue {
-    background-color: var(--z-ds-color-background-1);
-}
-
-.about-section--blue-dark {
-    background-color: var(--z-ds-color-text-100);
-    color: var(--z-ds-color-background-0);
-}
-
-.about-section--blue-dark h1,
-.about-section--blue-dark h2,
-.about-section--blue-dark h3,
-.about-section--blue-dark p {
-    color: var(--z-ds-color-background-0);
-}
-
-/* Grid System - F.A.Z. Style */
-.grid-container {
-    max-width: var(--z-ds-max-width);
-    margin: 0 auto;
-    padding: 0 var(--z-ds-space-s);
-}
-
-.grid-row {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    gap: var(--z-ds-space-s);
-    align-items: start;
-}
-
-.col-10-push-1 {
-    grid-column: 2 / 12;
-}
-
-.col-6-push-3 {
-    grid-column: 4 / 10;
-}
-
-.col-8-push-2 {
-    grid-column: 3 / 11;
-}
-
-.col-12 {
-    grid-column: 1 / -1;
-}
-
-/* Typography - F.A.Z. Style */
-.about-title {
-    font-family: 'Saj JY', 'Inter', 'Helvetica Neue', Helvetica, Arial, FreeSans, sans-serif;
-    font-size: 3rem;
-    font-weight: 700;
-    color: var(--z-ds-color-text-100);
-    margin-bottom: var(--z-ds-space-l);
-    text-align: center;
-}
-
-.about-section-title {
-    font-family: 'Saj JY', 'Inter', 'Helvetica Neue', Helvetica, Arial, FreeSans, sans-serif;
-    font-size: var(--z-ds-fontsize-32);
-    font-weight: 700;
-    color: var(--z-ds-color-text-100);
-    margin-bottom: var(--z-ds-space-l);
-}
-
-.about-text {
-    font-family: 'Adriatic22', 'Source Serif Pro', 'Georgia', 'Times New Roman', serif;
-    font-size: 1.125rem;
-    line-height: 1.6;
-    color: var(--z-ds-color-text-100);
-    margin-bottom: var(--z-ds-space-l);
-}
-
-.about-text:last-child {
-    margin-bottom: 0;
-}
-
-.about-lead {
-    font-size: 1.375rem;
-    font-weight: 500;
-    color: var(--z-ds-color-text-70);
-    margin-bottom: var(--z-ds-space-xl);
-}
-
-/* Button Styling */
-.btn-primary {
-    background-color: #bd2d2d;
-    color: white;
-    padding: 12px 24px;
-    border: none;
-    border-radius: 4px;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: var(--z-ds-fontsize-14);
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    transition: background-color 0.3s ease;
-    display: inline-block;
-}
-
-.btn-primary:hover {
-    background-color: #a02626;
-    color: white;
-}
-
-.btn-secondary {
-    background-color: transparent;
-    color: var(--z-ds-color-text-100);
-    border: 2px solid var(--z-ds-color-text-100);
-    padding: 10px 22px;
-    border-radius: 4px;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: var(--z-ds-fontsize-14);
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    transition: all 0.3s ease;
-    display: inline-block;
-}
-
-.btn-secondary:hover {
-    background-color: var(--z-ds-color-text-100);
-    color: var(--z-ds-color-background-0);
-}
-
-/* Dark section button variants */
-.about-section--blue-dark .btn-primary {
-    background-color: white;
-    color: var(--z-ds-color-text-100);
-}
-
-.about-section--blue-dark .btn-primary:hover {
-    background-color: #f0f0f0;
-}
-
-.about-section--blue-dark .btn-secondary {
-    border-color: white;
-    color: white;
-}
-
-.about-section--blue-dark .btn-secondary:hover {
-    background-color: white;
-    color: var(--z-ds-color-text-100);
-}
-
-/* Hero Image */
-.about-hero-image {
-    width: 100%;
-    height: 400px;
-    object-fit: cover;
-    margin-bottom: var(--z-ds-space-xl);
-}
-
-/* Stats Section */
-.stats-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: var(--z-ds-space-xl);
-    margin: var(--z-ds-space-xl) 0;
-}
-
-.stat-item {
-    text-align: center;
-}
-
-.stat-number {
-    font-family: 'Saj JY', 'Inter', 'Helvetica Neue', Helvetica, Arial, FreeSans, sans-serif;
-    font-size: 3rem;
-    font-weight: 700;
-    color: #bd2d2d;
-    display: block;
-    line-height: 1;
-}
-
-.stat-label {
-    font-size: var(--z-ds-fontsize-16);
-    color: var(--z-ds-color-text-70);
-    margin-top: var(--z-ds-space-xxs);
-}
-
-/* Mobile Optimization */
-@media (max-width: 48em) {
-    .about-title {
-        font-size: 2.5rem;
-    }
-    
-    .about-section-title {
-        font-size: var(--z-ds-fontsize-24);
-    }
-    
-    .about-text {
-        font-size: 1rem;
-    }
-    
-    .about-lead {
-        font-size: 1.125rem;
-    }
-    
-    .col-10-push-1,
-    .col-6-push-3,
-    .col-8-push-2 {
-        grid-column: 1 / -1;
-    }
-    
-    .about-hero-image {
-        height: 250px;
-    }
-    
-    .stats-grid {
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-        gap: var(--z-ds-space-l);
-    }
-    
-    .stat-number {
-        font-size: 2.5rem;
-    }
-}
-</style>
-
-<div class="about-container">
-    <!-- Hero Section -->
-    <section class="about-section">
-        <div class="grid-container">
-            <div class="grid-row">
-                <div class="col-10-push-1">
-                    <h1 class="about-title">About The Adriatic</h1>
-                </div>
-                <div class="col-6-push-3">
-                    <p class="about-lead">An independent publication dedicated to providing comprehensive coverage of global affairs, with a focus on the Adriatic region and its broader geopolitical context.</p>
-                </div>
+<!-- Mission Section with Image -->
+<section class="fazFCE fazFCE__fiftyFifty fazFCE--defaultSpace">
+    <div class="grid-container">
+        <div class="grid--collapsed grid--collapsed-rev">
+            <div class="col-c6 col-c6--rev col-c6--5050">
+                <img src="https://images.unsplash.com/photo-1586953208448-b95a79798f07?w=600&h=400&fit=crop" alt="Editorial Mission">
+            </div>
+            
+            <div class="col-c6 col-c6--collapsed col-c6--collapsed-rev bgColor--blue has-bgColor">
+                <h2>Our Mission</h2>
+                <p>Founded on the principle that quality journalism is essential to a functioning democracy, The Adriatic provides clear, accurate, and thoughtful analysis of the events shaping our interconnected world.</p>
+                <p>We believe that informed citizens make better decisions, and our role is to ensure that the public has access to the information they need to understand complex global challenges.</p>
+                <p><a class="btn btn--primary" href="{{ site.baseurl }}/about/mission">Learn More</a></p>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Mission Section -->
-    <section class="about-section about-section--blue">
-        <div class="grid-container">
-            <div class="grid-row">
-                <div class="col-10-push-1">
-                    <h2 class="about-section-title">Our Mission</h2>
-                </div>
-                <div class="col-6-push-3">
-                    <p class="about-text">The Adriatic was founded with the belief that informed citizens are the cornerstone of democratic society. In an era of rapid information flow and increasing global complexity, we strive to provide clear, accurate, and thoughtful analysis of the events shaping our world.</p>
-                    <p class="about-text">Our coverage spans four key areas: Business and economic developments, Power dynamics and international relations, Cultural movements and social change, and Opinion pieces that challenge conventional thinking.</p>
-                </div>
+<!-- Editorial Standards Section -->
+<section class="fazFCE fazFCE__text fazFCE--noSpaceBottom">
+    <div class="grid-container">
+        <div class="col-c10 col-push-1">
+            <h2>Editorial Standards</h2>
+        </div>
+        
+        <div class="col-c6 col-push-3">
+            <p>Our editorial team follows the highest standards of journalistic integrity. We verify information through multiple sources, provide context for complex issues, and clearly distinguish between news reporting and opinion content.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Values Grid Section -->
+<section class="fazFCE fazFCE__fiftyFifty fazFCE--defaultSpace">
+    <div class="grid-container">
+        <div class="grid--collapsed">
+            <div class="col-c6 col-c6--5050">
+                <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&h=400&fit=crop" alt="Accuracy">
+            </div>
+            
+            <div class="col-c6 col-c6--collapsed bgColor--blue-dark has-bgColor">
+                <h3><span class="subline">Core Value</span>Accuracy & Independence</h3>
+                <ul>
+                    <li>Every story is thoroughly researched and fact-checked</li>
+                    <li>Complete editorial independence from political or commercial influence</li>
+                    <li>Transparent corrections and accountability processes</li>
+                </ul>
+                <p><a class="btn btn--primary--white" href="{{ site.baseurl }}/ethics">Editorial Ethics</a></p>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Editorial Standards Section -->
-    <section class="about-section about-section--blue-dark">
-        <div class="grid-container">
-            <div class="grid-row">
-                <div class="col-8-push-2">
-                    <h2 class="about-section-title">Editorial Standards</h2>
-                    <p class="about-text">We are committed to the highest standards of journalistic integrity. Every story is thoroughly researched, fact-checked, and written with the understanding that our readers deserve nothing less than the truth, presented without bias or agenda.</p>
-                    <p class="about-text">Our editorial independence is paramount. We do not accept funding from political organizations, and our content is never influenced by external pressures or interests.</p>
-                </div>
+<section class="fazFCE fazFCE__fiftyFifty fazFCE--defaultSpace">
+    <div class="grid-container">
+        <div class="grid--collapsed">
+            <div class="col-c6 col-c6--5050">
+                <img src="https://images.unsplash.com/photo-1477414956199-7dafc86a4f1a?w=600&h=400&fit=crop" alt="Global Perspective">
+            </div>
+            
+            <div class="col-c6 col-c6--collapsed bgColor--blue-dark has-bgColor">
+                <h3><span class="subline">Our Approach</span>Global Perspective</h3>
+                <ul>
+                    <li>Understanding that local events have global implications</li>
+                    <li>Coverage that reflects our interconnected world</li>
+                    <li>Analysis from diverse international viewpoints</li>
+                </ul>
+                <p><a class="btn btn--primary--white" href="{{ site.baseurl }}/coverage">Our Coverage</a></p>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Statistics Section -->
-    <section class="about-section">
-        <div class="grid-container">
-            <div class="grid-row">
-                <div class="col-10-push-1">
-                    <h2 class="about-section-title">Our Reach</h2>
-                </div>
-                <div class="col-12">
-                    <div class="stats-grid">
-                        <div class="stat-item">
-                            <span class="stat-number">15K+</span>
-                            <div class="stat-label">Monthly Readers</div>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number">200+</span>
-                            <div class="stat-label">Articles Published</div>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number">25+</span>
-                            <div class="stat-label">Countries Covered</div>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number">5</span>
-                            <div class="stat-label">Expert Contributors</div>
-                        </div>
-                    </div>
-                </div>
+<section class="fazFCE fazFCE__fiftyFifty fazFCE--defaultSpace">
+    <div class="grid-container">
+        <div class="grid--collapsed">
+            <div class="col-c6 col-c6--5050">
+                <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=600&h=400&fit=crop" alt="Transparency">
+            </div>
+            
+            <div class="col-c6 col-c6--collapsed bgColor--blue-dark has-bgColor">
+                <h3><span class="subline">Our Commitment</span>Transparency</h3>
+                <ul>
+                    <li>Open about our processes and funding sources</li>
+                    <li>Accountable to our readers and the public</li>
+                    <li>Clear distinction between reporting and opinion</li>
+                </ul>
+                <p><a class="btn btn--primary--white" href="{{ site.baseurl }}/transparency">Transparency Report</a></p>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Team Section -->
-    <section class="about-section about-section--blue">
-        <div class="grid-container">
-            <div class="grid-row">
-                <div class="col-10-push-1">
-                    <h2 class="about-section-title">Our Team</h2>
-                </div>
-                <div class="col-6-push-3">
-                    <p class="about-text">The Adriatic is built by a team of experienced journalists, analysts, and researchers who bring diverse perspectives and deep expertise to our coverage. Our contributors have worked at leading publications and think tanks around the world.</p>
-                    <p class="about-text">We believe that quality journalism requires both local knowledge and global perspective. Our network of contributors ensures that we can provide nuanced coverage of complex international issues.</p>
-                </div>
+<!-- Team Section -->
+<section class="fazFCE fazFCE__text bgColor--blue fazFCE--defaultSpace">
+    <div class="grid-container">
+        <div class="col-c10 col-push-1">
+            <h2>Our Team</h2>
+        </div>
+        
+        <div class="col-c6 col-push-3">
+            <p>The Adriatic is built by a team of experienced journalists, analysts, and researchers who bring diverse perspectives and deep expertise to our coverage. Our contributors have worked at leading publications and think tanks around the world.</p>
+            <p><a class="btn btn--secondary" href="{{ site.baseurl }}/team">Meet the Team</a> <a class="btn btn--primary" href="{{ site.baseurl }}/careers">Join Our Team</a></p>
+            <p><img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=400&fit=crop" alt="Our team at work" style="width: 100%; height: 300px; object-fit: cover; margin-top: 2rem; border-radius: 8px;"></p>
+        </div>
+    </div>
+</section>
+
+<!-- Impact Section -->
+<section class="fazFCE fazFCE__text fazFCE--noSpaceBottom">
+    <div class="grid-container">
+        <div class="col-c10 col-push-1">
+            <h2>Our Impact</h2>
+        </div>
+        
+        <div class="col-c6 col-push-3">
+            <p>Since our founding, The Adriatic has grown into a trusted source for international news and analysis. Our readership spans across continents, and our reporting has been cited by policymakers, academics, and fellow journalists worldwide.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Stats Section in Grid -->
+<section class="fazFCE fazFCE__fiftyFifty fazFCE--defaultSpace">
+    <div class="grid-container">
+        <div class="grid--collapsed">
+            <div class="col-c6 col-c6--collapsed bgColor--blue-dark has-bgColor" style="text-align: center;">
+                <h3><span class="subline">Monthly Readers</span>25,000+</h3>
+                <p>Growing audience of engaged readers seeking quality international coverage.</p>
+            </div>
+            
+            <div class="col-c6 col-c6--collapsed bgColor--blue has-bgColor" style="text-align: center;">
+                <h3><span class="subline">Articles Published</span>300+</h3>
+                <p>In-depth articles covering global affairs, business, culture, and geopolitics.</p>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Contact Section -->
-    <section class="about-section">
-        <div class="grid-container">
-            <div class="grid-row">
-                <div class="col-10-push-1">
-                    <h2 class="about-section-title">Get In Touch</h2>
-                </div>
-                <div class="col-6-push-3">
-                    <p class="about-text">We value feedback from our readers and welcome story suggestions, corrections, and general inquiries. Our commitment to transparency means we're always open to dialogue with our audience.</p>
-                    <p>
-                        <a href="{{ site.baseurl }}/contact" class="btn-primary">Contact Us</a>
-                        <a href="{{ site.baseurl }}/newsletter" class="btn-secondary">Subscribe to Newsletter</a>
-                    </p>
-                </div>
+<section class="fazFCE fazFCE__fiftyFifty fazFCE--defaultSpace">
+    <div class="grid-container">
+        <div class="grid--collapsed">
+            <div class="col-c6 col-c6--collapsed bgColor--blue has-bgColor" style="text-align: center;">
+                <h3><span class="subline">Countries Covered</span>40+</h3>
+                <p>Comprehensive coverage spanning multiple continents and regions.</p>
+            </div>
+            
+            <div class="col-c6 col-c6--collapsed bgColor--blue-dark has-bgColor" style="text-align: center;">
+                <h3><span class="subline">Expert Contributors</span>8</h3>
+                <p>Seasoned journalists and analysts with decades of combined experience.</p>
             </div>
         </div>
-    </section>
-</div>
+    </div>
+</section>
+
+<!-- Call to Action Section -->
+<section class="fazFCE fazFCE__text fazFCE--noSpaceTop">
+    <div class="grid-container">
+        <div class="col-c10 col-push-1">
+            <p style="text-align: center;"><a class="btn btn--primary" href="{{ site.baseurl }}/newsletter">Subscribe to Newsletter</a> <a class="btn btn--secondary" href="{{ site.baseurl }}/contact">Get in Touch</a></p>
+        </div>
+    </div>
+</section>
