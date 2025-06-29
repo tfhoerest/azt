@@ -695,17 +695,17 @@
         }
 
         /* EXTRA SMALL MOBILE OPTIMIZATION */
-        @media (max-width: 25em) {  /* Changed from 24em to 25em (400px) */
+        @media (max-width: 25em) {
             .main-nav {
                 gap: 0.5rem;
-                width: fit-content; /* This will shrink it to content width */
-                margin: 0 auto; /* This will center the now-compact nav */
+                width: fit-content;
+                margin: 0 auto;
             }
             
             .main-nav a {
                 font-size: 0.85rem;
                 letter-spacing: 0;
-                padding: 0; /* No individual padding */
+                padding: 0 var(--z-ds-space-xxs);
             }
         }
     </style>
