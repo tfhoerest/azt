@@ -169,19 +169,6 @@
     transform-origin: center;
 }
 
-/* Hamburger animation when menu is open */
-.menu-open .hamburger span:nth-child(1) {
-    transform: rotate(45deg) translate(6px, 6px);
-}
-
-.menu-open .hamburger span:nth-child(2) {
-    opacity: 0;
-}
-
-.menu-open .hamburger span:nth-child(3) {
-    transform: rotate(-45deg) translate(6px, -6px);
-}
-
 /* SIDE PANEL */
 .side-panel {
     position: fixed;
@@ -209,10 +196,35 @@
 
 .search-container {
     position: relative;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.back-arrow {
+    background: none;
+    border: none;
+    color: var(--z-ds-color-text-100);
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.back-arrow:hover {
+    background: var(--z-ds-color-background-0);
+}
+
+.back-arrow svg {
+    color: var(--z-ds-color-text-100);
 }
 
 .search-input {
-    width: 100%;
+    flex: 1;
     padding: 12px 16px;
     border: 1px solid var(--z-ds-color-border);
     border-radius: 4px;
@@ -270,7 +282,7 @@
     padding: var(--z-ds-space-s) var(--z-ds-space-l);
     color: var(--z-ds-color-text-100);
     text-decoration: none;
-    font-size: var(--z-ds-fontsize-22);
+    font-size: var(--z-ds-fontsize-22); /* Increased from 16 to 22 */
     font-weight: 500;
     border-left: 3px solid transparent;
     transition: all 0.3s ease;
@@ -737,6 +749,11 @@
     <div class="side-panel" id="side-panel">
         <div class="panel-header">
             <div class="search-container">
+                <button class="back-arrow" id="back-arrow" aria-label="Close menu">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                        <path d="M19 12H5M12 19l-7-7 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
                 <input type="text" class="search-input" placeholder="Search articles..." id="search-input">
             </div>
         </div>
@@ -804,20 +821,19 @@
     const menuToggle = document.getElementById('menu-toggle');
     const sidePanel = document.getElementById('side-panel');
     const overlay = document.getElementById('overlay');
+    const backArrow = document.getElementById('back-arrow');
     const body = document.body;
 
     function openMenu() {
         sidePanel.classList.add('open');
         overlay.classList.add('show');
         body.classList.add('menu-open');
-        menuToggle.classList.add('menu-open');
     }
 
     function closeMenu() {
         sidePanel.classList.remove('open');
         overlay.classList.remove('show');
         body.classList.remove('menu-open');
-        menuToggle.classList.remove('menu-open');
     }
 
     // Toggle menu when button is clicked
@@ -831,6 +847,9 @@
 
     // Close menu when overlay is clicked
     overlay.addEventListener('click', closeMenu);
+
+    // Close menu when back arrow is clicked
+    backArrow.addEventListener('click', closeMenu);
 
     // Close menu when pressing Escape key
     document.addEventListener('keydown', function(e) {
