@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Populist moment denied"
+title: "The long march to Europe"
 date: 2025-06-04
 category: power
 category_display: "Trump rebuked"
