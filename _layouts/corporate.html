@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% if page.title %}{{ page.title }} | {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
+    <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* F.A.Z.-INSPIRED CORPORATE LAYOUT */
+        
+        /* CSS Variables - F.A.Z. Style */
+        :root {
+            --corp-primary: #1a1a1a;
+            --corp-secondary: #bd2d2d;
+            --corp-text: #333333;
+            --corp-text-light: #666666;
+            --corp-background: #ffffff;
+            --corp-background-alt: #f8f9fa;
+            --corp-background-blue: #e8edee;
+            --corp-background-blue-dark: #110a35;
+            --corp-border: #e1e5e9;
+            --corp-max-width: 1280px;
+        }
+
+        /* Dark theme */
+        [data-theme="dark"] {
+            --corp-primary: #ffffff;
+            --corp-secondary: #ff6b4a;
+            --corp-text: #ffffff;
+            --corp-text-light: #b3b3b3;
+            --corp-background: #0a0a0a;
+            --corp-background-alt: #1a1a1a;
+            --corp-background-blue: #2a2a2a;
+            --corp-background-blue-dark: #000000;
+            --corp-border: #333333;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--corp-text);
+            background-color: var(--corp-background);
+            font-weight: 400;
+        }
+
+        /* F.A.Z. GRID SYSTEM */
+        .grid-container {
+            max-width: var(--corp-max-width);
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .grid--collapsed {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            align-items: center;
+        }
+
+        .grid--collapsed-rev {
+            direction: rtl;
+        }
+
+        .grid--collapsed-rev > * {
+            direction: ltr;
+        }
+
+        .col-c10 {
+            grid-column: span 10;
+            max-width: calc(100% * 10/12);
+            margin: 0 auto;
+        }
+
+        .col-push-1 {
+            margin-left: calc(100% * 1/12);
+            margin-right: calc(100% * 1/12);
+        }
+
+        .col-c6 {
+            grid-column: span 6;
+        }
+
+        .col-push-3 {
+            margin-left: calc(100% * 3/12);
+            margin-right: calc(100% * 3/12);
+        }
+
+        .col-c6--5050 {
+            flex: 1;
+        }
+
+        .col-c6--collapsed {
+            padding: 3rem;
+        }
+
+        .col-c6--collapsed-rev {
+            padding: 3rem;
+        }
+
+        .col-c6--rev {
+            order: 2;
+        }
+
+        /* F.A.Z. CORPORATE SECTIONS */
+        .fazFCE {
+            padding: 4rem 0;
+        }
+
+        .fazFCE--noSpaceTop {
+            padding-top: 0;
+        }
+
+        .fazFCE--noSpaceBottom {
+            padding-bottom: 0;
+        }
+
+        .fazFCE--defaultSpace {
+            padding: 4rem 0;
+        }
+
+        /* Background Colors - F.A.Z. Style */
+        .bgColor--blue {
+            background-color: var(--corp-background-blue);
+        }
+
+        .bgColor--blue-dark {
+            background-color: var(--corp-background-blue-dark);
+            color: white;
+        }
+
+        .bgColor--blue-dark h1,
+        .bgColor--blue-dark h2,
+        .bgColor--blue-dark h3,
+        .bgColor--blue-dark p {
+            color: white;
+        }
+
+        .has-bgColor {
+            position: relative;
+        }
+
+        /* HEADER - F.A.Z. Style */
+        #header {
+            background: var(--corp-background);
+            border-bottom: 1px solid var(--corp-border);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .inside {
+            max-width: var(--corp-max-width);
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        /* NAVIGATION - F.A.Z. Style */
+        .mod_navigation {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-family: 'Adriatic Journal', serif;
+            font-size: 1.8rem;
+            color: var(--corp-secondary);
+            text-decoration: none;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .level_1 {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            margin: 0;
+            padding: 0;
+        }
+
+        .level_1 a {
+            color: var(--corp-text);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .level_1 a:hover,
+        .level_1 a.active {
+            color: var(--corp-secondary);
+        }
+
+        .btn--abo {
+            background: var(--corp-secondary);
+            color: white;
+            padding: 0.75rem;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 1.125rem;
+            transition: background-color 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+        }
+
+        .btn--abo:hover {
+            background: #a02626;
+            color: white;
+        }
+
+        /* TYPOGRAPHY - F.A.Z. Style */
+        .h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--corp-primary);
+            margin-bottom: 2rem;
+            line-height: 1.2;
+        }
+
+        h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--corp-primary);
+            margin-bottom: 1.5rem;
+            line-height: 1.3;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--corp-primary);
+            margin-bottom: 1rem;
+            line-height: 1.4;
+        }
+
+        .subline {
+            display: block;
+            font-size: 0.875rem;
+            color: var(--corp-text-light);
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.5rem;
+        }
+
+        .bgColor--blue-dark .subline {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        p {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: var(--corp-text);
+            margin-bottom: 1.5rem;
+        }
+
+        p:last-child {
+            margin-bottom: 0;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 1.5rem 0;
+        }
+
+        ul li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        ul li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--corp-secondary);
+            font-weight: bold;
+        }
+
+        .bgColor--blue-dark ul li::before {
+            color: white;
+        }
+
+        /* BUTTONS - F.A.Z. Style */
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn--primary {
+            background: var(--corp-secondary);
+            color: white;
+        }
+
+        .btn--primary:hover {
+            background: #a02626;
+            color: white;
+        }
+
+        .btn--primary--white {
+            background: white;
+            color: var(--corp-background-blue-dark);
+        }
+
+        .btn--primary--white:hover {
+            background: #f0f0f0;
+            color: var(--corp-background-blue-dark);
+        }
+
+        .btn--secondary {
+            background: transparent;
+            color: var(--corp-text);
+            border: 2px solid var(--corp-text);
+        }
+
+        .btn--secondary:hover {
+            background: var(--corp-text);
+            color: var(--corp-background);
+        }
+
+        /* INTRO SECTION */
+        .intro {
+            background-size: cover;
+            background-position: center;
+            height: 300px;
+            position: relative;
+            margin-bottom: 0;
+        }
+
+        .intro__inner {
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* FIFTY-FIFTY LAYOUTS */
+        .fazFCE__fiftyFifty img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+
+        /* MOBILE MENU */
+        .btn--menu {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .btn--menu svg rect {
+            fill: var(--corp-text);
+        }
+
+        .main-mobile {
+            display: none;
+        }
+
+        /* FOOTER - F.A.Z. Style */
+        #footer {
+            background: var(--corp-background-alt);
+            border-top: 1px solid var(--corp-border);
+            padding: 3rem 0 2rem;
+            margin-top: 4rem;
+        }
+
+        .mod_sitemap h4,
+        .mod_socialLinks .h4,
+        .mod_adress .h4 {
+            color: var(--corp-primary);
+            margin-bottom: 1rem;
+            font-size: 1.125rem;
+            font-weight: 600;
+        }
+
+        .mod_sitemap ul,
+        .mod_socialLinks ul {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .mod_sitemap ul li,
+        .mod_socialLinks ul li {
+            padding: 0;
+        }
+
+        .mod_sitemap ul li::before,
+        .mod_socialLinks ul li::before {
+            display: none;
+        }
+
+        .mod_sitemap a,
+        .mod_socialLinks a {
+            color: var(--corp-text-light);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .mod_sitemap a:hover,
+        .mod_socialLinks a:hover {
+            color: var(--corp-secondary);
+        }
+
+        .mod_adress p {
+            color: var(--corp-text-light);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .mod_adress a {
+            color: var(--corp-secondary);
+            text-decoration: none;
+        }
+
+        .mod_adress a:hover {
+            text-decoration: underline;
+        }
+
+        .social__items {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social__item {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: var(--corp-text-light);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            color: white;
+            transition: background-color 0.3s ease;
+        }
+
+        .social__item:hover {
+            background: var(--corp-secondary);
+        }
+
+        /* MOBILE RESPONSIVENESS */
+        @media (max-width: 1024px) {
+            .level_1 {
+                display: none;
+            }
+
+            .btn--menu {
+                display: block;
+            }
+
+            .main-mobile.is-open {
+                display: block;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--corp-background);
+                border-bottom: 1px solid var(--corp-border);
+                padding: 1rem;
+                z-index: 999;
+            }
+
+            .main-mobile .level_1 {
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .btn--abo--mobile {
+                margin-top: 1rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .grid--collapsed {
+                grid-template-columns: 1fr;
+            }
+
+            .col-c6--rev {
+                order: 0;
+            }
+
+            .col-push-1,
+            .col-push-3 {
+                margin-left: 0;
+                margin-right: 0;
+            }
+
+            .col-c6--collapsed,
+            .col-c6--collapsed-rev {
+                padding: 2rem 1rem;
+            }
+
+            .fazFCE {
+                padding: 2rem 0;
+            }
+
+            .h2 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.75rem;
+            }
+
+            .intro {
+                height: 200px;
+            }
+
+            .fazFCE__fiftyFifty img {
+                height: 250px;
+            }
+
+            .inside {
+                padding: 0 0.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .h2 {
+                font-size: 1.75rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            .btn {
+                padding: 0.5rem 1rem;
+                font-size: 0.8rem;
+            }
+        }
+
+        /* THEME TOGGLE */
+        .theme-toggle {
+            background: none;
+            border: 1px solid var(--corp-border);
+            padding: 0.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            color: var(--corp-text);
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+        }
+
+        .theme-toggle:hover {
+            border-color: var(--corp-secondary);
+            color: var(--corp-secondary);
+        }
+
+        .invisible {
+            position: absolute;
+            left: -9999px;
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body id="top">
+    <div id="wrapper">
+        <!-- HEADER - F.A.Z. Style -->
+        <header id="header">
+            <div class="inside">
+                <nav class="mod_navigation main block" id="main">
+                    <a href="#skipNavigation1" class="invisible">Skip navigation</a>
+                    
+                    <a href="{{ site.baseurl }}/" class="logo" alt="The Adriatic Logo">THE ADRIATIC</a>
+
+                    <button class="btn--menu" id="mobile-toggle" onclick="toggleMobileMenu()">
+                        <svg viewBox="0 0 32 17" width="32px" height="17px" aria-hidden="true" focusable="false">
+                            <rect width="32" height="3"/>
+                            <rect y="7" width="32" height="3"/>
+                            <rect y="14" width="32" height="3"/>
+                        </svg>
+                        <span class="invisible">Menu</span>
+                    </button>
+
+                    <ul class="level_1">
+                        <li class="sibling first"><a href="{{ site.baseurl }}/about" {% if page.url contains "about" %}class="active"{% endif %}>About</a></li>
+                        <li class="sibling"><a href="{{ site.baseurl }}/contact" {% if page.url contains "contact" %}class="active"{% endif %}>Contact</a></li>
+                        <li class="sibling"><a href="{{ site.baseurl }}/newsletter" {% if page.url contains "newsletter" %}class="active"{% endif %}>Newsletter</a></li>
+                        <li class="sibling"><a href="{{ site.baseurl }}/events" {% if page.url contains "events" %}class="active"{% endif %}>Events</a></li>
+                        <li class="sibling last"><a href="{{ site.baseurl }}/magazine" {% if page.url contains "magazine" %}class="active"{% endif %}>Magazine</a></li>
+                    </ul>
+
+                    <div style="display: flex; align-items: center; gap: 1rem;">
+                        <button class="theme-toggle" id="theme-toggle" title="Toggle theme">🌓</button>
+                        <a href="{{ site.baseurl }}/" class="btn--abo">Back to Editorial</a>
+                    </div>
+
+                    <a id="skipNavigation1" class="invisible">&nbsp;</a>
+                </nav>
+
+                <nav class="mod_navigation main-mobile block" id="main-mobile">
+                    <ul class="level_1">
+                        <li class="sibling first"><a href="{{ site.baseurl }}/about">About</a></li>
+                        <li class="sibling"><a href="{{ site.baseurl }}/contact">Contact</a></li>
+                        <li class="sibling"><a href="{{ site.baseurl }}/newsletter">Newsletter</a></li>
+                        <li class="sibling"><a href="{{ site.baseurl }}/events">Events</a></li>
+                        <li class="sibling last"><a href="{{ site.baseurl }}/magazine">Magazine</a></li>
+                    </ul>
+                    <a href="{{ site.baseurl }}/" class="btn--abo btn--abo--mobile">Back to Editorial</a>
+                </nav>
+            </div>
+        </header>
+
+        <!-- MAIN CONTENT -->
+        <div id="container">
+            <main id="main">
+                <div class="inside">
+                    {{ content }}
+                </div>
+            </main>
+        </div>
+
+        <!-- FOOTER - F.A.Z. Style -->
+        <footer id="footer">
+            <div class="inside grid-container">
+                <div class="mod_sitemap block">
+                    <h4>Sitemap</h4>
+                    <ul class="level_1">
+                        <li class="sibling first"><a href="{{ site.baseurl }}/about">About</a></li>
+                        <li class="sibling"><a href="{{ site.baseurl }}/contact">Contact</a></li>
+                        <li class="sibling"><a href="{{ site.baseurl }}/newsletter">Newsletter</a></li>
+                        <li class="sibling"><a href="{{ site.baseurl }}/events">Events</a></li>
+                        <li class="sibling"><a href="{{ site.baseurl }}/magazine">Magazine</a></li>
+                        <li class="sibling last"><a href="{{ site.baseurl }}/">Editorial</a></li>
+                    </ul>
+                </div>
+
+                <div class="mod_socialLinks">
+                    <div class="h4">Legal</div>
+                    <ul>
+                        <li><a href="{{ site.baseurl }}/privacy">Privacy Policy</a></li>
+                        <li><a href="{{ site.baseurl }}/terms">Terms of Service</a></li>
+                        <li><a href="{{ site.baseurl }}/ethics">Editorial Ethics</a></li>
+                    </ul>
+                    
+                    <div class="h4">Social Media</div>
+                    <ul class="social__items">
+                        <li><a href="#" class="social__item social__item--twitter"><span class="invisible">Twitter</span>𝕏</a></li>
+                        <li><a href="#" class="social__item social__item--linkedin"><span class="invisible">LinkedIn</span>💼</a></li>
+                        <li><a href="#" class="social__item social__item--rss"><span class="invisible">RSS</span>📡</a></li>
+                    </ul>
+                </div>
+
+                <div class="mod_adress">
+                    <div class="h4">Contact</div>
+                    <p>The Adriatic<br>
+                    Digital Publication<br>
+                    Email: <a href="mailto:info@theadriatic.com">info@theadriatic.com</a></p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Theme toggle functionality
+        const themeToggle = document.getElementById('theme-toggle');
+        const html = document.documentElement;
+        
+        const currentTheme = localStorage.getItem('corp-theme') || 'light';
+        html.setAttribute('data-theme', currentTheme);
+        
+        themeToggle.addEventListener('click', function() {
+            const newTheme = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('corp-theme', newTheme);
+        });
+
+        // Mobile menu functionality
+        function toggleMobileMenu() {
+            const mobileNav = document.getElementById('main-mobile');
+            mobileNav.classList.toggle('is-open');
+        }
+    </script>
+</body>
+</html>
