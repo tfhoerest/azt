@@ -57,83 +57,6 @@
     --z-ds-color-border-light: #2a2a2a;
 }
 
-/* SIMPLE DARK MODE TOGGLE */
-.theme-toggle {
-    position: absolute;
-    top: 20px;
-    right: 20px; /* Back to original right position */
-    background: none;
-    border: none;
-    padding: 0;
-    cursor: pointer;
-    z-index: 1000;
-}
-
-.toggle-inner {
-    display: flex;
-    align-items: center;
-    position: relative;
-    width: 48px;
-    height: 24px;
-    background: var(--z-ds-color-border);
-    border-radius: 50px;
-    transition: all 0.3s ease;
-}
-
-.toggle-inner:hover {
-    background: var(--z-ds-color-accent-100);
-}
-
-.toggle-switch {
-    position: absolute;
-    top: 2px;
-    left: 2px;
-    width: 20px;
-    height: 20px;
-    background: var(--z-ds-color-background-0);
-    border-radius: 50%;
-    transition: transform 0.3s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-}
-
-[data-theme="dark"] .toggle-switch {
-    transform: translateX(24px);
-}
-
-/* Simple Icons */
-.toggle-icon {
-    position: absolute;
-    transition: opacity 0.3s ease;
-}
-
-.sun-icon {
-    opacity: 1;
-    width: 8px;
-    height: 8px;
-    background: #ffa500;
-    border-radius: 50%;
-}
-
-.moon-icon {
-    opacity: 0;
-    width: 8px;
-    height: 8px;
-    background: #4a90e2;
-    border-radius: 50% 0;
-    transform: rotate(45deg);
-}
-
-[data-theme="dark"] .sun-icon {
-    opacity: 0;
-}
-
-[data-theme="dark"] .moon-icon {
-    opacity: 1;
-}
-
 /* HAMBURGER MENU BUTTON */
 .menu-toggle {
     position: absolute;
@@ -167,7 +90,7 @@ body.menu-open .menu-toggle {
     display: block;
     height: 2px;
     width: 100%;
-    background: var(--z-ds-color-border);
+    background: var(--z-ds-color-text-100);
     border-radius: 1px;
     transition: all 0.3s ease;
     transform-origin: center;
@@ -258,8 +181,7 @@ body.menu-open .menu-toggle {
 }
 
 [data-theme="dark"] .search-input:focus {
-    border-color: #ffffff;
-    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.1);
+    border-bottom-color: #ffffff;
 }
 
 .panel-title {
@@ -362,6 +284,39 @@ body.menu-open .menu-toggle {
     border-top: 1px solid var(--z-ds-color-border);
     background: var(--z-ds-color-background-1);
     text-align: center;
+}
+
+.theme-toggle-segmented {
+    display: flex;
+    background: var(--z-ds-color-background-0);
+    border-radius: 8px;
+    border: 1px solid var(--z-ds-color-border);
+    overflow: hidden;
+    margin: 0 auto 15px auto; /* Center horizontally, space above copyright */
+    width: 120px; /* Fixed width for centering */
+}
+
+.theme-option {
+    flex: 1;
+    background: none;
+    border: none;
+    padding: 10px 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    color: transparent; /* Hide icon when inactive */
+    font-size: 16px;
+}
+
+.theme-option.active {
+    background: #bd2d2d; /* Red highlight */
+    color: white; /* Show icon when active */
+}
+
+.theme-option:hover:not(.active) {
+    background: var(--z-ds-color-background-1);
 }
 
 .panel-footer p {
@@ -653,33 +608,9 @@ body.menu-open .menu-toggle {
     padding: 15px var(--z-ds-space-s);
   }
             
-            .theme-toggle {
-                top: 25px;
-                right: 15px;
-            }
-            
             .menu-toggle {
                 top: 25px;
                 left: 15px;
-            }
-            
-            .toggle-inner {
-                width: 40px;
-                height: 20px;
-            }
-            
-            .toggle-switch {
-                width: 16px;
-                height: 16px;
-            }
-            
-            [data-theme="dark"] .toggle-switch {
-                transform: translateX(20px);
-            }
-            
-            .toggle-icon {
-                width: 6px;
-                height: 6px;
             }
 
             .hamburger {
@@ -735,16 +666,6 @@ body.menu-open .menu-toggle {
     </style>
 </head>
 <body> 
-    <!-- Theme Toggle -->
-    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
-        <div class="toggle-inner">
-            <div class="toggle-switch">
-                <span class="toggle-icon sun-icon"></span>
-                <span class="toggle-icon moon-icon"></span>
-            </div>
-        </div>
-    </button>
-
     <!-- Menu Toggle Button -->
     <button class="menu-toggle" id="menu-toggle" aria-label="Toggle menu">
         <div class="hamburger">
@@ -776,6 +697,21 @@ body.menu-open .menu-toggle {
                 <li><a href="{{ site.baseurl }}/newsletter" {% if page.url contains "newsletter" %}class="active"{% endif %}>Newsletter</a></li>
             </ul>
         </nav>
+        <!-- Theme toggle ABOVE footer -->
+        <div class="theme-toggle-container">
+            <div class="theme-toggle-segmented" id="theme-toggle">
+                <button class="theme-option active" data-theme="light">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                        <circle cx="12" cy="12" r="3"/>
+                    </svg>
+                </button>
+                <button class="theme-option" data-theme="dark">
+                    🕶️
+                </button>
+            </div>
+        </div>
+        
         <div class="panel-footer">
             <p>&copy; 2025 The Adriatic</p>
         </div>
@@ -813,20 +749,34 @@ body.menu-open .menu-toggle {
 
     <script>
 (function() {
-    // Theme toggle functionality
-    const themeToggle = document.getElementById('theme-toggle');
+    // Theme toggle functionality - Updated for segmented control
+    const themeToggleSegmented = document.getElementById('theme-toggle');
     const html = document.documentElement;
     
     // Check for saved theme preference or default to 'dark' to match current design
     const currentTheme = localStorage.getItem('theme') || 'dark';
     html.setAttribute('data-theme', currentTheme);
     
-    themeToggle.addEventListener('click', function() {
-        const currentTheme = html.getAttribute('data-theme');
-        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-        
-        html.setAttribute('data-theme', newTheme);
-        localStorage.setItem('theme', newTheme);
+    // Set initial active state
+    themeToggleSegmented.querySelectorAll('.theme-option').forEach(option => {
+        option.classList.toggle('active', option.dataset.theme === currentTheme);
+    });
+    
+    themeToggleSegmented.addEventListener('click', function(e) {
+        if (e.target.closest('.theme-option')) {
+            const clickedOption = e.target.closest('.theme-option');
+            const newTheme = clickedOption.dataset.theme;
+            
+            // Update active states
+            themeToggleSegmented.querySelectorAll('.theme-option').forEach(option => {
+                option.classList.remove('active');
+            });
+            clickedOption.classList.add('active');
+            
+            // Apply theme
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+        }
     });
 
     // Side panel menu functionality
@@ -846,6 +796,12 @@ body.menu-open .menu-toggle {
         sidePanel.classList.remove('open');
         overlay.classList.remove('show');
         body.classList.remove('menu-open');
+        
+        // Clear the search input when closing
+        const searchInput = document.getElementById('search-input');
+        if (searchInput) {
+            searchInput.value = '';
+        }
     }
 
     // Toggle menu when button is clicked
@@ -878,16 +834,17 @@ body.menu-open .menu-toggle {
 
     // Basic search functionality (you can enhance this further)
     const searchInput = document.getElementById('search-input');
-    searchInput.value = '';
-    searchInput.addEventListener('keypress', function(e) {
-        if (e.key === 'Enter') {
-            const query = searchInput.value.trim();
-            if (query) {
-                // You can customize this search URL to match your site's search functionality
-                window.location.href = `{{ site.baseurl }}/search?q=${encodeURIComponent(query)}`;
+    if (searchInput) {
+        searchInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                const query = searchInput.value.trim();
+                if (query) {
+                    // You can customize this search URL to match your site's search functionality
+                    window.location.href = `{{ site.baseurl }}/search?q=${encodeURIComponent(query)}`;
+                }
             }
-        }
-    });
+        });
+    }
 })();
 </script>
 </body>
