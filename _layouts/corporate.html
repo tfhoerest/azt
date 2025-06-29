@@ -178,6 +178,17 @@
             padding: 1rem 0;
         }
 
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+        }
+
         .logo {
             font-family: 'Adriatic Journal', serif;
             font-size: 1.8rem;
@@ -195,17 +206,26 @@
             padding: 0;
         }
 
+        .level_1 li::before {
+            display: none; /* Remove bullet points */
+        }
+
         .level_1 a {
             color: var(--corp-text);
             text-decoration: none;
-            font-weight: 500;
+            font-weight: 400;
             font-size: 0.95rem;
+            font-family: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
             transition: color 0.3s ease;
         }
 
-        .level_1 a:hover,
+        .level_1 a:hover {
+            color: var(--corp-secondary);
+        }
+
         .level_1 a.active {
             color: var(--corp-secondary);
+            font-weight: 600; /* Bold for active state */
         }
 
         .btn--abo {
@@ -389,91 +409,24 @@
             display: none;
         }
 
-        /* FOOTER - F.A.Z. Style */
+        /* FOOTER - Simple Style */
         #footer {
-            background: var(--corp-background-alt);
             border-top: 1px solid var(--corp-border);
-            padding: 3rem 0 2rem;
-            margin-top: 4rem;
-        }
-
-        .mod_sitemap h4,
-        .mod_socialLinks .h4,
-        .mod_adress .h4 {
-            color: var(--corp-primary);
-            margin-bottom: 1rem;
-            font-size: 1.125rem;
-            font-weight: 600;
-        }
-
-        .mod_sitemap ul,
-        .mod_socialLinks ul {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            list-style: none;
-            margin: 0;
-            padding: 0;
-        }
-
-        .mod_sitemap ul li,
-        .mod_socialLinks ul li {
-            padding: 0;
-        }
-
-        .mod_sitemap ul li::before,
-        .mod_socialLinks ul li::before {
-            display: none;
-        }
-
-        .mod_sitemap a,
-        .mod_socialLinks a {
-            color: var(--corp-text-light);
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: color 0.3s ease;
-        }
-
-        .mod_sitemap a:hover,
-        .mod_socialLinks a:hover {
-            color: var(--corp-secondary);
-        }
-
-        .mod_adress p {
-            color: var(--corp-text-light);
-            font-size: 0.9rem;
-            line-height: 1.6;
-        }
-
-        .mod_adress a {
-            color: var(--corp-secondary);
-            text-decoration: none;
-        }
-
-        .mod_adress a:hover {
-            text-decoration: underline;
-        }
-
-        .social__items {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-
-        .social__item {
-            display: inline-block;
-            width: 40px;
-            height: 40px;
-            background: var(--corp-text-light);
-            border-radius: 50%;
+            padding: 3rem 1rem;
             text-align: center;
-            line-height: 40px;
-            color: white;
-            transition: background-color 0.3s ease;
+            color: var(--corp-text-light);
+            margin-top: 4rem;
+            background-color: var(--corp-background-alt);
         }
 
-        .social__item:hover {
-            background: var(--corp-secondary);
+        #footer .container {
+            max-width: var(--corp-max-width);
+            margin: 0 auto;
+        }
+
+        #footer p {
+            margin: 0;
+            font-size: 0.9rem;
         }
 
         /* MOBILE RESPONSIVENESS */
@@ -502,6 +455,19 @@
                 display: flex;
                 flex-direction: column;
                 gap: 1rem;
+            }
+
+            .main-mobile .level_1 a {
+                font-family: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+                font-weight: 400;
+            }
+
+            .main-mobile .level_1 a.active {
+                font-weight: 600;
+            }
+
+            .main-mobile .level_1 li::before {
+                display: none;
             }
 
             .btn--abo--mobile {
@@ -602,7 +568,17 @@
                 <nav class="mod_navigation main block" id="main">
                     <a href="#skipNavigation1" class="invisible">Skip navigation</a>
                     
-                    <a href="{{ site.baseurl }}/" class="logo" alt="The Adriatic Logo">THE ADRIATIC</a>
+                    <div class="nav-left">
+                        <a href="{{ site.baseurl }}/" class="logo" alt="The Adriatic Logo">THE ADRIATIC</a>
+                        
+                        <ul class="level_1">
+                            <li class="sibling first"><a href="{{ site.baseurl }}/about" {% if page.url contains "about" %}class="active"{% endif %}>About</a></li>
+                            <li class="sibling"><a href="{{ site.baseurl }}/contact" {% if page.url contains "contact" %}class="active"{% endif %}>Contact</a></li>
+                            <li class="sibling"><a href="{{ site.baseurl }}/newsletter" {% if page.url contains "newsletter" %}class="active"{% endif %}>Newsletter</a></li>
+                            <li class="sibling"><a href="{{ site.baseurl }}/events" {% if page.url contains "events" %}class="active"{% endif %}>Events</a></li>
+                            <li class="sibling last"><a href="{{ site.baseurl }}/magazine" {% if page.url contains "magazine" %}class="active"{% endif %}>Magazine</a></li>
+                        </ul>
+                    </div>
 
                     <button class="btn--menu" id="mobile-toggle" onclick="toggleMobileMenu()">
                         <svg viewBox="0 0 32 17" width="32px" height="17px" aria-hidden="true" focusable="false">
@@ -613,15 +589,7 @@
                         <span class="invisible">Menu</span>
                     </button>
 
-                    <ul class="level_1">
-                        <li class="sibling first"><a href="{{ site.baseurl }}/about" {% if page.url contains "about" %}class="active"{% endif %}>About</a></li>
-                        <li class="sibling"><a href="{{ site.baseurl }}/contact" {% if page.url contains "contact" %}class="active"{% endif %}>Contact</a></li>
-                        <li class="sibling"><a href="{{ site.baseurl }}/newsletter" {% if page.url contains "newsletter" %}class="active"{% endif %}>Newsletter</a></li>
-                        <li class="sibling"><a href="{{ site.baseurl }}/events" {% if page.url contains "events" %}class="active"{% endif %}>Events</a></li>
-                        <li class="sibling last"><a href="{{ site.baseurl }}/magazine" {% if page.url contains "magazine" %}class="active"{% endif %}>Magazine</a></li>
-                    </ul>
-
-                    <div style="display: flex; align-items: center; gap: 1rem;">
+                    <div class="nav-right">
                         <a href="{{ site.baseurl }}/" class="btn--abo" title="Back to Editorial">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
@@ -634,16 +602,15 @@
 
                 <nav class="mod_navigation main-mobile block" id="main-mobile">
                     <ul class="level_1">
-                        <li class="sibling first"><a href="{{ site.baseurl }}/about">About</a></li>
-                        <li class="sibling"><a href="{{ site.baseurl }}/contact">Contact</a></li>
-                        <li class="sibling"><a href="{{ site.baseurl }}/newsletter">Newsletter</a></li>
-                        <li class="sibling"><a href="{{ site.baseurl }}/events">Events</a></li>
-                        <li class="sibling last"><a href="{{ site.baseurl }}/magazine">Magazine</a></li>
+                        <li class="sibling first"><a href="{{ site.baseurl }}/about" {% if page.url contains "about" %}class="active"{% endif %}>About</a></li>
+                        <li class="sibling"><a href="{{ site.baseurl }}/contact" {% if page.url contains "contact" %}class="active"{% endif %}>Contact</a></li>
+                        <li class="sibling"><a href="{{ site.baseurl }}/newsletter" {% if page.url contains "newsletter" %}class="active"{% endif %}>Newsletter</a></li>
+                        <li class="sibling"><a href="{{ site.baseurl }}/events" {% if page.url contains "events" %}class="active"{% endif %}>Events</a></li>
+                        <li class="sibling last"><a href="{{ site.baseurl }}/magazine" {% if page.url contains "magazine" %}class="active"{% endif %}>Magazine</a></li>
                     </ul>
                     <a href="{{ site.baseurl }}/" class="btn--abo btn--abo--mobile" title="Back to Editorial">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-                            <polyline points="9,22 9,12 15,12 15,22"/>
                         </svg>
                     </a>
                 </nav>
@@ -659,43 +626,10 @@
             </main>
         </div>
 
-        <!-- FOOTER - F.A.Z. Style -->
+        <!-- FOOTER - Simple Style -->
         <footer id="footer">
-            <div class="inside grid-container">
-                <div class="mod_sitemap block">
-                    <h4>Sitemap</h4>
-                    <ul class="level_1">
-                        <li class="sibling first"><a href="{{ site.baseurl }}/about">About</a></li>
-                        <li class="sibling"><a href="{{ site.baseurl }}/contact">Contact</a></li>
-                        <li class="sibling"><a href="{{ site.baseurl }}/newsletter">Newsletter</a></li>
-                        <li class="sibling"><a href="{{ site.baseurl }}/events">Events</a></li>
-                        <li class="sibling"><a href="{{ site.baseurl }}/magazine">Magazine</a></li>
-                        <li class="sibling last"><a href="{{ site.baseurl }}/">Editorial</a></li>
-                    </ul>
-                </div>
-
-                <div class="mod_socialLinks">
-                    <div class="h4">Legal</div>
-                    <ul>
-                        <li><a href="{{ site.baseurl }}/privacy">Privacy Policy</a></li>
-                        <li><a href="{{ site.baseurl }}/terms">Terms of Service</a></li>
-                        <li><a href="{{ site.baseurl }}/ethics">Editorial Ethics</a></li>
-                    </ul>
-                    
-                    <div class="h4">Social Media</div>
-                    <ul class="social__items">
-                        <li><a href="#" class="social__item social__item--twitter"><span class="invisible">Twitter</span>𝕏</a></li>
-                        <li><a href="#" class="social__item social__item--linkedin"><span class="invisible">LinkedIn</span>💼</a></li>
-                        <li><a href="#" class="social__item social__item--rss"><span class="invisible">RSS</span>📡</a></li>
-                    </ul>
-                </div>
-
-                <div class="mod_adress">
-                    <div class="h4">Contact</div>
-                    <p>The Adriatic<br>
-                    Digital Publication<br>
-                    Email: <a href="mailto:info@theadriatic.com">info@theadriatic.com</a></p>
-                </div>
+            <div class="container">
+                <p>&copy; 2025 {{ site.title }}. All rights reserved.</p>
             </div>
         </footer>
     </div>
