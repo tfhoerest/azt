@@ -144,14 +144,12 @@ layout: default
                 <div class="post-card-content">
                     <h2><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
                     <p class="post-card-excerpt">{{ post.excerpt | strip_html }}</p>
-                    <div class="post-card-meta">
-                        <span class="category-tag {{ post.category }}">{{ post.category | upcase }}</span>
-                        <span>{{ post.date | date: "%B %d, %Y" }}</span>
-                        {% if post.author %}
-                            <span>•</span>
-                            <span>{{ post.author }}</span>
-                        {% endif %}
-                    </div>
+<div class="post-card-meta">
+    <span>{{ post.date | date: "%B %d, %Y" }}</span>
+    {% if post.author %}
+        <span>{{ post.author }}</span>
+    {% endif %}
+</div>
                 </div>
             </article>
             {% endfor %}
