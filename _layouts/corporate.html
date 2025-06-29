@@ -165,6 +165,11 @@
             padding: 0 1rem;
         }
 
+        /* Navigation specific - no margins */
+        #header .inside {
+            padding: 0;
+        }
+
         /* NAVIGATION - F.A.Z. Style */
         .mod_navigation {
             display: flex;
@@ -178,7 +183,7 @@
             font-size: 1.8rem;
             color: var(--corp-secondary);
             text-decoration: none;
-            font-weight: 700;
+            font-weight: 500;
             letter-spacing: 1px;
         }
 
@@ -204,13 +209,11 @@
         }
 
         .btn--abo {
-            background: var(--corp-secondary);
-            color: white;
-            padding: 0.75rem;
+            background: none;
+            color: var(--corp-text);
+            padding: 0.5rem;
             text-decoration: none;
-            border-radius: 4px;
-            font-size: 1.125rem;
-            transition: background-color 0.3s ease;
+            transition: color 0.3s ease;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -219,8 +222,11 @@
         }
 
         .btn--abo:hover {
-            background: #a02626;
-            color: white;
+            color: var(--corp-secondary);
+        }
+
+        .btn--abo svg {
+            color: inherit;
         }
 
         /* TYPOGRAPHY - F.A.Z. Style */
@@ -500,6 +506,22 @@
 
             .btn--abo--mobile {
                 margin-top: 1rem;
+                width: 40px;
+                height: 40px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: none;
+                color: var(--corp-text);
+                transition: color 0.3s ease;
+            }
+
+            .btn--abo--mobile:hover {
+                color: var(--corp-secondary);
+            }
+
+            .btn--abo--mobile svg {
+                color: inherit;
             }
         }
 
@@ -563,23 +585,6 @@
             }
         }
 
-        /* THEME TOGGLE */
-        .theme-toggle {
-            background: none;
-            border: 1px solid var(--corp-border);
-            padding: 0.5rem;
-            border-radius: 4px;
-            cursor: pointer;
-            color: var(--corp-text);
-            transition: all 0.3s ease;
-            font-size: 1.2rem;
-        }
-
-        .theme-toggle:hover {
-            border-color: var(--corp-secondary);
-            color: var(--corp-secondary);
-        }
-
         .invisible {
             position: absolute;
             left: -9999px;
@@ -617,8 +622,12 @@
                     </ul>
 
                     <div style="display: flex; align-items: center; gap: 1rem;">
-                        <button class="theme-toggle" id="theme-toggle" title="Toggle theme">🌓</button>
-                        <a href="{{ site.baseurl }}/" class="btn--abo">Back to Editorial</a>
+                        <a href="{{ site.baseurl }}/" class="btn--abo" title="Back to Editorial">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                                <polyline points="9,22 9,12 15,12 15,22"/>
+                            </svg>
+                        </a>
                     </div>
 
                     <a id="skipNavigation1" class="invisible">&nbsp;</a>
@@ -632,7 +641,12 @@
                         <li class="sibling"><a href="{{ site.baseurl }}/events">Events</a></li>
                         <li class="sibling last"><a href="{{ site.baseurl }}/magazine">Magazine</a></li>
                     </ul>
-                    <a href="{{ site.baseurl }}/" class="btn--abo btn--abo--mobile">Back to Editorial</a>
+                    <a href="{{ site.baseurl }}/" class="btn--abo btn--abo--mobile" title="Back to Editorial">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                            <polyline points="9,22 9,12 15,12 15,22"/>
+                        </svg>
+                    </a>
                 </nav>
             </div>
         </header>
@@ -687,20 +701,7 @@
         </footer>
     </div>
 
-    <script>
-        // Theme toggle functionality
-        const themeToggle = document.getElementById('theme-toggle');
-        const html = document.documentElement;
-        
-        const currentTheme = localStorage.getItem('corp-theme') || 'light';
-        html.setAttribute('data-theme', currentTheme);
-        
-        themeToggle.addEventListener('click', function() {
-            const newTheme = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-            html.setAttribute('data-theme', newTheme);
-            localStorage.setItem('corp-theme', newTheme);
-        });
-
+            <script>
         // Mobile menu functionality
         function toggleMobileMenu() {
             const mobileNav = document.getElementById('main-mobile');
