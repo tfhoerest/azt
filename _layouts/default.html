@@ -245,8 +245,12 @@ body.menu-open .menu-toggle {
 
 .search-input:focus {
     outline: none;
-    border-color: #bd2d2d;
-    box-shadow: 0 0 0 2px rgba(189, 45, 45, 0.1);
+    border-bottom-color: #bd2d2d;
+    box-shadow: none;
+}
+
+.search-input:focus::placeholder {
+    opacity: 0;
 }
 
 .search-input::placeholder {
@@ -874,6 +878,7 @@ body.menu-open .menu-toggle {
 
     // Basic search functionality (you can enhance this further)
     const searchInput = document.getElementById('search-input');
+    searchInput.value = '';
     searchInput.addEventListener('keypress', function(e) {
         if (e.key === 'Enter') {
             const query = searchInput.value.trim();
