@@ -274,16 +274,12 @@ body.menu-open .menu-toggle {
     visibility: visible;
 }
 
-/* PANEL FOOTER */
-.panel-footer {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
+/* THEME TOGGLE CONTAINER */
+.theme-toggle-container {
     padding: var(--z-ds-space-l);
-    border-top: 1px solid var(--z-ds-color-border);
-    background: var(--z-ds-color-background-1);
+    margin-top: 4rem; /* 4rem spacing above */
     text-align: center;
+    border-top: 1px solid var(--z-ds-color-border);
 }
 
 .theme-toggle-segmented {
@@ -292,8 +288,8 @@ body.menu-open .menu-toggle {
     border-radius: 8px;
     border: 1px solid var(--z-ds-color-border);
     overflow: hidden;
-    margin: 0 auto 15px auto; /* Center horizontally, space above copyright */
-    width: 120px; /* Fixed width for centering */
+    margin: 0 auto;
+    width: 120px;
 }
 
 .theme-option {
@@ -306,17 +302,37 @@ body.menu-open .menu-toggle {
     align-items: center;
     justify-content: center;
     transition: all 0.3s ease;
-    color: transparent; /* Hide icon when inactive */
-    font-size: 16px;
+    color: transparent; /* Hide text when inactive */
+    font-size: 14px;
+    font-family: 'Saj JY', 'Inter', sans-serif; /* Saj font */
+    font-weight: 500;
 }
 
 .theme-option.active {
     background: #bd2d2d; /* Red highlight */
-    color: white; /* Show icon when active */
+    color: white; /* Show text when active */
 }
 
 .theme-option:hover:not(.active) {
+    color: white; /* Show text in white on hover */
+}
+
+/* Light mode: dark preview on hover */
+[data-theme="light"] .theme-option:hover:not(.active) {
+    background: #333; /* Dark background when hovering in light mode */
+}
+
+/* Dark mode: light preview on hover */
+[data-theme="dark"] .theme-option:hover:not(.active) {
+    background: #fff; /* Light background when hovering in dark mode */
+    color: #333; /* Dark text color for visibility on light background */
+}
+
+/* PANEL FOOTER */
+.panel-footer {
+    padding: var(--z-ds-space-l);
     background: var(--z-ds-color-background-1);
+    text-align: center;
 }
 
 .panel-footer p {
@@ -701,13 +717,10 @@ body.menu-open .menu-toggle {
         <div class="theme-toggle-container">
             <div class="theme-toggle-segmented" id="theme-toggle">
                 <button class="theme-option active" data-theme="light">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
-                        <circle cx="12" cy="12" r="3"/>
-                    </svg>
+                    Light
                 </button>
                 <button class="theme-option" data-theme="dark">
-                    🕶️
+                    Dark
                 </button>
             </div>
         </div>
