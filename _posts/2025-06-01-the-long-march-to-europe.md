@@ -3,7 +3,7 @@ layout: post
 title: "The long march to Europe"
 date: 2025-06-04
 category: power
-category_display: "Trump rebuked"
+category_display: "Same as the old"
 author: "Andraž Tavčar"
 image: "https://tramci.github.io/azt/assets/images/long-march-to-europe.png"  # optional
 excerpt: "Albania’s ruling Socialist Party has secured a fourth consecutive term for Prime Minister Edi Rama, extending his reign as the longest-serving leader of the country’s post-communist era."
