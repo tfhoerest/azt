@@ -8,6 +8,11 @@ markdown: kramdown
 highlighter: rouge
 permalink: /:categories/:year/:month/:day/:title/
 
+# Sass/CSS settings for performance
+sass:
+  style: compressed
+  sourcemap: never
+
 # Collections
 collections:
   posts:
@@ -31,11 +36,22 @@ plugins:
 paginate: 10
 paginate_path: "/page:num/"
 
-# Categories - UPDATED
+# Categories
 categories: [business, power, culture, opinion]
+
+# Performance optimizations
+compress_html:
+  clippings: all
+  comments: all
+  endings: all
+  startings: []
+  blanklines: false
+  profile: false
 
 # Build settings
 exclude:
   - README.md
   - Gemfile
   - Gemfile.lock
+  - node_modules
+  - .sass-cache
