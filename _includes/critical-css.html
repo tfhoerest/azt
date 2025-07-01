@@ -142,10 +142,14 @@ body {
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    transition: color 0.2s ease;
+    border-bottom: 2px solid transparent;
 }
 
-.main-nav a:hover,
+.main-nav a:hover {
+    color: var(--z-ds-color-text-100);
+    border-bottom-color: #bd2d2d;
+}
+
 .main-nav a.active {
     color: var(--z-ds-color-text-100);
 }
