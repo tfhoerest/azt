@@ -1,29 +1,5 @@
 /* Non-Critical Font Faces */
 @font-face {
-    font-family: 'Saj JY';
-    src: url('/azt/assets/fonts/Saj-JY-Bold.woff2') format('woff2');
-    font-weight: bold;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Saj JY';
-    src: url('/azt/assets/fonts/Saj-JY-Italic.woff2') format('woff2');
-    font-weight: normal;
-    font-style: italic;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Saj JY';
-    src: url('/azt/assets/fonts/Saj-JY-Light.woff2') format('woff2');
-    font-weight: 300;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
     font-family: 'Adriatic22';
     src: url('/azt/assets/fonts/Adriatic22-Regular.woff2') format('woff2');
     font-weight: normal;
@@ -53,6 +29,29 @@
     font-weight: bold;
     font-style: italic;
     font-display: swap;
+}
+
+/* TEXT SELECTION STYLING */
+::selection {
+    background-color: #bd2d2d;  /* Red highlight background */
+    color: #000000;             /* Black text in light mode */
+}
+
+/* For Firefox compatibility */
+::-moz-selection {
+    background-color: #bd2d2d;  /* Red highlight background */
+    color: #000000;             /* Black text in light mode */
+}
+
+/* DARK MODE TEXT SELECTION */
+[data-theme="dark"] ::selection {
+    background-color: #bd2d2d;  /* Same red background */
+    color: #ffffff;             /* White text in dark mode */
+}
+
+[data-theme="dark"] ::-moz-selection {
+    background-color: #bd2d2d;  /* Same red background */
+    color: #ffffff;             /* White text in dark mode */
 }
 
 /* HAMBURGER MENU BUTTON */
@@ -305,7 +304,7 @@ body.menu-open {
     transition: all 0.3s ease;
     color: transparent;
     font-size: 14px;
-    font-family: 'Saj JY', 'Inter', sans-serif;
+    font-family: 'Open Sans', Arial, sans-serif;
     font-weight: 500;
 }
 
@@ -356,11 +355,6 @@ body.menu-open {
     letter-spacing: 0;
     text-decoration: none;
     font-weight: 600;
-    transition: opacity 0.2s ease;
-}
-
-.category-tag:hover {
-    opacity: 0.7;
 }
 
 /* HERO SECTION TIGHT SPACING */
