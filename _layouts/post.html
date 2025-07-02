@@ -10,17 +10,12 @@ layout: default
     padding: 0 var(--z-ds-space-s);
 }
 
-.post-header {
-    margin-bottom: var(--z-ds-space-xl);
-    text-align: left;
-    max-width: 680px; /* FAZ-style readable width */
-    margin-left: auto;
-    margin-right: auto;
-}
-
 .post-category {
     margin-bottom: 1rem;
-    text-align: left;
+    text-align: center;
+    max-width: 1000px;  /* Same as title width */
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .post-title {
@@ -28,10 +23,20 @@ layout: default
     font-size: 5rem;
     font-weight: 700;
     text-align: center;
-    max-width: none;
     color: var(--z-ds-color-text-100);
     line-height: 1.1;  /* Tighter line height for large headlines */
     margin-bottom: 1.5rem;  /* Generous spacing to lede */
+    max-width: 1000px;  /* Wide title */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.post-meta {
+    max-width: 680px; /* FAZ-style readable width for meta info */
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: var(--z-ds-space-xl);
+    text-align: left;
 }
 
 .post-lede {
@@ -50,14 +55,12 @@ layout: default
     text-transform: uppercase;
     letter-spacing: 0.5px;
     margin-bottom: 0.5rem;
-    text-align: left;
 }
 
 .post-date {
     font-size: 0.875rem;
     color: var(--z-ds-color-text-70);
     margin-bottom: 2rem;  /* Space to image */
-    text-align: left;
 }
 
 .post-image {
@@ -173,11 +176,16 @@ layout: default
         padding: 0 var(--z-ds-space-m);
     }
     
+    .post-category,
+    .post-title {
+        max-width: 800px;  /* Adjust for tablet */
+    }
+    
     .post-image {
         height: 450px;  /* Medium height for tablets */
     }
     
-    .post-header,
+    .post-meta,
     .post-content,
     .post-navigation {
         max-width: 600px;  /* Slightly narrower text on tablets */
@@ -191,25 +199,30 @@ layout: default
         padding: 0;  /* Remove padding so image can be full width */
     }
     
-    .post-header {
+    .post-category {
         max-width: 100%;
-        padding: 0 12px;  /* Much smaller padding like Zeit */
+        padding: 0 12px;  /* Small padding like Zeit */
+        margin-bottom: 0.75rem;
+    }
+    
+    .post-title {
+        max-width: 100%;
+        padding: 0 12px;  /* Small padding like Zeit */
+        font-size: 2rem;  /* Smaller on mobile */
+        line-height: 1.2;
+        margin-bottom: 1rem;
+    }
+    
+    .post-meta {
+        max-width: 100%;
+        padding: 0 12px;  /* Small padding like Zeit */
+        margin-bottom: var(--z-ds-space-l);
     }
     
     .post-content,
     .post-navigation {
         max-width: 100%;
         padding: 0 12px;  /* Much smaller padding like Zeit */
-    }
-    
-    .post-category {
-        margin-bottom: 0.75rem;
-    }
-    
-    .post-title {
-        font-size: 2rem;  /* Smaller on mobile */
-        line-height: 1.2;
-        margin-bottom: 1rem;
     }
     
     .post-lede {
@@ -258,33 +271,32 @@ layout: default
 </style>
 
 <article class="post-container">
-    <header class="post-header">
-        <!-- 1. CATEGORY (above title) -->
-        <div class="post-category">
-            <span class="category-tag {{ page.category }}">{{ page.category | upcase }}</span>
-        </div>
-        
-        <!-- 2. TITLE -->
-        <h1 class="post-title">{{ page.title }}</h1>
-        
-        <!-- 3. LEDE (EXCERPT) -->
+    <!-- 1. CATEGORY -->
+    <div class="post-category">
+        <span class="category-tag {{ page.category }}">{{ page.category | upcase }}</span>
+    </div>
+    
+    <!-- 2. TITLE (wide) -->
+    <h1 class="post-title">{{ page.title }}</h1>
+    
+    <!-- 3. META INFO (constrained width) -->
+    <div class="post-meta">
         {% if page.excerpt %}
             <div class="post-lede">{{ page.excerpt | strip_html }}</div>
         {% endif %}
         
-        <!-- 4. AUTHOR AND DATE (below lede) -->
         {% if page.author %}
             <div class="post-author-name">{{ page.author }}</div>
         {% endif %}
         <div class="post-date">{{ page.date | date: "%d %B %Y" }}</div>
-    </header>
+    </div>
     
-    <!-- 5. IMAGE -->
+    <!-- 4. IMAGE -->
     {% if page.image %}
         <img src="{{ page.image }}" alt="{{ page.title }}" class="post-image">
     {% endif %}
     
-    <!-- 6. ARTICLE CONTENT -->
+    <!-- 5. ARTICLE CONTENT -->
     <div class="post-content">
         {{ content }}
     </div>
