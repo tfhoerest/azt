@@ -16,6 +16,7 @@ layout: default
     max-width: 1000px;  /* Same as title width */
     margin-left: auto;
     margin-right: auto;
+    font-family: 'Open Sans', Arial, sans-serif;  /* Added Open Sans */
 }
 
 .post-title {
@@ -36,7 +37,7 @@ layout: default
     margin-left: auto;
     margin-right: auto;
     margin-bottom: var(--z-ds-space-xl);
-    text-align: left;
+    text-align: center;  /* Changed from left to center */
 }
 
 .post-lede {
@@ -50,17 +51,29 @@ layout: default
 
 .post-author-name {
     font-size: 0.875rem;
-    color: var(--z-ds-color-text-70);
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    margin-bottom: 0.5rem;
+    color: var(--z-ds-color-text-100);  /* Changed to black */
+    margin-bottom: 2rem;  /* Space to image */
+    font-family: 'Open Sans', Arial, sans-serif;  /* Added Open Sans */
 }
 
 .post-date {
     font-size: 0.875rem;
-    color: var(--z-ds-color-text-70);
-    margin-bottom: 2rem;  /* Space to image */
+    color: var(--z-ds-color-text-100);  /* Changed to black */
+    margin-bottom: 0.5rem;  /* Space between date and author */
+    font-family: 'Open Sans', Arial, sans-serif;  /* Added Open Sans */
+    font-style: italic;  /* Added italics */
+}
+
+.by-text {
+    font-weight: bold;
+}
+
+.author-name {
+    font-weight: bold;
+}
+
+.author-role {
+    font-weight: normal;  /* Regular weight to distinguish from author name */
 }
 
 .post-image {
@@ -230,12 +243,12 @@ layout: default
         margin-bottom: 1rem;
     }
     
-    .post-author-name {
+    .post-date {
         font-size: 0.8rem;
-        margin-bottom: 0.25rem;
+        margin-bottom: 0.25rem;  /* Tighter spacing on mobile */
     }
     
-    .post-date {
+    .post-author-name {
         font-size: 0.8rem;
         margin-bottom: 1.5rem;
     }
@@ -273,7 +286,7 @@ layout: default
 <article class="post-container">
     <!-- 1. CATEGORY -->
     <div class="post-category">
-        <span class="category-tag {{ page.category }}">{{ page.category | upcase }}</span>
+        <span class="category-tag {{ page.category }}">{{ page.category }}</span>
     </div>
     
     <!-- 2. TITLE (wide) -->
@@ -285,10 +298,15 @@ layout: default
             <div class="post-lede">{{ page.excerpt | strip_html }}</div>
         {% endif %}
         
-        {% if page.author %}
-            <div class="post-author-name">{{ page.author }}</div>
-        {% endif %}
+        <!-- DATE FIRST -->
         <div class="post-date">{{ page.date | date: "%d %B %Y" }}</div>
+        
+        <!-- AUTHOR SECOND -->
+        {% if page.author %}
+            <div class="post-author-name">
+                <span class="by-text">By</span> <span class="author-name">{{ page.author }}</span>{% if page.author_role %}, <span class="author-role">{{ page.author_role }}</span>{% endif %}
+            </div>
+        {% endif %}
     </div>
     
     <!-- 4. IMAGE -->
