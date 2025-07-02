@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="color-scheme" content="light dark">
+    <meta name="color-scheme" content="light">
     <meta name="theme-color" content="#bd2d2d">
     <meta name="base-url" content="{{ site.baseurl }}">
     
@@ -34,51 +34,6 @@
     <noscript><link rel="stylesheet" href="{{ site.baseurl }}/assets/css/main.css"></noscript>
 </head>
 <body> 
-    <!-- Menu Toggle Button -->
-    <button class="menu-toggle" id="menu-toggle" aria-label="Toggle menu">
-        <div class="hamburger">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-    </button>
-
-    <!-- Overlay -->
-    <div class="overlay" id="overlay"></div>
-
-    <!-- Side Panel -->
-    <div class="side-panel" id="side-panel">
-        <div class="panel-header">
-            <div class="search-container">
-                <button class="back-arrow" id="back-arrow" aria-label="Close menu">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-                        <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </button>
-                <input type="text" class="search-input" placeholder="Search articles..." id="search-input">
-            </div>
-        </div>
-        <nav class="panel-nav">
-            <ul>
-                <li><a href="{{ site.baseurl }}/about" {% if page.url contains "about" %}class="active"{% endif %}>About</a></li>
-                <li><a href="{{ site.baseurl }}/contact" {% if page.url contains "contact" %}class="active"{% endif %}>Contact</a></li>
-                <li><a href="{{ site.baseurl }}/newsletter" {% if page.url contains "newsletter" %}class="active"{% endif %}>Newsletter</a></li>
-            </ul>
-        </nav>
-        
-        <!-- Theme toggle -->
-        <div class="theme-toggle-container">
-            <div class="theme-toggle-segmented" id="theme-toggle">
-                <button class="theme-option active" data-theme="light">Light</button>
-                <button class="theme-option" data-theme="dark">Dark</button>
-            </div>
-        </div>
-        
-        <div class="panel-footer">
-            <p>&copy; 2025 The Adriatic</p>
-        </div>
-    </div>
-
     <!-- MASTHEAD -->
     <header class="masthead">
         <div class="masthead-container">
@@ -107,8 +62,5 @@
             <p>&copy; 2025 {{ site.title }}. All rights reserved.</p>
         </div>
     </footer>
-
-    <!-- JavaScript loaded with defer for better performance -->
-    <script src="{{ site.baseurl }}/assets/js/main.js" defer></script>
 </body>
 </html>
