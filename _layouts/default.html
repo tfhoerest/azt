@@ -10,9 +10,19 @@
     <title>{% if page.title %}{{ page.title }} | {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
     <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
     
-    <!-- Preload critical fonts -->
-    <link rel="preload" href="{{ site.baseurl }}/assets/fonts/Saj-JY-Regular.woff2" as="font" type="font/woff2" crossorigin>
+    <!-- DNS prefetch for Google Fonts -->
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    
+    <!-- Preconnect for faster font loading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Critical fonts - preload the most important ones -->
     <link rel="preload" href="{{ site.baseurl }}/assets/fonts/Adriatic-Journal.woff2" as="font" type="font/woff2" crossorigin>
+    
+    <!-- Open Sans from Google Fonts (critical for UI) -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Critical CSS inline -->
     <style>
@@ -22,10 +32,6 @@
     <!-- Non-critical CSS loaded asynchronously -->
     <link rel="preload" href="{{ site.baseurl }}/assets/css/main.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="{{ site.baseurl }}/assets/css/main.css"></noscript>
-    
-    <!-- Remove Google Fonts since you're using custom fonts -->
-    <!-- DNS prefetch for any external resources you might add later -->
-    <link rel="dns-prefetch" href="//fonts.googleapis.com">
 </head>
 <body> 
     <!-- Menu Toggle Button -->
@@ -59,15 +65,12 @@
                 <li><a href="{{ site.baseurl }}/newsletter" {% if page.url contains "newsletter" %}class="active"{% endif %}>Newsletter</a></li>
             </ul>
         </nav>
-        <!-- Theme toggle ABOVE footer -->
+        
+        <!-- Theme toggle -->
         <div class="theme-toggle-container">
             <div class="theme-toggle-segmented" id="theme-toggle">
-                <button class="theme-option active" data-theme="light">
-                    Light
-                </button>
-                <button class="theme-option" data-theme="dark">
-                    Dark
-                </button>
+                <button class="theme-option active" data-theme="light">Light</button>
+                <button class="theme-option" data-theme="dark">Dark</button>
             </div>
         </div>
         
@@ -80,7 +83,6 @@
     <header class="masthead">
         <div class="masthead-container">
             <a href="{{ site.baseurl }}/" class="site-title">{{ site.title }}</a>
-            <!-- Original navigation is now hidden and moved to side panel -->
             <nav>
                 <ul class="main-nav">
                     <li><a href="{{ site.baseurl }}/" {% if page.url == "/" %}class="active"{% endif %}>Home</a></li>
