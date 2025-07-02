@@ -2,7 +2,7 @@
 layout: post
 title: "A new face, an old dilemma"
 date: 2025-06-23
-category: domestic    # or domestic, opinion
+category: Domestic    # or domestic, opinion
 category_display: "Another start-up party"
 author: "Sloterdik"
 image: "https://tramci.github.io/azt/assets/images/messiah.jpg"   # optional
