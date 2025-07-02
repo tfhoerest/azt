@@ -1,4 +1,4 @@
-/* Zeit.de Design System Variables - Critical Styles Only */
+/* Zeit.de Design System Variables - Optimized */
 :root {
     /* Font sizes */
     --z-ds-fontsize-14: 0.875rem;
@@ -20,10 +20,8 @@
     --z-ds-max-width: 1280px;
     --z-ds-content-width: 750px;
     --z-ds-newsletter-width: 46.25rem;
-}
-
-/* LIGHT THEME (default) */
-:root {
+    
+    /* Colors - Light theme (default) */
     --z-ds-color-text-100: #1a1a1a;
     --z-ds-color-text-70: #000000;
     --z-ds-color-background-0: #ffffff;
@@ -33,26 +31,17 @@
     --z-ds-color-border-light: #f0f0f0;
 }
 
-/* DARK THEME */
+/* Dark theme overrides */
 [data-theme="dark"] {
     --z-ds-color-text-100: #ffffff;
     --z-ds-color-text-70: #b3b3b3;
     --z-ds-color-background-0: #0a0a0a;
     --z-ds-color-background-1: #1a1a1a;
-    --z-ds-color-accent-100: #ff6246;
     --z-ds-color-border: #333333;
     --z-ds-color-border-light: #2a2a2a;
 }
 
-/* Critical Font Faces */
-@font-face {
-    font-family: 'Saj JY';
-    src: url('/azt/assets/fonts/Saj-JY-Regular.woff2') format('woff2');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-}
-
+/* Critical font face */
 @font-face {
     font-family: 'Adriatic Journal';
     src: url('/azt/assets/fonts/Adriatic-Journal.woff2') format('woff2');
@@ -61,7 +50,7 @@
     font-display: swap;
 }
 
-/* Critical Base Styles */
+/* Base styles */
 * {
     margin: 0;
     padding: 0;
@@ -69,23 +58,18 @@
 }
 
 body {
-    font-family: 'Saj JY', 'Inter', 'Helvetica Neue', Helvetica, Arial, FreeSans, sans-serif;
-    line-height: 1.5;
+    font: 400 var(--z-ds-fontsize-16)/1.5 'Open Sans', Arial, sans-serif;
     color: var(--z-ds-color-text-100);
-    background-color: var(--z-ds-color-background-0);
-    font-weight: 400;
-    font-size: var(--z-ds-fontsize-16);
+    background: var(--z-ds-color-background-0);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    font-smooth: always;
 }
 
-/* MASTHEAD HEADER - Critical for above-the-fold */
+/* Masthead */
 .masthead {
-    background-color: var(--z-ds-color-background-0);
+    background: var(--z-ds-color-background-0);
     padding: var(--z-ds-space-l) var(--z-ds-space-s);
     text-align: center;
-    position: static;
 }
 
 .masthead-container {
@@ -96,9 +80,7 @@ body {
 }
 
 .site-title {
-    font-family: 'Adriatic Journal', 'Playfair Display', Georgia, serif;
-    font-weight: 400;
-    font-style: normal;
+    font: 400 0/0.8 'Adriatic Journal', Georgia, serif;
     color: #bd2d2d;
     text-decoration: none;
     letter-spacing: 3px;
@@ -106,15 +88,12 @@ body {
     flex-direction: column;
     align-items: center;
     margin-bottom: var(--z-ds-space-xl);
-    line-height: 0.8;
-    font-size: 0;
 }
 
 .site-title::before {
     content: "THE";
     font-size: 3rem;
     text-transform: uppercase;
-    color: inherit;
     display: block;
 }
 
@@ -122,15 +101,16 @@ body {
     content: "ADRIATIC";
     font-size: 3rem;
     text-transform: uppercase;
-    color: inherit;
     display: block;
 }
 
+[data-theme="dark"] .site-title,
 [data-theme="dark"] .site-title::before,
 [data-theme="dark"] .site-title::after {
     color: #ffffff;
 }
 
+/* Navigation */
 .main-nav {
     display: flex;
     justify-content: center;
@@ -143,23 +123,20 @@ body {
     text-decoration: none;
     font-size: var(--z-ds-fontsize-14);
     font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
     border-bottom: 2px solid transparent;
 }
 
-.main-nav a:hover {
-    color: var(--z-ds-color-text-100);
-    border-bottom-color: #bd2d2d;
-}
-
+.main-nav a:hover,
 .main-nav a.active {
     color: var(--z-ds-color-text-100);
 }
 
-/* MAIN CONTENT */
+.main-nav a:hover {
+    border-bottom-color: #bd2d2d;
+}
+
+/* Main content */
 .main-content {
-    margin-top: 0;
     padding: 15px var(--z-ds-space-s);
 }
 
