@@ -33,25 +33,14 @@
 
 /* TEXT SELECTION STYLING */
 ::selection {
-    background-color: #bd2d2d;  /* Red highlight background */
-    color: #000000;             /* Black text in light mode */
+    background-color: #000000;  /* Black highlight background */
+    color: #bd2d2d;             /* Red text */
 }
 
 /* For Firefox compatibility */
 ::-moz-selection {
-    background-color: #bd2d2d;  /* Red highlight background */
-    color: #000000;             /* Black text in light mode */
-}
-
-/* DARK MODE TEXT SELECTION */
-[data-theme="dark"] ::selection {
-    background-color: #bd2d2d;  /* Same red background */
-    color: #ffffff;             /* White text in dark mode */
-}
-
-[data-theme="dark"] ::-moz-selection {
-    background-color: #bd2d2d;  /* Same red background */
-    color: #ffffff;             /* White text in dark mode */
+    background-color: #000000;  /* Black highlight background */
+    color: #bd2d2d;             /* Red text */
 }
 
 /* HAMBURGER MENU BUTTON */
