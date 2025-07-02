@@ -146,10 +146,10 @@ layout: default
 }
 
 .article-excerpt {
-    font-family: 'Adriatic22', Georgia, serif;
-    font-weight: 500;
+    font-family: 'Open Sans', Arial, sans-serif;  /* Changed to Open Sans */
+    font-weight: 400;  /* Lighter weight for Open Sans */
     color: var(--z-ds-color-text-70);
-    font-size: var(--z-ds-fontsize-22);
+    font-size: var(--z-ds-fontsize-16);  /* Smaller - was 22, now 16 */
     line-height: 1.5;
     margin-bottom: var(--z-ds-space-s);  /* Space before author */
 }
@@ -262,7 +262,7 @@ layout: default
     }
     
     .article-excerpt {
-        font-size: 0.9rem;  /* Smaller excerpts */
+        font-size: 0.875rem;  /* Smaller excerpts - adjusted for Open Sans */
         line-height: 1.4;
         margin-top: 0;  /* Remove any top margin */
         margin-bottom: var(--z-ds-space-xxs);  /* Consistent tighter spacing */
