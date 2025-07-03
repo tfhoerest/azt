@@ -33,36 +33,6 @@
         });
     }
 
-    // Scroll-responsive masthead functionality
-    const masthead = document.getElementById('masthead');
-    let lastScrollY = window.scrollY;
-    let isScrolling = false;
-    
-    function handleScroll() {
-        const currentScrollY = window.scrollY;
-        const scrollThreshold = 100; // Pixels to scroll before shrinking
-        
-        if (currentScrollY > scrollThreshold) {
-            masthead.classList.add('shrunk');
-        } else {
-            masthead.classList.remove('shrunk');
-        }
-        
-        lastScrollY = currentScrollY;
-        isScrolling = false;
-    }
-    
-    // Optimized scroll event with requestAnimationFrame
-    function onScroll() {
-        if (!isScrolling) {
-            requestAnimationFrame(handleScroll);
-            isScrolling = true;
-        }
-    }
-    
-    // Add scroll event listener
-    window.addEventListener('scroll', onScroll, { passive: true });
-
     // Side panel menu functionality
     const menuToggle = document.getElementById('menu-toggle');
     const sidePanel = document.getElementById('side-panel');
@@ -75,12 +45,6 @@
             sidePanel.classList.add('open');
             overlay.classList.add('show');
             body.classList.add('menu-open');
-            
-            // Focus trap for accessibility
-            const firstFocusableElement = sidePanel.querySelector('button, a, input, select, textarea, [tabindex]:not([tabindex="-1"])');
-            if (firstFocusableElement) {
-                firstFocusableElement.focus();
-            }
         }
     }
 
@@ -95,18 +59,12 @@
             if (searchInput) {
                 searchInput.value = '';
             }
-            
-            // Return focus to menu toggle button
-            if (menuToggle) {
-                menuToggle.focus();
-            }
         }
     }
 
     // Toggle menu when button is clicked
     if (menuToggle) {
-        menuToggle.addEventListener('click', function(e) {
-            e.preventDefault();
+        menuToggle.addEventListener('click', function() {
             if (sidePanel && sidePanel.classList.contains('open')) {
                 closeMenu();
             } else {
@@ -122,10 +80,7 @@
 
     // Close menu when back arrow is clicked
     if (backArrow) {
-        backArrow.addEventListener('click', function(e) {
-            e.preventDefault();
-            closeMenu();
-        });
+        backArrow.addEventListener('click', closeMenu);
     }
 
     // Close menu when pressing Escape key
@@ -141,31 +96,6 @@
         link.addEventListener('click', closeMenu);
     });
 
-    // Handle focus trap in side panel
-    if (sidePanel) {
-        sidePanel.addEventListener('keydown', function(e) {
-            if (e.key === 'Tab' && sidePanel.classList.contains('open')) {
-                const focusableElements = sidePanel.querySelectorAll(
-                    'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
-                );
-                const firstFocusable = focusableElements[0];
-                const lastFocusable = focusableElements[focusableElements.length - 1];
-                
-                if (e.shiftKey) {
-                    if (document.activeElement === firstFocusable) {
-                        lastFocusable.focus();
-                        e.preventDefault();
-                    }
-                } else {
-                    if (document.activeElement === lastFocusable) {
-                        firstFocusable.focus();
-                        e.preventDefault();
-                    }
-                }
-            }
-        });
-    }
-
     // Basic search functionality
     const searchInput = document.getElementById('search-input');
     if (searchInput) {
@@ -180,37 +110,4 @@
             }
         });
     }
-
-    // Smooth scrolling for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                const headerHeight = masthead.offsetHeight;
-                const targetPosition = target.offsetTop - headerHeight - 20;
-                
-                window.scrollTo({
-                    top: targetPosition,
-                    behavior: 'smooth'
-                });
-            }
-        });
-    });
-
-    // Initialize masthead state on page load
-    handleScroll();
-    
-    // Handle resize events
-    let resizeTimer;
-    window.addEventListener('resize', function() {
-        clearTimeout(resizeTimer);
-        resizeTimer = setTimeout(function() {
-            // Close menu on resize to prevent layout issues
-            if (sidePanel && sidePanel.classList.contains('open')) {
-                closeMenu();
-            }
-        }, 250);
-    });
-
 })();
