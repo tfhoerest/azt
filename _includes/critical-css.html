@@ -64,9 +64,9 @@ body {
     right: 0;
     z-index: 1000;
     background: var(--z-ds-color-background-0);
-    border-bottom: 1px solid var(--z-ds-color-border);
+    border-bottom: none; /* No full-width border in normal state */
     padding: var(--z-ds-space-l) var(--z-ds-space-s);
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .masthead-container {
@@ -76,6 +76,9 @@ body {
     flex-direction: column;
     align-items: center;
     position: relative;
+    border-bottom: 1px solid var(--z-ds-color-border); /* Container-width border in normal state */
+    padding-bottom: var(--z-ds-space-s);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .masthead-center {
@@ -92,7 +95,8 @@ body {
     min-width: 120px;
     opacity: 0;
     pointer-events: none;
-    transition: opacity 0.3s ease;
+    transform: translateY(-10px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .masthead-left {
@@ -111,9 +115,9 @@ body {
     display: inline-flex;
     flex-direction: column;
     align-items: center;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     flex-shrink: 0;
-    margin-bottom: var(--z-ds-space-l);
+    margin-bottom: 0; /* Remove margin since container now has padding-bottom */
 }
 
 .site-title::before {
@@ -121,7 +125,7 @@ body {
     font-size: 3rem;
     text-transform: uppercase;
     display: block;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .site-title::after {
@@ -129,14 +133,17 @@ body {
     font-size: 3rem;
     text-transform: uppercase;
     display: block;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* Navigation */
 .desktop-nav {
-    transition: opacity 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     width: 100%;
     text-align: center;
+    transform: translateY(0);
+    opacity: 1;
+    margin-top: var(--z-ds-space-l); /* Add margin to separate from logo */
 }
 
 .main-nav {
@@ -222,6 +229,8 @@ body {
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
+        border-bottom: none; /* No container border on mobile */
+        padding-bottom: 0;
     }
     
     .masthead-left,
@@ -229,6 +238,7 @@ body {
         opacity: 1;
         pointer-events: auto;
         min-width: auto;
+        transform: translateY(0);
     }
     
     .site-title {
@@ -261,6 +271,7 @@ body {
     
     .desktop-nav {
         display: none;
+        margin-top: 0; /* Remove margin on mobile */
     }
     
     .cta-button {
