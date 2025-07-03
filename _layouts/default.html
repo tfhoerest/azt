@@ -35,30 +35,10 @@
 </head>
 <body> 
     <!-- MASTHEAD -->
-    <header class="masthead" id="masthead">
+    <header class="masthead">
         <div class="masthead-container">
-            <!-- Left Side: Hamburger Menu (hidden by default, shown when shrunk) -->
-            <div class="masthead-left">
-                <button class="hamburger-menu" id="menu-toggle" aria-label="Toggle menu">
-                    <span class="hamburger-line"></span>
-                    <span class="hamburger-line"></span>
-                    <span class="hamburger-line"></span>
-                </button>
-            </div>
-            
-            <!-- Center: Logo -->
-            <div class="masthead-center">
-                <a href="{{ site.baseurl }}/" class="site-title">{{ site.title }}</a>
-            </div>
-            
-            <!-- Right Side: CTA Button (optional) -->
-            <div class="masthead-right">
-                <!-- You can add a subscribe button or other CTA here -->
-                <a href="#" class="cta-button">Subscribe</a>
-            </div>
-            
-            <!-- Desktop Navigation (shown below logo when not shrunk) -->
-            <nav class="desktop-nav">
+            <a href="{{ site.baseurl }}/" class="site-title">{{ site.title }}</a>
+            <nav>
                 <ul class="main-nav">
                     <li><a href="{{ site.baseurl }}/" {% if page.url == "/" %}class="active"{% endif %}>Home</a></li>
                     <li><a href="{{ site.baseurl }}/business" {% if page.url contains "business" %}class="active"{% endif %}>Business</a></li>
@@ -69,31 +49,6 @@
             </nav>
         </div>
     </header>
-
-    <!-- SIDE PANEL -->
-    <div class="side-panel" id="side-panel">
-        <div class="side-panel-header">
-            <button class="back-arrow" id="back-arrow" aria-label="Close menu">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M19 12H5M12 19l-7-7 7-7"/>
-                </svg>
-            </button>
-            <h2>Menu</h2>
-        </div>
-        
-        <nav class="panel-nav">
-            <ul>
-                <li><a href="{{ site.baseurl }}/" {% if page.url == "/" %}class="active"{% endif %}>Home</a></li>
-                <li><a href="{{ site.baseurl }}/business" {% if page.url contains "business" %}class="active"{% endif %}>Business</a></li>
-                <li><a href="{{ site.baseurl }}/power" {% if page.url contains "power" %}class="active"{% endif %}>Power</a></li>
-                <li><a href="{{ site.baseurl }}/culture" {% if page.url contains "culture" %}class="active"{% endif %}>Culture</a></li>
-                <li><a href="{{ site.baseurl }}/opinion" {% if page.url contains "opinion" %}class="active"{% endif %}>Opinion</a></li>
-            </ul>
-        </nav>
-    </div>
-
-    <!-- OVERLAY -->
-    <div class="overlay" id="overlay"></div>
 
     <!-- MAIN CONTENT -->
     <main class="main-content">
@@ -107,8 +62,5 @@
             <p>&copy; 2025 {{ site.title }}. All rights reserved.</p>
         </div>
     </footer>
-
-    <!-- Load JavaScript -->
-    <script src="{{ site.baseurl }}/assets/js/main.js"></script>
 </body>
 </html>
